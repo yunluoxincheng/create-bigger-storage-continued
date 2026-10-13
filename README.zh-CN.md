@@ -1,14 +1,20 @@
-# Create: Bigger Storage Continued
+<p align="center">
+  <img src="docs/assets/project-icon.png" width="100" height="100" alt="铁质与铜质保险库项目图标">
+</p>
 
-[English](README.md) | **简体中文**
+<h1 align="center">Create: Bigger Storage Continued</h1>
 
-<img src="docs/assets/project-icon.png" width="100" height="100" alt="铁质与铜质保险库项目图标">
+<p align="center">
+  <a href="README.md">English</a> | <strong>简体中文</strong>
+</p>
 
 [Create: Bigger Storage](https://github.com/LopyLuna/Create-Bigger-Storage) 的非官方维护续作，原作者为 LopyLuna。为机械动力提供多档容量的横向与纵向保险库、整组原位升级，以及库存性能优化。
 
 本项目与 LopyLuna 及 Create 团队没有官方关联，也未获得其背书。
 
-[下载](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases) · [更新日志](CHANGELOG.md) · [反馈问题](https://github.com/yunluoxincheng/create-bigger-storage-continued/issues)
+<p align="center">
+  <a href="https://github.com/yunluoxincheng/create-bigger-storage-continued/releases">下载</a> · <a href="CHANGELOG.md">更新日志</a> · <a href="https://github.com/yunluoxincheng/create-bigger-storage-continued/issues">反馈问题</a>
+</p>
 
 ## 下载
 

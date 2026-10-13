@@ -1,14 +1,20 @@
-# Create: Bigger Storage Continued
+<p align="center">
+  <img src="docs/assets/project-icon.png" width="100" height="100" alt="Iron and copper vault project icon">
+</p>
 
-**English** | [简体中文](README.zh-CN.md)
+<h1 align="center">Create: Bigger Storage Continued</h1>
 
-<img src="docs/assets/project-icon.png" width="100" height="100" alt="Iron and copper vault project icon">
+<p align="center">
+  <strong>English</strong> | <a href="README.zh-CN.md">简体中文</a>
+</p>
 
 An unofficial continuation of [Create: Bigger Storage](https://github.com/LopyLuna/Create-Bigger-Storage) by LopyLuna, adding tiered horizontal and vertical vaults, in-place structure upgrades, and inventory performance improvements to Create.
 
 This project is not affiliated with or endorsed by LopyLuna or the Create team.
 
-[Downloads](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases) · [Changelog](CHANGELOG.md) · [Report an issue](https://github.com/yunluoxincheng/create-bigger-storage-continued/issues)
+<p align="center">
+  <a href="https://github.com/yunluoxincheng/create-bigger-storage-continued/releases">Downloads</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="https://github.com/yunluoxincheng/create-bigger-storage-continued/issues">Report an issue</a>
+</p>
 
 ## Downloads
 
