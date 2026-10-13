@@ -2,14 +2,22 @@
 
 This is an unofficial continuation of LopyLuna/Create-Bigger-Storage.
 
+Version 1.1.2 is a local inventory-notification and client-sync optimization
+candidate. Compilation and packaging verification do not establish in-game
+performance or Tom's Storage / AE / RS compatibility acceptance. Version 1.1.1
+remains the previously accepted stable baseline. GitHub tag releases record
+their build status separately from in-game acceptance. Modrinth and CurseForge
+publication is not connected yet. See [INVENTORY_PERFORMANCE.md](INVENTORY_PERFORMANCE.md)
+and [RELEASING.md](RELEASING.md).
+
 Version 1.1.0 is designated as a local stable version following the user's
 acceptance of the final artwork. It retains the approved v3 clear crystal
 windows and all other v3 resources. See [RELEASE_NOTES.md](RELEASE_NOTES.md).
 This designation is not a public upload or a new in-game validation record.
 
 Version 1.1.1 is now accepted as the local stable release after independent
-client feedback and acceptance of the connectivity repair. It is not yet
-publicly uploaded. The release keeps the verified Minecraft 1.20.1 / Forge
+client feedback and acceptance of the connectivity repair. The release keeps
+the verified Minecraft 1.20.1 / Forge
 47.2.32 / Create 6.0.4 scope; other version adaptations remain planned.
 The accepted 1.1.0 artifacts are preserved. Following the user's clarification,
 the current batch retains Create texture motifs and uses Minecraft materials
@@ -23,10 +31,10 @@ blue crystal panels. Block-specific motifs from the previous study are removed.
 - The local Create jar includes `LICENSE_create-1.20.1`, an MIT license with Copyright (c) 2019 simibubi. That complete notice is preserved in the PNG bundle and in the mod jar as `META-INF/LICENSE-Create.txt`. Vault artwork is attributed to simibubi and the Create contributors; these modifications do not relicense Bigger Storage's ARR artwork.
 - The 11 component icons and 45 upgrade icons are drawn directly in Python on native 16x16 grids. Material color palettes are sampled from local vanilla Minecraft 1.20.1 textures; no vanilla sprite geometry or PNG files are redistributed. Reference entries and hashes are recorded in the export manifest. This batch uses no image generation or earlier AI artwork as drawing inputs. New Python-drawn artwork is provided under this project's MIT terms to the extent applicable.
 - Current methods, attribution, previews and export hashes are documented in [artwork/create-colors-v5/README.md](artwork/create-colors-v5/README.md). Previous studies, AI sources and the 1.1.0 artwork remain local historical archives described in [artwork/README.md](artwork/README.md), rather than part of the current source submission. Retired construction layers are unreferenced by the 56 item models and excluded from the 1.1.1 jar; files are preserved locally.
-- This public source repository starts with a new root commit from the approved 1.1.1 source snapshot. Earlier private local history containing upstream ARR artwork is not included. Original local history and ignored backups remain private and are not packaged.
+- Upstream artwork remains in the original private local Git history and an ignored local backup. The public GitHub repository starts with a new root commit from the approved 1.1.1 source tree, followed by current development; it has no parent links to that private history. Private history and backups are not pushed or packaged. The original local history is preserved rather than rewritten.
 - Create: Connected interoperability uses its registry ID and public inventory accessor. Its AGPL implementation and artwork have not been copied.
 - All 56 component and upgrade item models reference single Python-drawn PNGs; none references the earlier layered artwork or redistributes a vanilla Minecraft PNG.
-- Public source is published at https://github.com/yunluoxincheng/create-bigger-storage-continued. Version tags trigger GitHub builds and releases with version-specific notes. Modrinth and CurseForge uploads are not connected.
+- The public source repository is https://github.com/yunluoxincheng/create-bigger-storage-continued. Annotated version tags trigger GitHub builds and releases with version-specific changelogs. Version 1.1.2 is marked beta; a CI build does not establish in-game acceptance. Platform uploads to Modrinth or CurseForge are deferred.
 
 Before a public release, record the supported Minecraft/loader/Create matrix from
 actual version verification, preserve origin and contributor attribution, and

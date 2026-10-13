@@ -6,9 +6,11 @@ import com.simibubi.create.foundation.blockEntity.IMultiBlockEntityContainer;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.inventory.VersionedInventoryWrapper;
+import com.simibubi.create.foundation.item.ItemHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
@@ -41,6 +43,10 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
     protected int length;
     protected Direction.Axis axis;
     TierMaterials tierMaterials;
+    private boolean comparatorsDirty;
+    private boolean visibleInventoryDirty;
+    private int comparatorOutput = -1;
+    private long lastInventorySaveTick = Long.MIN_VALUE;
 
     public TieredVaultBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, TierMaterials tierMaterials) {
         super(type, pos, state);
@@ -52,8 +58,16 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
                 super.onContentsChanged(slot);
                 if (VaultUpgradeService.isUpdating()) return;
                 updateComparators();
-                setChanged();
-                sendData();
+                if (level == null || level.isClientSide) return;
+                // Mark the owning chunk immediately, without setChanged()'s
+                // synchronous comparator notification on every slot mutation.
+                long tick = level.getGameTime();
+                if (lastInventorySaveTick != tick) {
+                    lastInventorySaveTick = tick;
+                    level.blockEntityChanged(worldPosition);
+                }
+                if (tierMaterials.seeThrough && slot < inventory.getSlots() / 2)
+                    visibleInventoryDirty = true;
             }
         };
 
@@ -75,17 +89,47 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
     }
 
     protected void updateComparators() {
+        if (level == null || level.isClientSide || VaultUpgradeService.isUpdating()) return;
         TieredVaultBlockEntity controllerBE = getControllerBE();
-        if (controllerBE == null || level == null) return;
+        if (controllerBE == null) return;
+        controllerBE.comparatorOutput = -1;
+        controllerBE.comparatorsDirty = true;
+    }
 
-        level.blockEntityChanged(controllerBE.worldPosition);
+    private void flushComparatorUpdates() {
+        if (!comparatorsDirty) return;
+        if (!isController()) {
+            // A pending update may outlive a split, merge or NBT load.
+            comparatorsDirty = false;
+            updateComparators();
+            return;
+        }
+        // Clear before notifying: a redstone callback can mutate inventory again.
+        comparatorsDirty = false;
 
-        BlockPos pos = controllerBE.getBlockPos();
-        for (int l = 0; l < controllerBE.length; l++)
-            for (int a = 0; a < controllerBE.radius; a++)
-                for (int b = 0; b < controllerBE.radius; b++)
+        BlockPos pos = getBlockPos();
+        Direction.Axis mainAxis = getMainConnectionAxis();
+        for (int l = 0; l < length; l++)
+            for (int a = 0; a < radius; a++)
+                for (int b = 0; b < radius; b++)
                     level.updateNeighbourForOutputSignal(VaultGeometry.position(pos,
-                        controllerBE.getMainConnectionAxis(), l, a, b), getBlockState().getBlock());
+                        mainAxis, l, a, b), getBlockState().getBlock());
+    }
+
+    public int getComparatorOutput() {
+        if (VaultUpgradeService.isUpdating()) return 0;
+        TieredVaultBlockEntity root = getControllerBE();
+        if (root == null) return 0;
+        if (!root.itemCapability.isPresent()) {
+            root.comparatorOutput = -1;
+            root.initCapability();
+        }
+        // An incomplete/unloaded structure must not cache a temporary zero.
+        if (!root.itemCapability.isPresent()) return 0;
+        if (root.comparatorOutput < 0) {
+            root.comparatorOutput = root.itemCapability.map(ItemHelper::calcRedstoneFromInventory).orElse(0);
+        }
+        return root.comparatorOutput;
     }
 
     @Override
@@ -99,6 +143,12 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
         }
 
         if (updateConnectivity) updateConnectivity();
+        if (level == null || level.isClientSide || VaultUpgradeService.isUpdating()) return;
+        flushComparatorUpdates();
+        if (visibleInventoryDirty) {
+            visibleInventoryDirty = false;
+            sendData();
+        }
     }
 
     @Override
@@ -143,6 +193,8 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
 
         itemCapability.invalidate();
         invId = null;
+        comparatorOutput = -1;
+        updateComparators();
         setChanged();
         sendData();
     }
@@ -154,6 +206,8 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
         this.controller = controller;
         itemCapability.invalidate();
         invId = null;
+        comparatorOutput = -1;
+        updateComparators();
         setChanged();
         sendData();
     }
@@ -190,6 +244,11 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
         }
         itemCapability.invalidate();
         invId = null;
+        comparatorOutput = -1;
+        // Do not resolve another block entity while this one's NBT is loading.
+        comparatorsDirty = !clientPacket;
+        visibleInventoryDirty = false;
+        lastInventorySaveTick = Long.MIN_VALUE;
 
         if (!clientPacket)
             return;
@@ -209,8 +268,29 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
             compound.putInt("Length", length);
         }
         super.write(compound, clientPacket);
-        compound.put("Inventory", inventory.serializeNBT());
-        if (!clientPacket) compound.putString("StorageType", "CombinedInv");
+        if (!clientPacket) {
+            compound.put("Inventory", inventory.serializeNBT());
+            compound.putString("StorageType", "CombinedInv");
+            // A save/snapshot can occur between two changes in the same tick.
+            // The next change must mark the owning chunk dirty again.
+            lastInventorySaveTick = Long.MIN_VALUE;
+        } else if (tierMaterials.seeThrough) {
+            // Only the first half of the local slots is used by the crystal
+            // renderer. Keep Size so its slot positions remain unchanged.
+            CompoundTag visible = new CompoundTag();
+            visible.putInt("Size", inventory.getSlots());
+            ListTag items = new ListTag();
+            for (int slot = 0; slot < inventory.getSlots() / 2; slot++) {
+                ItemStack stack = inventory.getStackInSlot(slot);
+                if (stack.isEmpty()) continue;
+                CompoundTag item = new CompoundTag();
+                item.putInt("Slot", slot);
+                stack.save(item);
+                items.add(item);
+            }
+            visible.put("Items", items);
+            compound.put("Inventory", visible);
+        }
     }
 
     public ItemStackHandler getInventoryOfBlock() {
@@ -235,10 +315,13 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
         super.invalidateCaps();
         itemCapability.invalidate();
         invId = null;
+        comparatorOutput = -1;
         if (!isController() && level != null && controller != null && level.hasChunkAt(controller)
             && level.getBlockEntity(controller) instanceof TieredVaultBlockEntity root) {
             root.itemCapability.invalidate();
             root.invId = null;
+            root.comparatorOutput = -1;
+            root.comparatorsDirty = true;
         }
     }
 
@@ -298,6 +381,8 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
         if (level != null && TieredVaultBlock.isVault(state, tierMaterials)) level.setBlock(getBlockPos(), state.setValue(TieredVaultBlock.LARGE, radius > 2), 6);
         itemCapability.invalidate();
         invId = null;
+        comparatorOutput = -1;
+        updateComparators();
         setChanged();
     }
 

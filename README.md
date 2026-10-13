@@ -1,8 +1,8 @@
 # Create: Bigger Storage Continued
 
 Create: Bigger Storage 的非官方维护续作，原作者为 LopyLuna。
-目前为 **1.1.1 本地正式版**，面向 Minecraft 1.20.1 / Forge 47.2.32 / Create 6.0.4。
-用户在独立实例查看并接受当前版本，包含最终材质、水晶侧面去点及完整3×3端层合并修复。说明见 [RELEASE_NOTES.md](RELEASE_NOTES.md) 和 [材质记录](artwork/create-colors-v5/README.md)。此前1.1.0安装文件保留在 `build/releases/1.1.0/`；尚未公开上传或发布。
+当前源码为 **1.1.2 库存通知与同步优化候选版**，面向 Minecraft 1.20.1 / Forge 47.2.32 / Create 6.0.4，整合包性能及游戏内兼容验收待进行。
+此前 **1.1.1 本地正式版**已由用户在独立实例查看并接受，包含最终材质、水晶侧面去点及完整3×3端层合并修复；安装文件保留在 `build/releases/1.1.1/`，1.1.0保留在 `build/releases/1.1.0/`。说明见 [RELEASE_NOTES.md](RELEASE_NOTES.md)、[库存优化说明](INVENTORY_PERFORMANCE.md) 和 [材质记录](artwork/create-colors-v5/README.md)。公开源码仓库为 [GitHub](https://github.com/yunluoxincheng/create-bigger-storage-continued)，按版本标签自动构建并发布GitHub Release；Modrinth／CurseForge尚未接入，流程见 [RELEASING.md](RELEASING.md)。
 
 ## 开发前源码核对
 
@@ -52,6 +52,7 @@ Git 网络克隆失败，当前目录来自固定提交源码快照，尚无上�
 
 ## 验证状态
 
+- 1.1.2库存通知与同步优化：整组比较器通知按控制器tick合并，读数在库存／结构／能力变化后失效；库存变更立即标记所属区块保存，同tick重复标记合并。普通保险库的客户端更新不再包含库存，库存变化不再请求客户端更新；水晶库仅同步渲染用的前半槽位，同tick变化合并。完整存档NBT及服务端库存能力保留。Java编译、`jar`和`reobfJar`通过；最终包资源核验见 `build/releases/1.1.2/verification.json`。Tom存储、AE、RS终端、比较器、存档重载及水晶显示尚未新增游戏内验收，未记录FPS／TPS提升比例。
 - 开发前 205 个上游文件的字节级 Git blob 比对：通过。
 - Java 编译、资源处理、Forge 重映射和开发版 jar 构建：通过。
 - Forge 47.2.32 / Create 6.0.4 初始化及 Registrate 数据生成：通过。
@@ -80,6 +81,8 @@ Git 网络克隆失败，当前目录来自固定提交源码快照，尚无上�
 
 需要 Java 17 与 Gradle 8.12。脚本默认使用本机 JDK 及 `D:\DevCache\.gradle` 缓存，可通过参数调整。
 
+跨平台构建可使用已固定Gradle 8.12及发行包SHA-256的Wrapper：`./gradlew --no-daemon jar sourcesJar`，Windows用 `./gradlew.bat --no-daemon jar sourcesJar`。普通构建直接使用已提交的资源，不依赖本机Minecraft安装路径；`runData`及材质导出仅在主动更新资源时使用。GitHub工作流验证Wrapper、版本、更新日志、jar资源及许可，并上传运行jar、源码jar、校验值和核验记录。
+
 ```powershell
 .\tools\GenerateResources.ps1 -CreateJar '路径\create-1.20.1-6.0.4.jar'
 .\build.ps1 -TcpFallback -Offline -Tasks @('runData','build')
@@ -87,7 +90,7 @@ Git 网络克隆失败，当前目录来自固定提交源码快照，尚无上�
 
 `-TcpFallback` 只解决构建进程的 Windows Java 回环通信问题，工具不会进入模组 jar。
 同时指定 `runData` 和 `build` 时，脚本分两次调用 Gradle，确保生成后的新资源进入最终 jar。
-正式版产物位于 `build/libs/create-bigger-storage-continued-1.20.1-1.1.1.jar`；本地整理包位于 `build/releases/1.1.1/`，包含jar、版本说明、SHA-256及资源核对记录。1.1.0整理包保留为历史版本。
+当前候选版产物位于 `build/libs/create-bigger-storage-continued-1.20.1-1.1.2.jar`；本地试用包位于 `build/releases/1.1.2/`，包含jar、版本说明、SHA-256及资源核对记录。已接受的1.1.1及1.1.0整理包保留为历史版本。
 
 材质导出目录为 `artwork/create-colors-v5/`。`python -B tools/ExportConfirmedTextures.py --install`可重新生成并接入最终材质；对应原版Create和Minecraft jar路径在脚本中配置。源码提交保留运行PNG、配色记录、预览和生成脚本，重复导出PNG与交付ZIP保留在本地。早期未引用的分层辅助图像不进入正式jar。
 
@@ -112,12 +115,4 @@ Git 网络克隆失败，当前目录来自固定提交源码快照，尚无上�
 
 ## 发布许可
 
-见 [PUBLICATION.md](PUBLICATION.md)。保险库使用原版 Create 的 MIT 贴图改色，附带 Create 原许可及来源署名；组件图标为 Python 绘制。保留 Bigger Storage 代码来源署名。旧 Git 历史仍含上游 ARR 美术，公开源码应使用当前树的无历史快照或先取得许可。
-
-## Public GitHub source and builds
-
-The public repository starts with this approved 1.1.1 source snapshot and a new
-root commit. Earlier private local history containing upstream ARR artwork is
-not included. Tagged builds use Java 17 and Gradle 8.12 through the wrapper;
-version-specific notes are in changelog/1.1.1.md. GitHub Actions build success
-records compilation and packaging only, not additional in-game acceptance.
+见 [PUBLICATION.md](PUBLICATION.md)。保险库使用原版 Create 的 MIT 贴图改色，附带 Create 原许可及来源署名；组件图标为 Python 绘制。保留 Bigger Storage 代码来源署名。原本机Git历史仍含上游ARR美术，已保留为私有历史；公开仓库从已批准资源的1.1.1快照建立独立历史，不推送原本机历史。

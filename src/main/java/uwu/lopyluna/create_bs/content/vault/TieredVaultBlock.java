@@ -30,7 +30,6 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.ForgeSoundType;
 import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_bs.content.TierMaterials;
@@ -170,9 +169,7 @@ public class TieredVaultBlock extends Block implements IWrenchable, IBE<TieredVa
     @ParametersAreNonnullByDefault
     public int getAnalogOutputSignal(BlockState pState, Level pLevel, BlockPos pPos) {
         return getBlockEntityOptional(pLevel, pPos)
-                .map(vte -> vte.getCapability(ForgeCapabilities.ITEM_HANDLER))
-                .map(lo -> lo.map(ItemHelper::calcRedstoneFromInventory)
-                        .orElse(0))
+                .map(TieredVaultBlockEntity::getComparatorOutput)
                 .orElse(0);
     }
 
