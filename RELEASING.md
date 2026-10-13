@@ -19,7 +19,7 @@
 ## 每个版本的准备
 
 1. 更新`gradle.properties`中的`mod_version`。
-2. 新建`changelog/<Minecraft>/<版本>.md`，第一行为`# Create: Bigger Storage Continued <版本>`；正文正式、简洁，按需要分为“新增／兼容性／优化／修复”，仅列本版本的功能变化和修复，不写构建验证、安装、许可或未变化内容。验证边界独立写入README及兼容／核验文档。更新`CHANGELOG.md`索引；旧的扁平日志保留为历史记录。
+2. 新建`changelog/<Minecraft>/<版本>.md`，第一行为`# Create: Bigger Storage Continued <版本>`；正文全部使用中文，保留项目、依赖名称及必要标识，措辞正式、简洁。标题下列出发行状态及Minecraft、Forge、Create、Java版本，变化按需要分为“新增／兼容性／优化／修复”，末尾保留简洁的“安装”说明。不写开发过程、构建验证、许可介绍或未变化内容；验证边界独立写入README及兼容／核验文档。更新`CHANGELOG.md`索引；旧的扁平日志保留为历史记录。
 3. 设置`release.json`的`release_type`为`release`、`beta`或`alpha`。当前1.1.2经用户确认已设为`release`，GitHub Release为正式版。
 4. 编译并核验，再提交该版本源码和更新日志。
 5. 创建双版本附注标签，将对应Minecraft分支和该标签推送到公开仓库。普通分支推送不触发构建，标签推送才构建发布。
