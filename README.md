@@ -37,18 +37,9 @@ GitHub Releases is the current distribution channel. Modrinth and CurseForge pub
 
 Capacity below is measured in inventory slots **per block**. Horizontal and vertical vaults use the same tier capacities and upgrade components.
 
-| Tier | Slots per block |
-|---|---:|
-| Wooden | 10 |
-| Standard Create | 20* |
-| Copper | 30 |
-| Iron | 40 |
-| Emerald | 50 |
-| Gold | 60 |
-| Crystal | 70 |
-| Diamond | 80 |
-| Obsidian | 90 |
-| Netherite | 100 |
+| Tier | Wooden | Standard Create | Copper | Iron | Emerald | Gold | Crystal | Diamond | Obsidian | Netherite |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Slots per block | 10 | 20* | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 |
 
 *The standard tier follows Create's server configuration; 20 is its default. The standard vertical silo is supplied by the optional Create: Connected mod.*
 
