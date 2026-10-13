@@ -2,6 +2,27 @@
 
 This is an unofficial continuation of LopyLuna/Create-Bigger-Storage.
 
+## Copyright and platform review
+
+The [copyright review](docs/COPYRIGHT.md) and [source inventory](docs/assets/source-inventory.json)
+record code, textures, models, the project icon and bundled-library provenance.
+The upstream MIT code grant allows a compliant continuation without a separate
+case-by-case author approval; original ARR artwork remains excluded. Attribution
+does not imply endorsement or participation by LopyLuna or the Create team.
+
+The current development icon composes existing licensed vault faces with Python
+transforms. No generative-image bitmap is used, but its instructions and arrangement
+were AI-assisted; it is not labeled human-only or certified for platform approval.
+See the [icon recipe](docs/ICON.md). Published 1.1.1, 1.1.2 and 1.2.0 artifacts keep
+their previous icon and original bytes; a future binary update needs a new version.
+
+On 2026-10-14 the user checked the original CurseForge project page and reported
+its license as MIT. Independent page retrieval remained blocked by HTTP 403.
+Modrinth AI disclosures and current platform rules still need review before a
+submission; copyright permission and platform approval are distinct.
+
+## Version and source records
+
 Version 1.2.0 is a compatibility candidate for Minecraft 1.20.1, Forge 47.4.10
 and Create 6.0.6–6.0.8. A single runtime jar supplies Flywheel 1.0.5 through
 Forge Jar-in-Jar, with its client dependency constrained to [1.0.5,1.0.6).
@@ -41,7 +62,7 @@ blue crystal panels. Block-specific motifs from the previous study are removed.
 - The original LICENSE remains unchanged and credits LopyLuna (2025).
 - Code modifications and new code are maintained under the upstream MIT code terms.
 - Upstream main was checked on 2026-10-08 at commit `3429e16d51ca91f2b8f7d46d58e5add18e56537d`. Its metadata declares `MIT-CODE, ARR-ART`; no separate artwork permission was found among its 205 files. The root MIT file is not treated as confirmation that its PNGs can be reused publicly.
-- The current 108 vault PNGs preserve Create 6.0.4 texture structure, size and connected-texture atlas layout. Original panel shading is mapped to material colors with sparse common tonal variations, and frames and accents are recolored per material. No corresponding Minecraft block motifs are drawn. Ordinary tiers retain source alpha; crystal panels retain blue facets with partial alpha and translucent rendering. They do not use Bigger Storage's ARR PNGs. The previously replaced mod logo remains separate from this texture batch.
+- The current 108 vault PNGs preserve Create 6.0.4 texture structure, size and connected-texture atlas layout. Original panel shading is mapped to material colors with sparse common tonal variations, and frames and accents are recolored per material. No corresponding Minecraft block motifs are drawn. Ordinary tiers retain source alpha; crystal panels retain blue facets with partial alpha and translucent rendering. They do not use Bigger Storage's ARR PNGs. The project icon is tracked separately in `docs/assets/icon-provenance.json`; earlier published artifacts retain the previous AI-derived icon.
 - The local Create jar includes `LICENSE_create-1.20.1`, an MIT license with Copyright (c) 2019 simibubi. That complete notice is preserved in the PNG bundle and in the mod jar as `META-INF/LICENSE-Create.txt`. Vault artwork is attributed to simibubi and the Create contributors; these modifications do not relicense Bigger Storage's ARR artwork.
 - The 11 component icons and 45 upgrade icons are drawn directly in Python on native 16x16 grids. Material color palettes are sampled from local vanilla Minecraft 1.20.1 textures; no vanilla sprite geometry or PNG files are redistributed. Reference entries and hashes are recorded in the export manifest. This batch uses no image generation or earlier AI artwork as drawing inputs. New Python-drawn artwork is provided under this project's MIT terms to the extent applicable.
 - Current methods, attribution, previews and export hashes are documented in [artwork/create-colors-v5/README.md](artwork/create-colors-v5/README.md). Previous studies, AI sources and the 1.1.0 artwork remain local historical archives described in [artwork/README.md](artwork/README.md), rather than part of the current source submission. Retired construction layers are unreferenced by the 56 item models and excluded from the 1.1.1 jar; files are preserved locally.

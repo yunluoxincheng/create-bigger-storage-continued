@@ -4,6 +4,8 @@ Release notes are maintained in English and grouped by Minecraft version. Each e
 
 ## Minecraft 1.20.1
 
+[Unreleased](changelog/1.20.1/UNRELEASED.md) — Changes on the development branch for a future binary release.
+
 | Version | Status | Published (UTC) | Highlights |
 |---|---|---|---|
 | [1.2.0](changelog/1.20.1/1.2.0.md) | Beta | 2026-10-13 | Create 6.0.6–6.0.8 support, Flywheel 1.0.5, faster vault slot lookup |

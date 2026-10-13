@@ -19,7 +19,7 @@
 ## 每个版本的准备
 
 1. 更新`gradle.properties`中的`mod_version`。
-2. 新建英文`changelog/<Minecraft>/<版本>.md`，第一行为`# Create: Bigger Storage Continued <版本>`；标题下列出发行状态、实际公开发布日期（UTC）及Minecraft、Forge、Create、Java版本。未发布版本不编造发布日期，发布后以GitHub的`published_at`核对。变化按需分为`Added`、`Changed`、`Compatibility`、`Performance`、`Fixes`，每条说明一个变化及其影响，末尾保留简洁的`Installation`。不写开发过程、构建验证、许可介绍、无关的未变化内容或重复中英段落，不宣称未经测量的性能提升；验证边界独立写入兼容／核验文档。更新英文`CHANGELOG.md`索引及中英文README中的版本和兼容信息；旧扁平日志保留为链接入口，原文由历史标签保存。
+2. 新建英文`changelog/<Minecraft>/<版本>.md`，第一行为`# Create: Bigger Storage Continued <版本>`；标题下列出发行状态、实际公开发布日期（UTC）及Minecraft、Forge、Create、Java版本。未发布版本不编造发布日期，发布后以GitHub的`published_at`核对。变化按需分为`Added`、`Changed`、`Compatibility`、`Performance`、`Fixes`，每条说明一个变化及其影响，末尾保留简洁的`Installation`。不写开发过程、构建验证、许可介绍、无关的未变化内容或重复中英段落，不宣称未经测量的性能提升；验证边界独立写入兼容／核验文档。更新英文`CHANGELOG.md`索引及中英文README中的版本和兼容信息；当前只维护分Minecraft版本目录，旧扁平入口已移除，原文由历史标签保存。
 3. 设置`release.json`的`release_type`为`release`、`beta`或`alpha`。当前1.2.0为`beta`；1.1.2经用户确认已作为正式GitHub Release保留。
 4. 编译并核验，再提交该版本源码和更新日志。
 5. 创建双版本附注标签，将对应Minecraft分支和该标签推送到公开仓库。普通分支推送不触发构建，标签推送才构建发布。
@@ -76,3 +76,9 @@ GitHub的Latest标记在整个仓库共用。仓库变量`LATEST_MINECRAFT_BRANC
 ## Modrinth与CurseForge
 
 本阶段仅发布GitHub Release。后续接入时需要各平台项目ID和仓库Secrets，并沿用相同的版本号、英文更新日志、发行类型、游戏版本及加载器信息；对外项目介绍以英文README为基础。当前没有添加占位Token，也不会自动向这两个平台上传。
+
+平台提交前复核 [版权记录](docs/COPYRIGHT.md) 及 [素材来源清单](docs/assets/source-inventory.json)，保留代码、美术和内嵌库的完整许可。用户已于2026-10-14查看原CurseForge页面并确认MIT，代理独立访问仍被403阻止；记录证据来源，不把平台字段扩大为原ARR美术授权。项目介绍明确非官方身份及相对原作的变化。
+
+Modrinth当前要求AI使用披露并限制AI项目页图片；素材是Python绘制或处理不代表完全由人创作，也不保证通过审核。当前400×400贴图组合图标的来源和处理见 [图标记录](docs/ICON.md)。复核真实贡献历史和当前政策后再提交，不使用旧AI图像作项目页面图标。
+
+当前图标替换属于未发布源码资源变化，记录在`changelog/1.20.1/UNRELEASED.md`。已发布1.1.1、1.1.2和1.2.0的附件与标签保留原样；纳入下一次二进制发布时先选择新版本，再创建新标签。

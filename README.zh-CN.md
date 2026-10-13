@@ -2,7 +2,11 @@
 
 [English](README.md) | **简体中文**
 
+<img src="docs/assets/project-icon.png" width="100" height="100" alt="铁质与铜质保险库项目图标">
+
 [Create: Bigger Storage](https://github.com/LopyLuna/Create-Bigger-Storage) 的非官方维护续作，原作者为 LopyLuna。为机械动力提供多档容量的横向与纵向保险库、整组原位升级，以及库存性能优化。
+
+本项目与 LopyLuna 及 Create 团队没有官方关联，也未获得其背书。
 
 [下载](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases) · [更新日志](CHANGELOG.md) · [反馈问题](https://github.com/yunluoxincheng/create-bigger-storage-continued/issues)
 
@@ -96,6 +100,6 @@ bash ./gradlew --no-daemon jarJar sourcesJar
 - **Jozufozu 与 Flywheel 贡献者：**内置 Flywheel 库及其上游修复。
 - **Continued 贡献者：**维护、纵向保险库、升级及性能优化。
 
-代码采用 [MIT 许可](LICENSE)。Create 美术改作及内置 Flywheel 保留原许可声明，来源及素材署名详见 [PUBLICATION.md](PUBLICATION.md)。
+代码采用 [MIT 许可](LICENSE)。Create 美术改作及内置 Flywheel 保留原许可声明，来源及素材署名详见 [PUBLICATION.md](PUBLICATION.md)，素材证据及平台发布状态见[版权核查](docs/COPYRIGHT.md)。
 
 实现与历史记录：[库存优化](INVENTORY_PERFORMANCE.md)、[连接修复](CONNECTIVITY_FIX.md)、[材质记录](artwork/create-colors-v5/README.md)、[开发历史](docs/DEVELOPMENT_HISTORY.md)。

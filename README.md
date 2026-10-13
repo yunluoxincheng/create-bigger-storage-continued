@@ -2,7 +2,11 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
+<img src="docs/assets/project-icon.png" width="100" height="100" alt="Iron and copper vault project icon">
+
 An unofficial continuation of [Create: Bigger Storage](https://github.com/LopyLuna/Create-Bigger-Storage) by LopyLuna, adding tiered horizontal and vertical vaults, in-place structure upgrades, and inventory performance improvements to Create.
+
+This project is not affiliated with or endorsed by LopyLuna or the Create team.
 
 [Downloads](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases) · [Changelog](CHANGELOG.md) · [Report an issue](https://github.com/yunluoxincheng/create-bigger-storage-continued/issues)
 
@@ -96,6 +100,6 @@ Artifacts are written to `build/libs/`. For 1.2.0, the ordinary versioned JAR in
 - **Jozufozu and the Flywheel contributors:** the included Flywheel library and its upstream fixes.
 - **Continued contributors:** maintenance, vertical vaults, upgrades and performance improvements.
 
-Code is distributed under the [MIT license](LICENSE). Create artwork adaptations and the embedded Flywheel library retain their original notices. See [PUBLICATION.md](PUBLICATION.md) for source and asset attribution.
+Code is distributed under the [MIT license](LICENSE). Create artwork adaptations and the embedded Flywheel library retain their original notices. See [PUBLICATION.md](PUBLICATION.md) for source and asset attribution, and the [copyright review](docs/COPYRIGHT.md) for provenance and platform publication status.
 
 Implementation and historical records: [inventory optimization](INVENTORY_PERFORMANCE.md), [connectivity repair](CONNECTIVITY_FIX.md), [artwork](artwork/create-colors-v5/README.md), and [development history](docs/DEVELOPMENT_HISTORY.md).

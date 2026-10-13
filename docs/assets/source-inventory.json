@@ -1,0 +1,59 @@
+{
+  "reviewed": "2026-10-14",
+  "upstream_code": {
+    "repository": "https://github.com/LopyLuna/Create-Bigger-Storage",
+    "commit": "3429e16d51ca91f2b8f7d46d58e5add18e56537d",
+    "code_license": "MIT",
+    "original_art_license": "ARR",
+    "notice": "LICENSE",
+    "curseforge_license_observation": {
+      "license": "MIT",
+      "reported_by": "user",
+      "date": "2026-10-14",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/create-bigger-storage",
+      "independently_retrieved": false
+    }
+  },
+  "create_artwork": {
+    "source_mod": "create-1.20.1-6.0.4.jar",
+    "source_jar_sha256": "56aed178aca3c466ec556c9b2dc43616f1a131eb30e70c61c0a094f6a60ac588",
+    "notice": "src/main/resources/META-INF/LICENSE-Create.txt",
+    "export_manifest": "artwork/create-colors-v5/manifest.json",
+    "vault_png_count": 108,
+    "generated_item_png_count": 56,
+    "source_use": "Create vault bitmap adaptations; vanilla colors only for item drawing"
+  },
+  "models": {
+    "horizontal_base": {
+      "path": "src/main/resources/assets/create_bs/models/block/item_vault.json",
+      "sha256": "731f4be84a197c0d2695b1af5337134ec7decc6fdd5eee90e9ca145eabc80972",
+      "original_source": "assets/create/models/block/item_vault.json",
+      "geometry_comparison": "matches Create geometry and UV when cullface fields are excluded"
+    },
+    "tier_wrappers": "functional parent and texture mappings",
+    "vertical_base": "repository-defined one-cube face mapping"
+  },
+  "project_icon": {
+    "record": "docs/assets/icon-provenance.json",
+    "recipe": "docs/ICON.md",
+    "license": "Create MIT source artwork; retained notice",
+    "ai_assistance": "transform instructions and arrangement; no generated-image bitmap input"
+  },
+  "flywheel": {
+    "version": "1.0.5",
+    "coordinate": "dev.engine-room.flywheel:flywheel-forge-1.20.1:1.0.5",
+    "license": "MIT",
+    "nested_notice": "META-INF/LICENSE.md",
+    "copyright": "2021-2024 Jozufozu"
+  },
+  "policy_sources": {
+    "modrinth": "https://modrinth.com/legal/rules",
+    "curseforge_moderation": "https://support.curseforge.com/en/support/solutions/articles/9000197279-moderation-policies",
+    "curseforge_copyright": "https://support.curseforge.com/en/support/solutions/articles/9000222335-submitting-a-copyright-claim-on-curseforge"
+  },
+  "platform_readiness": {
+    "modrinth": "not submitted; AI disclosure and policy review remain required",
+    "curseforge": "User checked original project page on 2026-10-14 and reported MIT; independent agent retrieval returned HTTP 403; not a platform approval"
+  },
+  "author_permission": "No separate personal approval obtained or claimed; code use relies on the upstream MIT grant"
+}
