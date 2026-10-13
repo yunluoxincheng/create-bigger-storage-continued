@@ -28,7 +28,7 @@
 
 ```powershell
 python -B tools/PrepareRelease.py check --branch 1.20.1 --tag mc1.20.1-v1.1.3
-.\gradlew.bat --no-daemon jar sourcesJar
+.\gradlew.bat --no-daemon jarJar sourcesJar
 python -B tools/PrepareRelease.py package
 git diff --check
 git status --short
@@ -54,12 +54,14 @@ gh workflow run release.yml --repo yunluoxincheng/create-bigger-storage-continue
 
 工作流使用Java17和带官方发行包校验值的Gradle8.12 Wrapper；所有第三方Action固定提交SHA。只有发布作业获得`contents: write`，构建作业只有读取权限；不需要个人访问令牌，使用GitHub自带的`GITHUB_TOKEN`。
 
-发布前核对标签中的Minecraft及模组版本与项目声明一致、更新日志存在且标题一致、版本发布类型有效。构建`jar`及`sourcesJar`，`jar`自动执行Forge `reobfJar`；核对运行jar版本、资源、重复条目及许可，再上传以下附件：
+发布前核对标签中的Minecraft及模组版本与项目声明一致、更新日志存在且标题一致、版本发布类型有效。从1.2.0起构建`jarJar`及`sourcesJar`，`jarJar`自动执行Forge `reobfJarJar`；核对运行jar版本、资源、重复条目、许可和内嵌Flywheel版本，再上传以下附件：
 
 - 可安装的重映射模组jar。
 - 带来源许可的源码jar。
 - `SHA256SUMS.txt`。
 - `verification.json`，明确CI不能代替游戏内验收。
+
+完整安装包仍使用普通版本文件名，内部只嵌入Flywheel 1.0.5及其原许可。`-unbundled.jar`为内部未内嵌产物，不上传、不作为安装文件。发布检查同时验证Jar-in-Jar元数据、客户端依赖约束、库自身版本及后端存在。候选交付移至`build/candidates/<版本>/`，本机libs只保留已接受正式版；可用`PrepareRelease.py package --artifact-dir build/candidates/<版本>`重新核验候选包。
 
 Release标题为`Create: Bigger Storage Continued <模组版本> — Minecraft <Minecraft版本>`，正文来自该标签中的`changelog/<Minecraft>/<版本>.md`。Actions产物名和本地打包目录也同时包含两个版本，避免不同Minecraft版本线互相覆盖。
 

@@ -64,7 +64,7 @@ jobs:
         run: python3 tools/PrepareRelease.py check --tag "$RELEASE_TAG" --branch "$BUILD_BRANCH"
 
       - name: Build reobfuscated mod and sources
-        run: bash ./gradlew --no-daemon --stacktrace jar sourcesJar
+        run: bash ./gradlew --no-daemon --stacktrace jarJar sourcesJar
 
       - name: Verify and prepare release files
         run: python3 tools/PrepareRelease.py package

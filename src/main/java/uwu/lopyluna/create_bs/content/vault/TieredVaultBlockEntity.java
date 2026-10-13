@@ -7,6 +7,7 @@ import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.inventory.VersionedInventoryWrapper;
 import com.simibubi.create.foundation.item.ItemHelper;
+import com.simibubi.create.foundation.utility.SameSizeCombinedInvWrapper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -23,7 +24,6 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.wrapper.CombinedInvWrapper;
 import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_bs.content.TierMaterials;
 import uwu.lopyluna.create_bs.registry.BSBlockEntities;
@@ -364,7 +364,7 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
             if (vaultAt == null) return; // Never expose a writable, unsaved placeholder slot.
             invs[yOffset * radius * radius + xOffset * radius + zOffset] = vaultAt.inventory;
         }
-        IItemHandler itemHandler = new VersionedInventoryWrapper(new CombinedInvWrapper(invs));
+        IItemHandler itemHandler = new VersionedInventoryWrapper(SameSizeCombinedInvWrapper.create(invs));
         itemCapability = LazyOptional.of(() -> itemHandler);
     }
 

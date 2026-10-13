@@ -1,7 +1,9 @@
 # Create: Bigger Storage Continued
 
 Create: Bigger Storage 的非官方维护续作，原作者为 LopyLuna。
-当前为 **1.1.2 正式版**，面向 Minecraft 1.20.1 / Forge 47.2.32 / Create 6.0.4。用户于2026-10-13确认采用1.1.2作为正式版，沿用已发布的安装包和`v1.1.2`标签；各项实测记录保留其原有范围。
+当前源码为 **1.2.0 兼容候选版**，目标为Minecraft 1.20.1 / Forge 47.4.10 / Create 6.0.6、6.0.7、6.0.8 / Flywheel 1.0.5。发布包通过Forge Jar-in-Jar提供Flywheel 1.0.5，三种Create使用同一份模组jar。开发与兼容核验见 [COMPATIBILITY_1_2_0.md](COMPATIBILITY_1_2_0.md)，游戏内验收仍与初始化、打包核验分开记录。
+
+此前 **1.1.2 正式版**面向Forge 47.2.32 / Create 6.0.4，用户已确认正式采用，并于2026-10-14反馈游戏实测没什么问题。该反馈记录为对现有1.1.2环境的整体接受，不补记未逐项描述的专项测量。历史标签和构建文件保留。
 
 当前开发及默认分支为`1.20.1`，后续Minecraft版本使用独立分支并独立推进模组版本号。日常推送和PR不自动构建；新发布标签使用`mc<Minecraft>-v<模组版本>`，推送标签后构建并发布，另保留手动构建入口。项目规范见 [AGENTS.md](AGENTS.md)，详细操作见 [RELEASING.md](RELEASING.md)。
 此前 **1.1.1 本地正式版**已由用户在独立实例查看并接受，包含最终材质、水晶侧面去点及完整3×3端层合并修复；安装文件保留在 `build/releases/1.1.1/`，1.1.0保留在 `build/releases/1.1.0/`。说明见 [RELEASE_NOTES.md](RELEASE_NOTES.md)、[库存优化说明](INVENTORY_PERFORMANCE.md) 和 [材质记录](artwork/create-colors-v5/README.md)。公开源码仓库为 [GitHub](https://github.com/yunluoxincheng/create-bigger-storage-continued)，按版本标签自动构建并发布GitHub Release；Modrinth／CurseForge尚未接入，流程见 [RELEASING.md](RELEASING.md)。
@@ -33,7 +35,7 @@ Git 网络克隆失败，当前目录来自固定提交源码快照，尚无上�
 
 原版槽位受 Create 服务端配置控制，升级前读取实际容量。
 横向和纵向共用升级组件。木质纵向→原版纵向需要安装 Create: Connected。
-本版只接受静态世界中的真实玩家操作；不支持在运行中的动态结构里升级，也不支持部署器升级。
+本版只接受静态世界中的真实玩家操作；不支持在运行中的动态结构里升级，也不支持部署器升级。1.2.0沿用1.1.2的库存通知合并，合并库存改用Create 6.0.6起提供的等容量快速包装器；成员容量不一致时自动回退到普通包装器。
 
 ## 合成成本
 
@@ -54,6 +56,7 @@ Git 网络克隆失败，当前目录来自固定提交源码快照，尚无上�
 
 ## 验证状态
 
+- 1.2.0使用Forge 47.4.10、Create 6.0.6最低编译基线及Flywheel 1.0.5。Java编译、Jar-in-Jar打包及`reobfJarJar`通过；6.0.6、6.0.7、6.0.8的Forge初始化及Registrate数据生成均通过，生成资源无变更。Forge实际JarSelector对三种正式Create包均只选择一份Flywheel 1.0.5。结果见 `build/compatibility/1.2.0/verification.json`；客户端渲染、终端存取、存档和动态结构操作仍待游戏验证。
 - 2026-10-13用户确认1.1.2可作为正式版。此项记录正式版本接受意见，不补记未单独执行的性能测量或兼容验收；已有标签和构建文件保持原样，GitHub Release由预发布转为正式版。
 - 1.1.2库存通知与同步优化：整组比较器通知按控制器tick合并，读数在库存／结构／能力变化后失效；库存变更立即标记所属区块保存，同tick重复标记合并。普通保险库的客户端更新不再包含库存，库存变化不再请求客户端更新；水晶库仅同步渲染用的前半槽位，同tick变化合并。完整存档NBT及服务端库存能力保留。Java编译、`jar`和`reobfJar`通过；最终包资源核验见 `build/releases/1.1.2/verification.json`。Tom存储、AE、RS终端、比较器、存档重载及水晶显示尚未新增游戏内验收，未记录FPS／TPS提升比例。
 - 开发前 205 个上游文件的字节级 Git blob 比对：通过。
@@ -78,13 +81,13 @@ Git 网络克隆失败，当前目录来自固定提交源码快照，尚无上�
 - 2026-10-10用户在加载端层合并修复的独立实例后确认可用，并授权整理1.1.1正式版及提交更改；这不补记未单独执行的含大量物品重组或其他兼容验收。
 - 1.1.1正式版构建和重映射通过；164张最终保险库／物品PNG、全部模型引用、配方、中英文各99项及许可逐项核对通过。正式包共165张运行PNG，排除30张未引用的旧图层。运行类与用户确认的截面修复版字节一致，仅正式版本元数据变化。
 - 未新增测试代码；连接问题诊断仅只读独立测试世界的轴向和控制器数据，没有写入存档或替换活动整合包。
-- Create 6.0.6、6.0.8 及 Minecraft 1.21.1：后续适配范围，当前不宣称已支持。
+- 上述1.1.x历史记录针对Create 6.0.4。1.2.0新增6.0.6～6.0.8兼容候选范围；Minecraft 1.21.1仍是独立的后续适配范围。
 
 ## 构建
 
 需要 Java 17 与 Gradle 8.12。脚本默认使用本机 JDK 及 `D:\DevCache\.gradle` 缓存，可通过参数调整。
 
-跨平台构建可使用已固定Gradle 8.12及发行包SHA-256的Wrapper：`./gradlew --no-daemon jar sourcesJar`，Windows用 `./gradlew.bat --no-daemon jar sourcesJar`。普通构建直接使用已提交的资源，不依赖本机Minecraft安装路径；`runData`及材质导出仅在主动更新资源时使用。GitHub工作流验证Wrapper、版本、更新日志、jar资源及许可，并上传运行jar、源码jar、校验值和核验记录。
+跨平台构建可使用已固定Gradle 8.12及发行包SHA-256的Wrapper：`./gradlew --no-daemon jarJar sourcesJar`，Windows用 `./gradlew.bat --no-daemon jarJar sourcesJar`。`jarJar`生成包含Flywheel 1.0.5的完整包，并执行`reobfJarJar`；普通`jar`为未内嵌依赖的内部产物，不作为安装文件。普通构建直接使用已提交的资源，不依赖本机Minecraft安装路径；`runData`及材质导出仅在主动更新资源时使用。GitHub工作流验证Wrapper、版本、更新日志、嵌入库、jar资源及许可，并上传运行jar、源码jar、校验值和核验记录。
 
 ```powershell
 .\tools\GenerateResources.ps1 -CreateJar '路径\create-1.20.1-6.0.4.jar'
@@ -92,8 +95,8 @@ Git 网络克隆失败，当前目录来自固定提交源码快照，尚无上�
 ```
 
 `-TcpFallback` 只解决构建进程的 Windows Java 回环通信问题，工具不会进入模组 jar。
-同时指定 `runData` 和 `build` 时，脚本分两次调用 Gradle，确保生成后的新资源进入最终 jar。
-当前正式版产物位于 `build/libs/create-bigger-storage-continued-1.20.1-1.1.2.jar`；本地正式整理包位于 `build/releases/1.1.2/`，包含jar、版本说明、SHA-256及资源核对记录。已接受的1.1.1及1.1.0整理包保留为历史版本。
+同时指定 `runData` 和 `build`／`jarJar` 时，脚本分两次调用 Gradle，确保生成后的新资源进入最终 jar。
+当前1.2.0候选包整理在 `build/candidates/1.2.0/`；构建过程中完整输出为 `build/libs/create-bigger-storage-continued-1.20.1-1.2.0.jar`，候选交付后移出libs，使libs只保留已接受正式版。1.1.2正式整理包位于 `build/releases/1.1.2/`；1.1.1及1.1.0保留为历史版本。
 
 材质导出目录为 `artwork/create-colors-v5/`。`python -B tools/ExportConfirmedTextures.py --install`可重新生成并接入最终材质；对应原版Create和Minecraft jar路径在脚本中配置。源码提交保留运行PNG、配色记录、预览和生成脚本，重复导出PNG与交付ZIP保留在本地。早期未引用的分层辅助图像不进入正式jar。
 

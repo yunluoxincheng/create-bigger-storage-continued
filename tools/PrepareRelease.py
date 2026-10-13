@@ -4,12 +4,14 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 import os
 from pathlib import Path
 import re
 import shutil
 import sys
+import tomllib
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,16 +53,19 @@ def metadata(tag: str, branch: str = "") -> dict:
         "release_tag": release_tag,
         "forge": properties["forge_version"],
         "create": properties["create_version"],
+        "flywheel": properties["flywheel_version"],
+        "ponder": properties["ponder_version"],
         "release_type": release_type,
         "release_name": f"Create: Bigger Storage Continued {version} — Minecraft {minecraft}",
         "changelog": changelog.relative_to(ROOT).as_posix(),
     }
 
 
-def package(info: dict) -> dict:
+def package(info: dict, artifact_dir: str = "build/libs") -> dict:
     stem = f"create-bigger-storage-continued-{info['minecraft']}-{info['version']}"
-    runtime = ROOT / "build" / "libs" / f"{stem}.jar"
-    sources = ROOT / "build" / "libs" / f"{stem}-sources.jar"
+    artifacts = ROOT / artifact_dir
+    runtime = artifacts / f"{stem}.jar"
+    sources = artifacts / f"{stem}-sources.jar"
     with zipfile.ZipFile(runtime) as jar:
         names = jar.namelist()
         if len(names) != len(set(names)):
@@ -71,6 +76,33 @@ def package(info: dict) -> dict:
         for license_name in ("LICENSE_UPSTREAM", "META-INF/LICENSE-Create.txt"):
             if not jar.read(license_name).strip():
                 raise ValueError(f"Missing license: {license_name}")
+        bundled = json.loads(jar.read("META-INF/jarjar/metadata.json"))["jars"]
+        if len(bundled) != 1:
+            raise ValueError("Only the fixed Flywheel dependency should be bundled")
+        dependency = bundled[0]
+        if dependency["identifier"] != {
+            "group": "dev.engine-room.flywheel",
+            "artifact": f"flywheel-forge-{info['minecraft']}",
+        } or dependency["version"]["artifactVersion"] != info["flywheel"]:
+            raise ValueError("Bundled Flywheel does not match the development baseline")
+        if dependency["version"]["range"] != "[1.0.5,1.0.6)":
+            raise ValueError("Unexpected Flywheel selection range")
+        embedded = jar.read(dependency["path"])
+        with zipfile.ZipFile(io.BytesIO(embedded)) as library:
+            if not library.read("META-INF/LICENSE.md").strip():
+                raise ValueError("Missing embedded Flywheel license")
+            if "dev/engine_room/flywheel/backend/engine/indirect/IndirectInstancer.class" not in library.namelist():
+                raise ValueError("Flywheel backend is missing")
+            library_mods = tomllib.loads(library.read("META-INF/mods.toml").decode("utf-8"))
+            if not any(mod["modId"] == "flywheel" and mod["version"] == info["flywheel"]
+                       for mod in library_mods["mods"]):
+                raise ValueError("Embedded Flywheel mod version does not match metadata")
+        mods = tomllib.loads(jar.read("META-INF/mods.toml").decode("utf-8"))
+        flywheel_requirement = next(
+            d for d in mods["dependencies"]["create_bs"] if d["modId"] == "flywheel")
+        if not flywheel_requirement["mandatory"] or flywheel_requirement["side"] != "CLIENT" \
+                or flywheel_requirement["versionRange"] != "[1.0.5,1.0.6)":
+            raise ValueError("Client Flywheel requirement must enforce the fixed backend")
         resources = [n for n in names if n.startswith(("assets/", "data/")) and not n.endswith("/")]
         roots = (ROOT / "src" / "main" / "resources", ROOT / "src" / "generated" / "resources")
         for name in resources:
@@ -100,7 +132,13 @@ def package(info: dict) -> dict:
         "runtime_resources_verified": len(resources),
         "duplicate_runtime_entries": 0,
         "licenses_verified": True,
-        "build_verification": "jar and sourcesJar; jar finalized by Forge reobfJar",
+        "bundled_flywheel": {
+            "version": info["flywheel"],
+            "range": dependency["version"]["range"],
+            "sha256": hashlib.sha256(embedded).hexdigest(),
+            "license_preserved": True,
+        },
+        "build_verification": "jarJar and sourcesJar; jarJar finalized by Forge reobfJarJar",
         "in_game_acceptance_verified_by_ci": False,
     }
     (output / "verification.json").write_text(
@@ -113,13 +151,14 @@ def main() -> None:
     parser.add_argument("command", choices=("check", "package"))
     parser.add_argument("--tag", default="")
     parser.add_argument("--branch", default="")
+    parser.add_argument("--artifact-dir", default="build/libs")
     args = parser.parse_args()
     info = metadata(args.tag, args.branch)
     if args.command == "check" and os.environ.get("GITHUB_OUTPUT"):
         with Path(os.environ["GITHUB_OUTPUT"]).open("a", encoding="utf-8") as stream:
             for key in ("version", "minecraft", "release_tag", "release_type", "release_name"):
                 stream.write(f"{key}={info[key]}\n")
-    print(json.dumps(package(info) if args.command == "package" else info,
+    print(json.dumps(package(info, args.artifact_dir) if args.command == "package" else info,
                      ensure_ascii=False, indent=2))
 
 

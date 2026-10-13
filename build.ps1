@@ -38,14 +38,17 @@ try {
         $env:JAVA_TOOL_OPTIONS = '-javaagent:"' + $agentJar + '"'
     }
 
-    if ($Tasks -contains 'runData' -and ($Tasks -contains 'build' -or $Tasks -contains 'jar')) {
+    if ($Tasks -contains 'runData' -and ($Tasks -contains 'build' -or $Tasks -contains 'jar' -or $Tasks -contains 'jarJar')) {
         # Forge runData needs processResources before loading, then changes generated inputs.
         # A second invocation ensures processResources stages those fresh files for the jar.
-        $generationArguments = @('--no-daemon', 'runData')
+        $generationArguments = @('--no-daemon', 'runData') + @($Tasks | Where-Object { $_.StartsWith('-P') })
         if ($Offline) { $generationArguments += '--offline' }
         & gradle @generationArguments
         if ($LASTEXITCODE -ne 0) { throw "Resource generation failed with exit code $LASTEXITCODE." }
         $Tasks = @($Tasks | Where-Object { $_ -ne 'runData' })
+    }
+    if (($Tasks -contains 'build' -or $Tasks -contains 'jar') -and $Tasks -notcontains 'jarJar') {
+        $Tasks += 'jarJar'
     }
     $gradleArguments = @('--no-daemon') + $Tasks
     if ($Offline) { $gradleArguments += '--offline' }

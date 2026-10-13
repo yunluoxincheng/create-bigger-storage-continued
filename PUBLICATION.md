@@ -2,6 +2,19 @@
 
 This is an unofficial continuation of LopyLuna/Create-Bigger-Storage.
 
+Version 1.2.0 is a compatibility candidate for Minecraft 1.20.1, Forge 47.4.10
+and Create 6.0.6–6.0.8. A single runtime jar supplies Flywheel 1.0.5 through
+Forge Jar-in-Jar, with its client dependency constrained to [1.0.5,1.0.6).
+Development initialization/data generation and the actual Forge JarSelector
+were checked separately from gameplay and rendering acceptance. See
+[COMPATIBILITY_1_2_0.md](COMPATIBILITY_1_2_0.md).
+
+The embedded original Flywheel jar retains `META-INF/LICENSE.md`, the MIT
+notice crediting Jozufozu (2021–2024). Its backend and API are not copied into
+our Java sources or relocated. The nested jar is included under its original
+Maven identity and license, while Forge negotiates one matching library.
+The exact embedded library version and SHA-256 are checked during packaging.
+
 Version 1.1.2 was accepted by the user as stable on 2026-10-13. Its existing
 GitHub prerelease is promoted to a stable release without moving the v1.1.2 tag
 or replacing build artifacts. Compilation and packaging verification do not

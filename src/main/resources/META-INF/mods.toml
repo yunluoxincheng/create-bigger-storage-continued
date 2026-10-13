@@ -15,7 +15,7 @@ An unofficial continuation with native Create 6 support, vertical vaults and in-
 [[dependencies.create_bs]]
     modId="forge"
     mandatory=true
-    versionRange="[47.2.32,48)"
+    versionRange="[47.4.10,48)"
     ordering="NONE"
     side="BOTH"
 
@@ -29,6 +29,13 @@ An unofficial continuation with native Create 6 support, vertical vaults and in-
 [[dependencies.create_bs]]
     modId="create"
     mandatory=true
-    versionRange="[6.0.4,6.0.5)"
+    versionRange="[6.0.6,6.0.9)"
     ordering="AFTER"
     side="BOTH"
+
+[[dependencies.create_bs]]
+    modId="flywheel"
+    mandatory=true
+    versionRange="[1.0.5,1.0.6)"
+    ordering="AFTER"
+    side="CLIENT"

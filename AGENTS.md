@@ -37,6 +37,8 @@
 - 保留`workflow_dispatch`：标签为空只构建；指定符合新格式的已有标签时，检出该标签并构建发布。
 - 当前不增加按代码路径触发的日常CI；以后确有需要须先确认规则。届时运行代码、资源、配方、模型、材质、翻译和构建配置都属于影响模组的文件，不能只匹配Java。
 - 当前基线使用Java17和带官方SHA-256的Gradle8.12 Wrapper；打包使用已提交资源，不依赖开发者本机Minecraft路径。
+- 1.2.x开发基线为Forge47.4.10，最低编译Create6.0.6，目标覆盖6.0.6～6.0.8。完整包使用`jarJar`／`reobfJarJar`，内嵌Flywheel1.0.5并声明客户端范围`[1.0.5,1.0.6)`，不能只改开发依赖却允许玩家继续加载1.0.4。
+- 不为这三种Create维护重复库存实现；公共API优先以最低目标版本编译。Jar-in-Jar只包含明确选择的Flywheel库，保留原许可；候选文件移出本机libs，libs保留已接受正式版。
 - 构建和发布作业分别使用最小权限，Action固定提交SHA；不把凭据写入源码、附件或日志。
 - GitHub Release名称包含模组和Minecraft版本，附件包括运行jar、源码jar、SHA-256和核验记录。
 - GitHub仓库变量`LATEST_MINECRAFT_BRANCH`指定可更新Latest的Minecraft版本线，当前为`1.20.1`。只有该版本线的正式Release更新Latest；其他版本线及预发布显式使用`--latest=false`。

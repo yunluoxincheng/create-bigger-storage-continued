@@ -1,4 +1,14 @@
-# Create: Bigger Storage Continued 1.1.2
+# Create: Bigger Storage Continued 1.2.0
+
+2026-10-14兼容候选版：一个完整jar覆盖Minecraft1.20.1 / Forge47.4.10 / Create6.0.6、6.0.7、6.0.8，客户端统一Flywheel1.0.5。沿用1.1.2的库存通知和同步优化，核心库存代码仅接入上游等容量合并包装器，容量不一致时自动回退。
+
+完整包通过Forge Jar-in-Jar内嵌原Flywheel1.0.5及其MIT许可，使Create6.0.6无需继续使用自带的1.0.4。实际JarSelector对三版正式Create包均只选择一份1.0.5。包体约1.05MiB，没有为三版维护重复的保险库实现。
+
+Java编译、完整打包和`reobfJarJar`通过；三版Forge／Registrate开发初始化与数据生成通过，生成资源无变更。当前仍为Beta，完整生产客户端绘制、终端、存档、重组升级和动态结构操作待游戏验收，不以初始化或依赖解析替代。
+
+候选文件整理在`build/candidates/1.2.0/`；使用普通版本文件名的完整jar，`-unbundled`内部产物不用于安装。历史1.1.0、1.1.1、1.1.2正式版仍保留。详细变更见`changelog/1.20.1/1.2.0.md`，精确验证边界见`COMPATIBILITY_1_2_0.md`。
+
+## 1.1.2历史记录
 
 2026-10-13用户确认采用的库存通知与同步优化正式版，针对大型保险库通过Tom存储、AE或RS终端连续存取、合成时的重复通知及库存同步开销。由已发布Beta提升为正式版，沿用原构建文件和`v1.1.2`标签。当前支持范围仍为Minecraft 1.20.1 / Forge 47.2.32 / Create 6.0.4 / Java 17，Create依赖范围保持[6.0.4,6.0.5)。
 

@@ -4,6 +4,7 @@ Each tagged version has a separate release note used by the GitHub release workf
 
 ## Minecraft 1.20.1
 
+- [1.2.0 — Create 6.0.6–6.0.8 and fixed Flywheel backend (beta)](changelog/1.20.1/1.2.0.md)
 - [1.1.2 — Inventory notification and synchronization optimization (stable)](changelog/1.20.1/1.1.2.md)
 - [1.1.1 — Final textures and vault cross-section merging](changelog/1.20.1/1.1.1.md)
 
