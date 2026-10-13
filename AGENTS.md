@@ -24,7 +24,8 @@
 
 - 新版本使用附注标签`mc<Minecraft>-v<模组版本>`，例如`mc1.20.1-v1.1.3`。
 - 标签中的两个版本必须分别等于`minecraft_version`和`mod_version`。
-- 对应更新日志保存在`changelog/<Minecraft>/<模组版本>.md`，同步更新`CHANGELOG.md`索引。第一行为`# Create: Bigger Storage Continued <模组版本>`，内容说明支持范围、变化、行为调整和实际验证边界。
+- 对应更新日志保存在`changelog/<Minecraft>/<模组版本>.md`，同步更新`CHANGELOG.md`索引。第一行为`# Create: Bigger Storage Continued <模组版本>`，正文使用正式、简洁的发布语气，按需要分为“新增／兼容性／优化／修复”，只写本版本的功能变化、兼容调整和修复。
+- Changelog不写开发过程、构建或测试记录、待验收说明、安装教程、许可介绍、未变化内容或重复中英说明。上述信息保留在README、兼容文档、发布规范及核验记录中；没有内容的分类不显示。
 - `release.json`中的`release_type`为`release`、`beta`或`alpha`；尚待关键验收的候选版应明确保留预发布状态。
 - 已发布的`v1.1.1`、`v1.1.2`及Release保留为历史记录，不重打或移动；从下一次发版开始采用双版本标签。
 - 用户明确接受已有预发布作为正式版时，可提升既有Release状态并更新说明，保留原标签和构建附件；记录接受意见的实际范围，不补记未执行的测试。
