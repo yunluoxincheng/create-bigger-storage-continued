@@ -19,8 +19,8 @@
 ## 每个版本的准备
 
 1. 更新`gradle.properties`中的`mod_version`。
-2. 新建`changelog/<Minecraft>/<版本>.md`，第一行为`# Create: Bigger Storage Continued <版本>`；正文全部使用中文，保留项目、依赖名称及必要标识，措辞正式、简洁。标题下列出发行状态及Minecraft、Forge、Create、Java版本，变化按需要分为“新增／兼容性／优化／修复”，末尾保留简洁的“安装”说明。不写开发过程、构建验证、许可介绍或未变化内容；验证边界独立写入README及兼容／核验文档。更新`CHANGELOG.md`索引；旧的扁平日志保留为历史记录。
-3. 设置`release.json`的`release_type`为`release`、`beta`或`alpha`。当前1.1.2经用户确认已设为`release`，GitHub Release为正式版。
+2. 新建英文`changelog/<Minecraft>/<版本>.md`，第一行为`# Create: Bigger Storage Continued <版本>`；标题下列出发行状态、实际公开发布日期（UTC）及Minecraft、Forge、Create、Java版本。未发布版本不编造发布日期，发布后以GitHub的`published_at`核对。变化按需分为`Added`、`Changed`、`Compatibility`、`Performance`、`Fixes`，每条说明一个变化及其影响，末尾保留简洁的`Installation`。不写开发过程、构建验证、许可介绍、无关的未变化内容或重复中英段落，不宣称未经测量的性能提升；验证边界独立写入兼容／核验文档。更新英文`CHANGELOG.md`索引及中英文README中的版本和兼容信息；旧扁平日志保留为链接入口，原文由历史标签保存。
+3. 设置`release.json`的`release_type`为`release`、`beta`或`alpha`。当前1.2.0为`beta`；1.1.2经用户确认已作为正式GitHub Release保留。
 4. 编译并核验，再提交该版本源码和更新日志。
 5. 创建双版本附注标签，将对应Minecraft分支和该标签推送到公开仓库。普通分支推送不触发构建，标签推送才构建发布。
 
@@ -65,12 +65,14 @@ gh workflow run release.yml --repo yunluoxincheng/create-bigger-storage-continue
 
 Release标题为`Create: Bigger Storage Continued <模组版本> — Minecraft <Minecraft版本>`，正文来自该标签中的`changelog/<Minecraft>/<版本>.md`。Actions产物名和本地打包目录也同时包含两个版本，避免不同Minecraft版本线互相覆盖。
 
+用户授权统一既有发布说明时，在当前Minecraft分支中修改对应英文日志，再用`gh release edit <已有标签> --notes-file <对应日志>`同步正文；需要时统一标题。此类文案修订保留标签、发行状态、Latest归属、初始发布日期和全部附件，不重新构建或移动标签。发布后文案可以与标签内原始日志不同；当前分版本日志与Release正文须一致，原始文本由历史标签保存。1.1.1、1.1.2及1.2.0采用相同文档标准。
+
 GitHub的Latest标记在整个仓库共用。仓库变量`LATEST_MINECRAFT_BRANCH`当前设置为`1.20.1`，仅该版本线的正式Release可更新Latest；其他版本线和预发布显式使用`--latest=false`。以后要将Latest交给其他Minecraft版本线时，明确修改该仓库变量；默认分支变化不会隐式更改Latest归属。
 
 已发布标签的重复运行不会覆盖已有附件；修正已发布版本时使用新版本和新标签，避免移动已公开标签。首批`v1.1.1`、`v1.1.2`曾使用旧工作流补发，当前工作流只接受新格式标签。
 
-用户明确接受已有预发布作为正式版时，可更新当前分支的发行类型和说明，并编辑既有GitHub Release取消预发布标记；符合Latest归属规则时将其设为Latest。此操作保留标签、原构建附件及初始构建记录，不重新打标签、不补发同版本标签，也不把接受意见当作新增测试。1.1.2已于2026-10-13按此规则由Beta提升为正式版；原扁平更新日志保留初次发布历史，当前分目录日志记录正式接受。
+用户明确接受已有预发布作为正式版时，可更新当前分支的发行类型和说明，并编辑既有GitHub Release取消预发布标记；符合Latest归属规则时将其设为Latest。此操作保留标签、原构建附件及初始构建记录，不重新打标签、不补发同版本标签，也不把接受意见当作新增测试。1.1.2已于2026-10-13按此规则由Beta提升为正式版；原始更新日志由历史标签保存，当前分目录日志及Release使用统一的英文格式。
 
 ## Modrinth与CurseForge
 
-本阶段仅发布GitHub Release。后续接入时需要各平台项目ID和仓库Secrets，并沿用相同的版本号、更新日志、发行类型、游戏版本及加载器信息。当前没有添加占位Token，也不会自动向这两个平台上传。
+本阶段仅发布GitHub Release。后续接入时需要各平台项目ID和仓库Secrets，并沿用相同的版本号、英文更新日志、发行类型、游戏版本及加载器信息；对外项目介绍以英文README为基础。当前没有添加占位Token，也不会自动向这两个平台上传。
