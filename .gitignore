@@ -1,0 +1,55 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+
+# Files from Forge MDK
+forge*changelog.txt
+/run-server/
+/run-data/
+
+Todo
+
+# Registrate data-generation bookkeeping (generated assets remain tracked)
+/src/generated/resources/.cache/
+
+# Local art experiments and generated delivery bundles; retain approved records.
+/artwork/*
+!/artwork/README.md
+!/artwork/create-colors-v5/
+!/artwork/python-upgrade-samples/
+/artwork/create-colors-v5/assets/
+/artwork/create-colors-v5/*.zip
+/artwork/create-colors-v5/verification-*.json
+/artwork/python-upgrade-samples/*.zip
+/artwork/python-upgrade-samples/samples.png
+/artwork/python-upgrade-samples/samples-target-arrow.png
+/artwork/python-upgrade-samples/samples-textured.png
+/tools/DrawPythonTextureSamples.py
+/tools/ExportArtwork.py
+/tools/ExportArtworkA.py
+
+# Retired runtime construction layers, unreferenced and excluded from packaging.
+/src/main/resources/assets/create_bs/textures/item/core/
+/src/main/resources/assets/create_bs/textures/item/source/
+/src/main/resources/assets/create_bs/textures/item/target/
+/src/main/resources/assets/create_bs/textures/item/component_frame.png
+/src/main/resources/assets/create_bs/textures/item/upgrade_frame.png

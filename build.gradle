@@ -1,0 +1,83 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '6.0.54'
+}
+
+group = 'uwu.lopyluna.create_bs'
+version = mod_version
+base { archivesName = "create-bigger-storage-continued-${minecraft_version}" }
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+    withSourcesJar()
+}
+
+minecraft {
+    mappings channel: 'official', version: minecraft_version
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', file('build/createSrgToMcp/output.srg').absolutePath
+            mods { create_bs { source sourceSets.main } }
+        }
+        client {}
+        server { workingDirectory project.file('run-server'); args '--nogui' }
+        data {
+            workingDirectory project.file('run-data')
+            args '--mod', 'create_bs', '--all', '--output', file('src/generated/resources'),
+                '--existing', file('src/main/resources'), '--existing-mod', 'create'
+        }
+    }
+}
+
+repositories {
+    maven { url = 'https://maven.createmod.net' }
+    maven { url = 'https://maven.tterrag.com' }
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    implementation fg.deobf("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
+    implementation fg.deobf("dev.engine-room.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version}")
+    implementation fg.deobf("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}")
+    implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+    runtimeOnly 'io.github.llamalad7:mixinextras-forge:0.4.1'
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+    exclude '.cache/'
+    // Retired layered icons are kept locally, but current models use final PNGs.
+    exclude 'assets/create_bs/textures/item/core/**',
+        'assets/create_bs/textures/item/source/**',
+        'assets/create_bs/textures/item/target/**',
+        'assets/create_bs/textures/item/component_frame.png',
+        'assets/create_bs/textures/item/upgrade_frame.png'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
+
+jar {
+    // Also exclude stale copies in existing processResources output directories.
+    exclude 'assets/create_bs/textures/item/core/**',
+        'assets/create_bs/textures/item/source/**',
+        'assets/create_bs/textures/item/target/**',
+        'assets/create_bs/textures/item/component_frame.png',
+        'assets/create_bs/textures/item/upgrade_frame.png'
+    from('LICENSE') { rename { 'LICENSE_UPSTREAM' } }
+    manifest.attributes(
+        'Specification-Title': 'Create: Bigger Storage Continued',
+        'Specification-Vendor': 'LopyLuna; Continued contributors',
+        'Implementation-Version': project.version
+    )
+    finalizedBy 'reobfJar'
+}
+
+tasks.named('sourcesJar') {
+    from('LICENSE') { rename { 'LICENSE_UPSTREAM' } }
+}

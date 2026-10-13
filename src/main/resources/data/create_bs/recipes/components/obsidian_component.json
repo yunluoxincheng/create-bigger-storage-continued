@@ -1,0 +1,37 @@
+{
+  "ingredients": [
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "minecraft:obsidian"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "result": {
+    "count": 8,
+    "item": "create_bs:obsidian_component"
+  },
+  "category": "misc"
+}

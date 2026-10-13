@@ -1,0 +1,5 @@
+{
+  "output": "create_bs:vertical_netherite_item_vault",
+  "input": "create_bs:netherite_item_vault",
+  "type": "create_bs:vault_orientation"
+}

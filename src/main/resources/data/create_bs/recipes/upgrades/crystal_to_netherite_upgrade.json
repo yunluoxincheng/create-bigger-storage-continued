@@ -1,0 +1,15 @@
+{
+  "ingredients": [
+    {
+      "item": "create_bs:crystal_to_diamond_upgrade"
+    },
+    {
+      "item": "create_bs:netherite_component"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "result": {
+    "item": "create_bs:crystal_to_netherite_upgrade"
+  },
+  "category": "misc"
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:emerald_block"
+    },
+    "I": {
+      "item": "minecraft:emerald"
+    },
+    "V": {
+      "item": "create_bs:standard_to_iron_upgrade"
+    }
+  },
+  "pattern": [
+    "IBI",
+    "BVB",
+    "IBI"
+  ],
+  "result": {
+    "item": "create_bs:standard_to_emerald_upgrade"
+  },
+  "show_notification": true
+}

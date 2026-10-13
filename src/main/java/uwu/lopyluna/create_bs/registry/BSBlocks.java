@@ -1,0 +1,119 @@
+package uwu.lopyluna.create_bs.registry;
+
+import com.simibubi.create.AllMountedStorageTypes;
+import com.simibubi.create.api.packager.InventoryIdentifier;
+import com.simibubi.create.foundation.data.AssetLookup;
+import com.simibubi.create.foundation.data.SharedProperties;
+import com.tterrag.registrate.util.entry.RegistryEntry;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import uwu.lopyluna.create_bs.CreateBS;
+import uwu.lopyluna.create_bs.content.TieredBlockList;
+import uwu.lopyluna.create_bs.content.vault.TieredVaultBlock;
+import uwu.lopyluna.create_bs.content.vault.TieredVaultCTBehaviour;
+import uwu.lopyluna.create_bs.content.vault.TieredVaultItem;
+import uwu.lopyluna.create_bs.content.vault.TieredVaultMountedStorageType;
+import uwu.lopyluna.create_bs.content.vault.TieredVaultBlockEntity;
+import uwu.lopyluna.create_bs.content.vault.VerticalTieredVaultBlock;
+
+import static com.simibubi.create.api.contraption.storage.item.MountedItemStorageType.mountedItemStorage;
+import static com.simibubi.create.foundation.data.CreateRegistrate.connectedTextures;
+import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
+import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
+import static uwu.lopyluna.create_bs.CreateBS.REGISTRATE;
+
+@SuppressWarnings("removal")
+public class BSBlocks {
+    public static final RegistryEntry<TieredVaultMountedStorageType> TIERED_VAULT = REGISTRATE.mountedItemStorage("tiered_vault", TieredVaultMountedStorageType::new).register();
+
+    public static final TieredBlockList<TieredVaultBlock> VAULTS = new TieredBlockList<>(tier -> {
+        if (!tier.valid) return null;
+        String tierID = tier.name.toLowerCase(java.util.Locale.ROOT);
+        var block = REGISTRATE.block(tierID + "_item_vault", p -> new TieredVaultBlock(p, tier))
+                .transform(mountedItemStorage(TIERED_VAULT));
+        block.initialProperties(SharedProperties::softMetal).properties(p -> p.mapColor(tier.mapColor).sound(tier.soundType).explosionResistance(1200));
+        if (tier.seeThrough) block.properties(p -> p
+                        .instrument(NoteBlockInstrument.HAT)
+                        .noOcclusion()
+                        .isValidSpawn(BSBlocks::never)
+                        .isRedstoneConductor(BSBlocks::never)
+                        .isSuffocating(BSBlocks::never)
+                        .isViewBlocking(BSBlocks::never))
+                .addLayer(() -> RenderType::translucent);
+        if (tier.soundType.equals(SoundType.WOOD)) block.transform(axeOrPickaxe());
+        else block.transform(pickaxeOnly());
+        block.blockstate((c, p) -> {
+                    ResourceLocation bottom = CreateBS.asResource("block/"+tierID+"_vault/vault_bottom_small");
+                    ResourceLocation front = CreateBS.asResource("block/"+tierID+"_vault/vault_front_small");
+                    ResourceLocation side = CreateBS.asResource("block/"+tierID+"_vault/vault_side_small");
+                    ResourceLocation top = CreateBS.asResource("block/"+tierID+"_vault/vault_top_small");
+                    ResourceLocation particle = CreateBS.asResource("block/"+tierID+"_vault/vault_top_small");
+
+                    ResourceLocation refModel = CreateBS.asResource("block/item_vault");
+
+                    p.models().withExistingParent("block/" + c.getName(), refModel)
+                            .texture("0", bottom)
+                            .texture("1", front)
+                            .texture("2", side)
+                            .texture("3", top)
+                            .texture("particle", particle);
+                    p.getVariantBuilder(c.get())
+                            .forAllStates(s -> ConfiguredModel.builder()
+                                    .modelFile(AssetLookup.standardModel(c, p))
+                                    .rotationY(s.getValue(TieredVaultBlock.HORIZONTAL_AXIS) == Direction.Axis.X ? 90 : 0)
+                                    .build());
+                })
+                .onRegister(connectedTextures(() -> new TieredVaultCTBehaviour(tier)))
+                .onRegister(BSBlocks::registerInventoryIdentifier)
+                .item((b, p) -> new TieredVaultItem(b, p, tier))
+                .build();
+        return block.register();
+    });
+
+    public static final TieredBlockList<VerticalTieredVaultBlock> VERTICAL_VAULTS = new TieredBlockList<>(tier -> {
+        if (!tier.valid) return null;
+        String tierID = tier.name.toLowerCase(java.util.Locale.ROOT);
+        var block = REGISTRATE.block("vertical_" + tierID + "_item_vault",
+                p -> new VerticalTieredVaultBlock(p, tier))
+            .transform(mountedItemStorage(TIERED_VAULT))
+            .initialProperties(SharedProperties::softMetal)
+            .properties(p -> p.mapColor(tier.mapColor).sound(tier.soundType).explosionResistance(1200));
+        if (tier.seeThrough) block.properties(p -> p.noOcclusion()
+            .isValidSpawn(BSBlocks::never).isRedstoneConductor(BSBlocks::never)
+            .isSuffocating(BSBlocks::never).isViewBlocking(BSBlocks::never))
+            .addLayer(() -> RenderType::translucent);
+        if (tier.soundType.equals(SoundType.WOOD)) block.transform(axeOrPickaxe());
+        else block.transform(pickaxeOnly());
+        block.blockstate((c, p) -> p.getVariantBuilder(c.get()).forAllStates(s ->
+            ConfiguredModel.builder()
+                .modelFile(p.models().withExistingParent("block/" + c.getName(),
+                    CreateBS.asResource("block/vertical_item_vault"))
+                    .texture("front", CreateBS.asResource("block/" + tierID + "_vault/vault_front_small"))
+                    .texture("side", CreateBS.asResource("block/" + tierID + "_vault/vault_side_small"))
+                    .texture("particle", CreateBS.asResource("block/" + tierID + "_vault/vault_side_small")))
+                .build()))
+            .onRegister(connectedTextures(() -> new TieredVaultCTBehaviour(tier)))
+            .onRegister(BSBlocks::registerInventoryIdentifier)
+            .item((b, p) -> new TieredVaultItem(b, p, tier)).build();
+        return block.register();
+    });
+
+    private static void registerInventoryIdentifier(TieredVaultBlock block) {
+        InventoryIdentifier.REGISTRY.register(block, (level, state, face) ->
+            level.getBlockEntity(face.getPos()) instanceof TieredVaultBlockEntity vault
+                ? vault.getInvId() : null);
+    }
+
+    private static boolean never(BlockState s, BlockGetter l, BlockPos p) {return false;}
+    private static Boolean never(BlockState s, BlockGetter l, BlockPos p, EntityType<?> t) {return false;}
+
+    public static void register() {}
+}

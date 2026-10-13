@@ -1,0 +1,123 @@
+# Create: Bigger Storage Continued
+
+Create: Bigger Storage 的非官方维护续作，原作者为 LopyLuna。
+目前为 **1.1.1 本地正式版**，面向 Minecraft 1.20.1 / Forge 47.2.32 / Create 6.0.4。
+用户在独立实例查看并接受当前版本，包含最终材质、水晶侧面去点及完整3×3端层合并修复。说明见 [RELEASE_NOTES.md](RELEASE_NOTES.md) 和 [材质记录](artwork/create-colors-v5/README.md)。此前1.1.0安装文件保留在 `build/releases/1.1.0/`；尚未公开上传或发布。
+
+## 开发前源码核对
+
+上游提交 `3429e16d51ca91f2b8f7d46d58e5add18e56537d` 的 205 个文件均完成 Git blob 哈希比对。
+开发前无缺失、无修改、无意外源码文件。详情见 [SOURCE_BASELINE.md](SOURCE_BASELINE.md)。
+Git 网络克隆失败，当前目录来自固定提交源码快照，尚无上游 Git 历史。
+
+## 当前功能
+
+- 保留原有 9 种横向保险库及原注册 ID。
+- 增加对应的 9 种纵向保险库；容量和长轴倍率保持同档位原值。
+- 原版纵向保险库由 Create: Connected 的 `create_connected:item_silo` 提供，不重复注册。
+- 10 档之间的所有向上组合，共 45 种升级组件。没有降级组件。
+- 新增基础组件、9 种起点组件和下界合金材料组件，共 11 种合成材料。
+- 9 种保险库基于原版Create PNG保留原有板面纹理、结构、尺寸及连接图集，Minecraft对应材料仅提供颜色和深浅参考，面板加入少量轻微色差；边框和铆钉按材料改色，不使用对应方块的特征图案。水晶库保留半透明蓝色晶面，横纵向使用translucent渲染层。11种组件及45种升级件保留Python绘制的16×16轮廓和明暗色块，箭头使用目标材料色，箭杆长4像素。物品图标最多16色。资源与预览见 [artwork/create-colors-v5/README.md](artwork/create-colors-v5/README.md)。
+- 右键任意成员方块，升级完整的已形成结构；每个方块消耗一个对应组件，从玩家物品栏合计扣除。
+- 生存模式组件不足时不开始升级；创造模式沿用不消耗物品的惯例。
+- 保留位置、轴向、结构尺寸、逐块库存、物品 NBT 和方块实体数据；目标实际容量不够时拒绝升级。
+- 升级分为快照、静默清空、整组换块、库存恢复及扣费阶段。异常时尝试回退；回退失败会保存恢复记录。
+- 18 个横纵向转换配方，一进一出，保留输入物品的完整 NBT。
+- 99 项简体中文翻译，与当前英语条目覆盖范围一致；升级件使用“铁→钻石升级”等短名。
+
+| 档位顺序 | 木质 | 原版默认 | 铜 | 铁 | 绿宝石 | 金 | 水晶 | 钻石 | 黑曜石 | 下界合金 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 每方块槽位 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 |
+
+原版槽位受 Create 服务端配置控制，升级前读取实际容量。
+横向和纵向共用升级组件。木质纵向→原版纵向需要安装 Create: Connected。
+本版只接受静态世界中的真实玩家操作；不支持在运行中的动态结构里升级，也不支持部署器升级。
+
+## 合成成本
+
+全部采用普通 3×3 工作台。8 张纸和 1 个铁粒合成 8 个基础组件；8 个基础组件加 1 份档位标识材料合成 8 个对应起点组件。
+起点组件只消耗一次，后续以同一起点的中间升级件替代直接保险库配方的中心，保留外圈材料和排列。
+例如“原版→铁升级”可以继续制作“原版→金升级”，最终得到“原版→下界合金升级”；这些步骤全部在工作台完成，无需先升级世界中的保险库。
+下界合金组件单独承载 4 个粗金块、2 个钻石块、2 个下界合金锭及 1 个基础组件，和对应起点芯或中间升级件合成最终升级。
+45 种升级件共有 57 条合成配方，包括经铜、绿宝石、水晶的全部 12 条备用配方；另有 11 条新增组件配方。
+主要材料与所选直接合成路径一致，只增加少量组件加工费。木质库本已包含原版库成本，因此木质→原版只收木质组件；黑曜石→下界合金认可其已有的钻石库成本，收取下界合金最终材料。
+原有保险库制作配方保留，不改变容量和升级时的库存处理。原有 45 个升级件 ID 保留，已做好的旧版升级件仍可使用，旧合成方式由新配方替代。
+完整配方及成本对照见 [UPGRADE_RECIPE_PROPOSAL.md](UPGRADE_RECIPE_PROPOSAL.md)，用户已批准主要与全部备用路线。
+
+## 安装边界
+
+此续作保留 `create_bs` 模组 ID，作为原 Bigger Storage 的替代。
+不要与原 Bigger Storage 或 `createbiggerstoragetocreate6` 桥接补丁一起加载。
+用户已试用独立开发实例并接受当前版本作为1.1.1；保存重载、物流及其他兼容行为的验收状态见下方记录。
+
+## 验证状态
+
+- 开发前 205 个上游文件的字节级 Git blob 比对：通过。
+- Java 编译、资源处理、Forge 重映射和开发版 jar 构建：通过。
+- Forge 47.2.32 / Create 6.0.4 初始化及 Registrate 数据生成：通过。
+- 已生成 9 个纵向方块状态、56 个组件/升级件模型、57 个升级配方、11 个组件配方和 18 个转换配方。
+- 英语及简体中文均为 99 项，无缺失的中文键。
+- 本轮配方重构核对：57 条升级配方均可放入 3×3 网格，外圈材料与对应原配方一致；全部合成路径没有重复收取起点加工费。最终 jar 中 86 条升级、组件及转换配方与源码资源逐项一致，无重复资源条目。
+- 2026-10-08第一版原创材质：编译和构建通过；139张PNG及156个物品图层引用核对通过。用户在独立实例查看后反馈细节缩小模糊，随后选择A版重做。
+- 此前 A 版：编译、Forge/Create 初始化、数据生成和构建通过；用户之后要求改用原版 Create 底图改色及 Python 物品图标，该美术方案现已替换。
+- 2026-10-09确认的全套材质：108 张保险库贴图及 56 张物品图标导出完成；批准的木质、铁质贴图和 4 个升级样张逐像素保留。`jar` 与 `reobfJar` 构建通过；164 张 PNG、56 个物品模型及 Create 许可在最终 jar 中逐项一致。57 条升级配方、11 条组件配方、18 条转换配方及中英文各 99 项仍完整，当前所有配方与源码资源一致。游戏内验收待进行。
+- 随后按用户意见制作 v2：改为原版 Minecraft 材料配色，水晶保险库12张四面及连接贴图均增加真实透明窗口。56个物品图标轮廓与v1相同，45个箭头使用目标材料色；164张PNG及56个模型已在最终jar逐项核对，`jar`与`reobfJar`通过，配方和翻译完整。游戏内验收待进行。
+- 随后v3按用户意见去掉水晶窗内全部玻璃反光：仅12张水晶PNG变化，其余152张与v2字节一致，原面板像素完全透明，框架保留。`jar`与`reobfJar`通过；最终jar仅12张水晶贴图条目变化，其余全部条目与v2一致。游戏内显示待验收。
+- 用户确认采用v3整套材质作为正式可用版本，项目版本号更新为1.1.0。此项记录用户的版本接受意见，不补记尚未进行的游戏内验收。
+- 1.1.0正式版的`jar`与`reobfJar`构建通过，内部版本信息为1.1.0；对比最终v3仅版本manifest变化，其他全部jar条目字节一致，164张采用的PNG、兼容声明及许可核对通过。
+- 2026-10-10用户进入独立客户端后要求增强侧面、材料纹理和边框，并明确选择半透明蓝水晶。1.1.1-dev采用该方向；Java编译及重映射构建通过，164张PNG与最终jar一致，配方、翻译及除BSBlocks渲染类外的其他运行类与1.1.0字节一致。只有108张保险库及10张水晶相关物品PNG改变，1.1.0安装文件哈希保持原样。新的游戏内显示待验收。
+- 随后用户澄清只参考方块颜色细节，不带入方块纹理图案。v5去掉v4新增的方块特征，恢复Create板面纹理，保留框架配色、蓝水晶和组件；构建与jar核对通过，仅96张普通面板PNG改变，其余jar条目与v4一致，开发客户端资源目录同步完成。实际重载后的视觉效果待用户查看。
+- 按随后游戏截图移除水晶侧面小铆钉：中、大型侧面PNG各24像素变化，包含CT切片边缘拆分的点；框架及蓝色半透明晶面保留。构建和jar核对通过，其余全部jar条目与初始v5一致。客户端可按F3+T重载，实际显示待用户查看。
+- 用户于 2026-10-07 反馈实测通过：模组正常运行，45 种升级组件均已测试，包含保险库内有大量物品时的升级。此项为用户实测反馈。
+- 上述用户实测发生在本轮配方重构及材质更换之前；新增组件的游戏内合成、备用配方显示及原创材质表现待实测。
+- 存档重载、纵向材质表现、Connected 兼容、物流和动态结构行为：尚无单独的实测确认。
+- 2026-10-10用户在加载端层合并修复的独立实例后确认可用，并授权整理1.1.1正式版及提交更改；这不补记未单独执行的含大量物品重组或其他兼容验收。
+- 1.1.1正式版构建和重映射通过；164张最终保险库／物品PNG、全部模型引用、配方、中英文各99项及许可逐项核对通过。正式包共165张运行PNG，排除30张未引用的旧图层。运行类与用户确认的截面修复版字节一致，仅正式版本元数据变化。
+- 未新增测试代码；连接问题诊断仅只读独立测试世界的轴向和控制器数据，没有写入存档或替换活动整合包。
+- Create 6.0.6、6.0.8 及 Minecraft 1.21.1：后续适配范围，当前不宣称已支持。
+
+## 构建
+
+需要 Java 17 与 Gradle 8.12。脚本默认使用本机 JDK 及 `D:\DevCache\.gradle` 缓存，可通过参数调整。
+
+```powershell
+.\tools\GenerateResources.ps1 -CreateJar '路径\create-1.20.1-6.0.4.jar'
+.\build.ps1 -TcpFallback -Offline -Tasks @('runData','build')
+```
+
+`-TcpFallback` 只解决构建进程的 Windows Java 回环通信问题，工具不会进入模组 jar。
+同时指定 `runData` 和 `build` 时，脚本分两次调用 Gradle，确保生成后的新资源进入最终 jar。
+正式版产物位于 `build/libs/create-bigger-storage-continued-1.20.1-1.1.1.jar`；本地整理包位于 `build/releases/1.1.1/`，包含jar、版本说明、SHA-256及资源核对记录。1.1.0整理包保留为历史版本。
+
+材质导出目录为 `artwork/create-colors-v5/`。`python -B tools/ExportConfirmedTextures.py --install`可重新生成并接入最终材质；对应原版Create和Minecraft jar路径在脚本中配置。源码提交保留运行PNG、配色记录、预览和生成脚本，重复导出PNG与交付ZIP保留在本地。早期未引用的分层辅助图像不进入正式jar。
+
+最新v5资源导出目录为 `artwork/create-colors-v5/`，命令仍为 `python -B tools/ExportConfirmedTextures.py --install`。历史v4资源、预览及jar保留；仅更新贴图时，正在运行的独立开发客户端可在资源处理完成后按F3+T重载。
+
+此前v1材质版保留为 `build/libs/create-bigger-storage-continued-1.20.1-1.1.0-dev-create-python-v1.jar`；本轮v2已另存为 `build/libs/create-bigger-storage-continued-1.20.1-1.1.0-dev-create-python-v2.jar`，全套 PNG 包位于 `artwork/confirmed-textures/minecraft-colors-transparent-crystal-pngs.zip`。重生成材质用 `python -B tools/ExportConfirmedTextures.py --install`，然后构建 `jar` 即可，材质更新不需要重新生成配方。
+
+最新全透明水晶v3另存为 `build/libs/create-bigger-storage-continued-1.20.1-1.1.0-dev-create-python-v3.jar`，当前PNG包为 `artwork/confirmed-textures/clear-crystal-v3-textures.zip`；上述v1/v2文件保留为历史版本。
+
+## 已处理的基础问题
+
+- 非透明保险库的流体覆盖渲染分支无限递归。
+- 多方块库存标识缺失，导致同一库存的供货排除不可靠。
+- 比较器扫描轴向不正确。
+- 缺失结构成员时生成可写的临时槽位，有库存丢失风险。
+- 成员卸载、结构变更和 NBT 读取后的能力缓存失效处理。
+- 库存反序列化及动态结构卸载时避免缩小旧库存和共享可变 ItemStack。
+- 资源包格式更新为 Minecraft 1.20.1 的 15。
+- 完整3×3端层的起始角仍属于旧2×2控制器时，被连接搜索跳过：增加端层重组，保留逐块库存，后方剩余结构继续常规合并。详情见 [CONNECTIVITY_FIX.md](CONNECTIVITY_FIX.md)。编译构建通过，用户已在重启独立实例后确认当前版本可用。
+
+上述为源码修正；需要实际游戏验收的行为没有被标记为已验证。
+
+## 发布许可
+
+见 [PUBLICATION.md](PUBLICATION.md)。保险库使用原版 Create 的 MIT 贴图改色，附带 Create 原许可及来源署名；组件图标为 Python 绘制。保留 Bigger Storage 代码来源署名。旧 Git 历史仍含上游 ARR 美术，公开源码应使用当前树的无历史快照或先取得许可。
+
+## Public GitHub source and builds
+
+The public repository starts with this approved 1.1.1 source snapshot and a new
+root commit. Earlier private local history containing upstream ARR artwork is
+not included. Tagged builds use Java 17 and Gradle 8.12 through the wrapper;
+version-specific notes are in changelog/1.1.1.md. GitHub Actions build success
+records compilation and packaging only, not additional in-game acceptance.

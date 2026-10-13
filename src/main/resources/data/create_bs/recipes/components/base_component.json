@@ -1,0 +1,21 @@
+{
+  "key": {
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "N": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "count": 8,
+    "item": "create_bs:base_component"
+  },
+  "pattern": [
+    "PPP",
+    "PNP",
+    "PPP"
+  ],
+  "category": "misc"
+}

@@ -1,0 +1,5 @@
+{
+  "output": "create_bs:gold_item_vault",
+  "input": "create_bs:vertical_gold_item_vault",
+  "type": "create_bs:vault_orientation"
+}

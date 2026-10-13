@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="create_bs"
+version="${file.jarVersion}"
+displayName="Create: Bigger Storage Continued"
+logoFile="pack.png"
+authors="LopyLuna, Continued contributors"
+description='''
+An unofficial continuation with native Create 6 support, vertical vaults and in-place upgrades.
+'''
+
+[[dependencies.create_bs]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47.2.32,48)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.create_bs]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1]"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.create_bs]]
+    modId="create"
+    mandatory=true
+    versionRange="[6.0.4,6.0.5)"
+    ordering="AFTER"
+    side="BOTH"

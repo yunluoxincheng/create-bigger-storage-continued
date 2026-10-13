@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "large=false": {
+      "model": "create_bs:block/vertical_obsidian_item_vault"
+    },
+    "large=true": {
+      "model": "create_bs:block/vertical_obsidian_item_vault"
+    }
+  }
+}

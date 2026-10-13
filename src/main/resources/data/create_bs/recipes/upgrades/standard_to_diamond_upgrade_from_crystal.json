@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "minecraft:diamond"
+    },
+    "V": {
+      "item": "create_bs:standard_to_crystal_upgrade"
+    }
+  },
+  "pattern": [
+    "III",
+    "IVI",
+    "III"
+  ],
+  "result": {
+    "item": "create_bs:standard_to_diamond_upgrade"
+  },
+  "show_notification": true
+}

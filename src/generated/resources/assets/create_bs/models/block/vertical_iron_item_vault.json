@@ -1,0 +1,8 @@
+{
+  "parent": "create_bs:block/vertical_item_vault",
+  "textures": {
+    "front": "create_bs:block/iron_vault/vault_front_small",
+    "particle": "create_bs:block/iron_vault/vault_side_small",
+    "side": "create_bs:block/iron_vault/vault_side_small"
+  }
+}

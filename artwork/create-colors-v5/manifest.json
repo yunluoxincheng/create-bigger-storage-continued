@@ -1,0 +1,3804 @@
+{
+  "method": "original Create texture motifs; vanilla material color depth only; sparse shared shading; translucent blue crystal; Python native16 items",
+  "source_mod": "create-1.20.1-6.0.4.jar",
+  "source_jar_sha256": "56aed178aca3c466ec556c9b2dc43616f1a131eb30e70c61c0a094f6a60ac588",
+  "image_gen_calls": 0,
+  "arrow_stem_pixels": 4,
+  "tier_order": [
+    "wooden",
+    "standard",
+    "copper",
+    "iron",
+    "emerald",
+    "gold",
+    "crystal",
+    "diamond",
+    "obsidian",
+    "netherite"
+  ],
+  "item_palettes": {
+    "wooden": [
+      "#7e6237",
+      "#af8f55",
+      "#b8945f"
+    ],
+    "standard": [
+      "#344354",
+      "#586a7c",
+      "#8b9da6"
+    ],
+    "copper": [
+      "#9c4529",
+      "#c15a36",
+      "#e77c56"
+    ],
+    "iron": [
+      "#5e5e5e",
+      "#a8a8a8",
+      "#d8d8d8"
+    ],
+    "emerald": [
+      "#005300",
+      "#17dd62",
+      "#affdcd"
+    ],
+    "gold": [
+      "#b26411",
+      "#fad64a",
+      "#fdf55f"
+    ],
+    "crystal": [
+      "#6b9dfb",
+      "#6ca3fd",
+      "#8eb8fe"
+    ],
+    "diamond": [
+      "#11727a",
+      "#4aedd9",
+      "#d5fff6"
+    ],
+    "obsidian": [
+      "#06030b",
+      "#271e3d",
+      "#3b2754"
+    ],
+    "netherite": [
+      "#271c1d",
+      "#4c4143",
+      "#5a575a"
+    ]
+  },
+  "base_palette": [
+    "#aeaeae",
+    "#e9eaeb",
+    "#fcfcf2"
+  ],
+  "minecraft_source_jar": "D:\\DevCache\\.gradle\\caches\\forge_gradle\\minecraft_repo\\versions\\1.20.1\\client.jar",
+  "minecraft_source_jar_sha256": "56b71336d2b4fdffd197f56595b0da93e32a946f78f382a299b8f4b92758bb0f",
+  "material_references": [
+    {
+      "material": "wooden",
+      "source": "assets/minecraft/textures/block/oak_planks.png",
+      "source_png_sha256": "3b00412fec87bd07b83825b86de49bcb6c186ca7799f41721a36b04e5d8ed161",
+      "quantiles": [
+        0.2,
+        0.6,
+        0.85
+      ],
+      "colors": [
+        "#7e6237",
+        "#af8f55",
+        "#b8945f"
+      ]
+    },
+    {
+      "material": "copper",
+      "source": "assets/minecraft/textures/item/copper_ingot.png",
+      "source_png_sha256": "85835decf03f3cfbf67ad628d528fa22b05857059533952fcc69cb8f3f4fbe80",
+      "quantiles": [
+        0.2,
+        0.6,
+        0.85
+      ],
+      "colors": [
+        "#9c4529",
+        "#c15a36",
+        "#e77c56"
+      ]
+    },
+    {
+      "material": "iron",
+      "source": "assets/minecraft/textures/item/iron_ingot.png",
+      "source_png_sha256": "4625aa2c32c74bd6796c7ba8e7ee6300db8d2f24fb38c9d9324a63b262a44391",
+      "quantiles": [
+        0.2,
+        0.6,
+        0.85
+      ],
+      "colors": [
+        "#5e5e5e",
+        "#a8a8a8",
+        "#d8d8d8"
+      ]
+    },
+    {
+      "material": "emerald",
+      "source": "assets/minecraft/textures/item/emerald.png",
+      "source_png_sha256": "25efe9ce7a979b3b7188fbe8a1aad5a8f25dccaa06260354c8270326c4608170",
+      "quantiles": [
+        0.2,
+        0.6,
+        0.85
+      ],
+      "colors": [
+        "#005300",
+        "#17dd62",
+        "#affdcd"
+      ]
+    },
+    {
+      "material": "gold",
+      "source": "assets/minecraft/textures/item/gold_ingot.png",
+      "source_png_sha256": "b7e597e3153cb1157c68cfdb9d6067d3bbb0ef2f4c43ff791442b63bd575616e",
+      "quantiles": [
+        0.2,
+        0.6,
+        0.85
+      ],
+      "colors": [
+        "#b26411",
+        "#fad64a",
+        "#fdf55f"
+      ]
+    },
+    {
+      "material": "crystal",
+      "source": "assets/minecraft/textures/block/blue_ice.png",
+      "source_png_sha256": "78f255b11a28e2d1c8cee128fcdbe57f3e75d2d563336586329fce21aeee020b",
+      "quantiles": [
+        0.2,
+        0.45,
+        0.9
+      ],
+      "colors": [
+        "#6b9dfb",
+        "#6ca3fd",
+        "#8eb8fe"
+      ]
+    },
+    {
+      "material": "diamond",
+      "source": "assets/minecraft/textures/item/diamond.png",
+      "source_png_sha256": "39ab9821ee4cd7194372cbc88f2225959f51c114a64848fc099be6d90ed214ab",
+      "quantiles": [
+        0.2,
+        0.6,
+        0.85
+      ],
+      "colors": [
+        "#11727a",
+        "#4aedd9",
+        "#d5fff6"
+      ]
+    },
+    {
+      "material": "obsidian",
+      "source": "assets/minecraft/textures/block/obsidian.png",
+      "source_png_sha256": "5a22e88553ec5a8aefc0804a157ce6881d74f593f03246994751a18a35160b29",
+      "quantiles": [
+        0.3,
+        0.9,
+        0.99
+      ],
+      "colors": [
+        "#06030b",
+        "#271e3d",
+        "#3b2754"
+      ]
+    },
+    {
+      "material": "netherite",
+      "source": "assets/minecraft/textures/item/netherite_ingot.png",
+      "source_png_sha256": "5327f4aec6f68e8821478084c7c9bdecf6a78649a91fa8a838d9d39db5262a7b",
+      "quantiles": [
+        0.2,
+        0.6,
+        0.85
+      ],
+      "colors": [
+        "#271c1d",
+        "#4c4143",
+        "#5a575a"
+      ]
+    },
+    {
+      "material": "base",
+      "source": "assets/minecraft/textures/item/paper.png",
+      "source_png_sha256": "8ffee002bbc339552eb4d6be5948eb4eb66d016c19e7bbc55bc1cd4a575cc44a",
+      "quantiles": [
+        0.2,
+        0.5,
+        0.85
+      ],
+      "colors": [
+        "#aeaeae",
+        "#e9eaeb",
+        "#fcfcf2"
+      ]
+    }
+  ],
+  "vault_material_references": [
+    {
+      "material": "wooden",
+      "source": "assets/minecraft/textures/block/oak_log.png",
+      "source_png_sha256": "b143bba2c6d1d69183a2114e016f428fd64429dc2d446e3913883918fd87af27",
+      "palette": [
+        [
+          76,
+          61,
+          38
+        ],
+        [
+          116,
+          90,
+          54
+        ],
+        [
+          145,
+          113,
+          66
+        ]
+      ],
+      "quantiles": [
+        0.2,
+        0.5,
+        0.9
+      ],
+      "method": "color sampling only; no vanilla texture motif used"
+    },
+    {
+      "material": "copper",
+      "source": "assets/minecraft/textures/block/copper_block.png",
+      "source_png_sha256": "f2a4e847dbf7ffee41cda7a1695661e637fc11e53b0d7a28d7cdee76fb41981d",
+      "palette": [
+        [
+          154,
+          80,
+          56
+        ],
+        [
+          194,
+          107,
+          76
+        ],
+        [
+          227,
+          130,
+          108
+        ]
+      ],
+      "quantiles": [
+        0.05,
+        0.5,
+        0.95
+      ],
+      "method": "color sampling only; no vanilla texture motif used"
+    },
+    {
+      "material": "iron",
+      "source": "assets/minecraft/textures/block/iron_block.png",
+      "source_png_sha256": "b13979f2c26a9d55be8910e76e2d65d52505e3947be59c1115df0afe758e55be",
+      "palette": [
+        [
+          177,
+          176,
+          176
+        ],
+        [
+          230,
+          230,
+          230
+        ],
+        [
+          242,
+          242,
+          242
+        ]
+      ],
+      "quantiles": [
+        0.03,
+        0.5,
+        0.95
+      ],
+      "method": "color sampling only; no vanilla texture motif used"
+    },
+    {
+      "material": "emerald",
+      "source": "assets/minecraft/textures/block/emerald_block.png",
+      "source_png_sha256": "b5074f5fa844d6a9f895e11efb0db39b7a831456b36294f18afa01a2c9493063",
+      "palette": [
+        [
+          26,
+          174,
+          53
+        ],
+        [
+          23,
+          197,
+          68
+        ],
+        [
+          130,
+          246,
+          173
+        ]
+      ],
+      "quantiles": [
+        0.2,
+        0.5,
+        0.9
+      ],
+      "method": "color sampling only; no vanilla texture motif used"
+    },
+    {
+      "material": "gold",
+      "source": "assets/minecraft/textures/block/gold_block.png",
+      "source_png_sha256": "33552a14c5b454d1382d60e578e9d8ff591fef95506a63ff411826dffaf0c705",
+      "palette": [
+        [
+          204,
+          142,
+          39
+        ],
+        [
+          255,
+          216,
+          62
+        ],
+        [
+          255,
+          253,
+          144
+        ]
+      ],
+      "quantiles": [
+        0.05,
+        0.5,
+        0.95
+      ],
+      "method": "color sampling only; no vanilla texture motif used"
+    },
+    {
+      "material": "crystal",
+      "source": "assets/minecraft/textures/block/blue_ice.png",
+      "source_png_sha256": "78f255b11a28e2d1c8cee128fcdbe57f3e75d2d563336586329fce21aeee020b",
+      "palette": [
+        [
+          107,
+          157,
+          251
+        ],
+        [
+          108,
+          163,
+          253
+        ],
+        [
+          142,
+          184,
+          254
+        ]
+      ],
+      "quantiles": [
+        0.2,
+        0.5,
+        0.9
+      ],
+      "method": "color sampling only; no vanilla texture motif used"
+    },
+    {
+      "material": "diamond",
+      "source": "assets/minecraft/textures/block/diamond_block.png",
+      "source_png_sha256": "509fad65d5c1df1f79d3dd6255210bf17bdd3c4564923d90b7c249bf0bcf6caf",
+      "palette": [
+        [
+          61,
+          224,
+          229
+        ],
+        [
+          101,
+          245,
+          227
+        ],
+        [
+          158,
+          254,
+          235
+        ]
+      ],
+      "quantiles": [
+        0.2,
+        0.5,
+        0.9
+      ],
+      "method": "color sampling only; no vanilla texture motif used"
+    },
+    {
+      "material": "obsidian",
+      "source": "assets/minecraft/textures/block/obsidian.png",
+      "source_png_sha256": "5a22e88553ec5a8aefc0804a157ce6881d74f593f03246994751a18a35160b29",
+      "palette": [
+        [
+          6,
+          3,
+          11
+        ],
+        [
+          39,
+          30,
+          61
+        ],
+        [
+          59,
+          39,
+          84
+        ]
+      ],
+      "quantiles": [
+        0.3,
+        0.9,
+        0.99
+      ],
+      "method": "color sampling only; no vanilla texture motif used"
+    },
+    {
+      "material": "netherite",
+      "source": "assets/minecraft/textures/block/netherite_block.png",
+      "source_png_sha256": "7fa3a9cf7cfd4080b4166c136a57873d2684c4c7ed08bb5eebe7f44a7117fcaf",
+      "palette": [
+        [
+          60,
+          50,
+          50
+        ],
+        [
+          76,
+          65,
+          67
+        ],
+        [
+          77,
+          73,
+          77
+        ]
+      ],
+      "quantiles": [
+        0.2,
+        0.5,
+        0.9
+      ],
+      "method": "color sampling only; no vanilla texture motif used"
+    }
+  ],
+  "vault_palettes": {
+    "wooden": [
+      [
+        76,
+        61,
+        38
+      ],
+      [
+        116,
+        90,
+        54
+      ],
+      [
+        145,
+        113,
+        66
+      ]
+    ],
+    "copper": [
+      [
+        154,
+        80,
+        56
+      ],
+      [
+        194,
+        107,
+        76
+      ],
+      [
+        227,
+        130,
+        108
+      ]
+    ],
+    "iron": [
+      [
+        177,
+        176,
+        176
+      ],
+      [
+        230,
+        230,
+        230
+      ],
+      [
+        242,
+        242,
+        242
+      ]
+    ],
+    "emerald": [
+      [
+        26,
+        174,
+        53
+      ],
+      [
+        23,
+        197,
+        68
+      ],
+      [
+        130,
+        246,
+        173
+      ]
+    ],
+    "gold": [
+      [
+        204,
+        142,
+        39
+      ],
+      [
+        255,
+        216,
+        62
+      ],
+      [
+        255,
+        253,
+        144
+      ]
+    ],
+    "crystal": [
+      [
+        107,
+        157,
+        251
+      ],
+      [
+        108,
+        163,
+        253
+      ],
+      [
+        142,
+        184,
+        254
+      ]
+    ],
+    "diamond": [
+      [
+        61,
+        224,
+        229
+      ],
+      [
+        101,
+        245,
+        227
+      ],
+      [
+        158,
+        254,
+        235
+      ]
+    ],
+    "obsidian": [
+      [
+        6,
+        3,
+        11
+      ],
+      [
+        39,
+        30,
+        61
+      ],
+      [
+        59,
+        39,
+        84
+      ]
+    ],
+    "netherite": [
+      [
+        60,
+        50,
+        50
+      ],
+      [
+        76,
+        65,
+        67
+      ],
+      [
+        77,
+        73,
+        77
+      ]
+    ]
+  },
+  "approved_icon_geometry_preserved": true,
+  "colors_revised_by_user_request": true,
+  "crystal_window_style": "blue facets; panel alpha 128/148/168; opaque blue frame; translucent render layer; interior side rivets removed",
+  "files": [
+    {
+      "path": "assets/create_bs/textures/block/wooden_vault/vault_bottom_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "b197c0881caee1cb2a011daefbea33004233ad9ec621f87d09b7e7cd3b1c625f",
+      "kind": "vault",
+      "material": "wooden",
+      "source": "assets/create/textures/block/vault/vault_bottom_large.png",
+      "source_sha256": "51fcb2b133d4be5d66abde72bd2a7abb71f8b0b7439e42f09d497df5984053b9",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 10
+    },
+    {
+      "path": "assets/create_bs/textures/block/copper_vault/vault_bottom_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "9df7e747e944c59c91799785a5b18aac344ced46d8b8df7cd63d11f8f6af15c3",
+      "kind": "vault",
+      "material": "copper",
+      "source": "assets/create/textures/block/vault/vault_bottom_large.png",
+      "source_sha256": "51fcb2b133d4be5d66abde72bd2a7abb71f8b0b7439e42f09d497df5984053b9",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 9
+    },
+    {
+      "path": "assets/create_bs/textures/block/iron_vault/vault_bottom_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "bee3b70230a85037d6022057da24fa375a1a731c821ad5acbe8fce42abebbf5b",
+      "kind": "vault",
+      "material": "iron",
+      "source": "assets/create/textures/block/vault/vault_bottom_large.png",
+      "source_sha256": "51fcb2b133d4be5d66abde72bd2a7abb71f8b0b7439e42f09d497df5984053b9",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 10
+    },
+    {
+      "path": "assets/create_bs/textures/block/emerald_vault/vault_bottom_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "2cd00505efa049170dc5a88227a2e6261da9745532e04e75b215f3ab143027d9",
+      "kind": "vault",
+      "material": "emerald",
+      "source": "assets/create/textures/block/vault/vault_bottom_large.png",
+      "source_sha256": "51fcb2b133d4be5d66abde72bd2a7abb71f8b0b7439e42f09d497df5984053b9",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 10
+    },
+    {
+      "path": "assets/create_bs/textures/block/gold_vault/vault_bottom_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "f225905e2db630232cfbded86ebc84e99db2f8aece20eef1154174a58fa73a14",
+      "kind": "vault",
+      "material": "gold",
+      "source": "assets/create/textures/block/vault/vault_bottom_large.png",
+      "source_sha256": "51fcb2b133d4be5d66abde72bd2a7abb71f8b0b7439e42f09d497df5984053b9",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 10
+    },
+    {
+      "path": "assets/create_bs/textures/block/crystal_vault/vault_bottom_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "e8b587fc1d7a75ea3c2f486154d2096fbb066e16b51bf9474c34b439d889030a",
+      "kind": "vault",
+      "material": "crystal",
+      "source": "assets/create/textures/block/vault/vault_bottom_large.png",
+      "source_sha256": "51fcb2b133d4be5d66abde72bd2a7abb71f8b0b7439e42f09d497df5984053b9",
+      "alpha_unchanged": false,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": true,
+      "alpha_values": [
+        0,
+        128,
+        148,
+        168,
+        255
+      ],
+      "colors": 9
+    },
+    {
+      "path": "assets/create_bs/textures/block/diamond_vault/vault_bottom_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "f4589be1f421abc3ae35fb0ddf8f971c02bc3a226c0a3a5ebddfda736782bdd2",
+      "kind": "vault",
+      "material": "diamond",
+      "source": "assets/create/textures/block/vault/vault_bottom_large.png",
+      "source_sha256": "51fcb2b133d4be5d66abde72bd2a7abb71f8b0b7439e42f09d497df5984053b9",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 10
+    },
+    {
+      "path": "assets/create_bs/textures/block/obsidian_vault/vault_bottom_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "c497e6b88b7adb6e9f7dd2a7d39955b055e8c9784244b363ab229b69216635a7",
+      "kind": "vault",
+      "material": "obsidian",
+      "source": "assets/create/textures/block/vault/vault_bottom_large.png",
+      "source_sha256": "51fcb2b133d4be5d66abde72bd2a7abb71f8b0b7439e42f09d497df5984053b9",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 9
+    },
+    {
+      "path": "assets/create_bs/textures/block/netherite_vault/vault_bottom_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "bc8b9d17af63f2d8501d58c0d2c4752f9ae86eb01f0fc1981cc2f3fa5f123870",
+      "kind": "vault",
+      "material": "netherite",
+      "source": "assets/create/textures/block/vault/vault_bottom_large.png",
+      "source_sha256": "51fcb2b133d4be5d66abde72bd2a7abb71f8b0b7439e42f09d497df5984053b9",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 10
+    },
+    {
+      "path": "assets/create_bs/textures/block/wooden_vault/vault_bottom_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "8ce6c3c44adb9464b6185ea991ba8bcc7a1e28a6247761b7be8449f4ddaeb432",
+      "kind": "vault",
+      "material": "wooden",
+      "source": "assets/create/textures/block/vault/vault_bottom_medium.png",
+      "source_sha256": "87503aa2c2285d632a8beb6d23f596e5fc65921d11322f20ad030eabdaf3eaa5",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 12
+    },
+    {
+      "path": "assets/create_bs/textures/block/copper_vault/vault_bottom_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "fea9095ad77101c9504f4ecece52d05826f7badb3af3369313b4d3851e32cc82",
+      "kind": "vault",
+      "material": "copper",
+      "source": "assets/create/textures/block/vault/vault_bottom_medium.png",
+      "source_sha256": "87503aa2c2285d632a8beb6d23f596e5fc65921d11322f20ad030eabdaf3eaa5",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 11
+    },
+    {
+      "path": "assets/create_bs/textures/block/iron_vault/vault_bottom_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "ddea8dabeec99961b6c88745f7bf7effddff64fa57d5bd00d5b8a9660c71cd2a",
+      "kind": "vault",
+      "material": "iron",
+      "source": "assets/create/textures/block/vault/vault_bottom_medium.png",
+      "source_sha256": "87503aa2c2285d632a8beb6d23f596e5fc65921d11322f20ad030eabdaf3eaa5",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 13
+    },
+    {
+      "path": "assets/create_bs/textures/block/emerald_vault/vault_bottom_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "693894ac1afaeb8e7e220a8e3d4b899e407df6c988c95bffdec7d0860352fc6c",
+      "kind": "vault",
+      "material": "emerald",
+      "source": "assets/create/textures/block/vault/vault_bottom_medium.png",
+      "source_sha256": "87503aa2c2285d632a8beb6d23f596e5fc65921d11322f20ad030eabdaf3eaa5",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 11
+    },
+    {
+      "path": "assets/create_bs/textures/block/gold_vault/vault_bottom_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "4264665e796f5b2d10408d7e7ca8ba48bcb3da84cf9b4a9ee78241abb5633736",
+      "kind": "vault",
+      "material": "gold",
+      "source": "assets/create/textures/block/vault/vault_bottom_medium.png",
+      "source_sha256": "87503aa2c2285d632a8beb6d23f596e5fc65921d11322f20ad030eabdaf3eaa5",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 12
+    },
+    {
+      "path": "assets/create_bs/textures/block/crystal_vault/vault_bottom_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "9b0077f33d4ec5dd2f3994c51d5e6010fbc5b0c0f09eda05f01dd04fed68b933",
+      "kind": "vault",
+      "material": "crystal",
+      "source": "assets/create/textures/block/vault/vault_bottom_medium.png",
+      "source_sha256": "87503aa2c2285d632a8beb6d23f596e5fc65921d11322f20ad030eabdaf3eaa5",
+      "alpha_unchanged": false,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": true,
+      "alpha_values": [
+        0,
+        128,
+        148,
+        168,
+        255
+      ],
+      "colors": 10
+    },
+    {
+      "path": "assets/create_bs/textures/block/diamond_vault/vault_bottom_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "38988502736e24d1fad4a02a15882edd17bf93303c51bd9b745699061c25be77",
+      "kind": "vault",
+      "material": "diamond",
+      "source": "assets/create/textures/block/vault/vault_bottom_medium.png",
+      "source_sha256": "87503aa2c2285d632a8beb6d23f596e5fc65921d11322f20ad030eabdaf3eaa5",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 12
+    },
+    {
+      "path": "assets/create_bs/textures/block/obsidian_vault/vault_bottom_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "b712b7db53e6730eabd77d97136f2bd0a730e69db3957fb326f4e8caff51a215",
+      "kind": "vault",
+      "material": "obsidian",
+      "source": "assets/create/textures/block/vault/vault_bottom_medium.png",
+      "source_sha256": "87503aa2c2285d632a8beb6d23f596e5fc65921d11322f20ad030eabdaf3eaa5",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 10
+    },
+    {
+      "path": "assets/create_bs/textures/block/netherite_vault/vault_bottom_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "c3595ac54a858d1617d75ca773c52b6f58e96317fccd5bd5d310bc2f0bbde4e7",
+      "kind": "vault",
+      "material": "netherite",
+      "source": "assets/create/textures/block/vault/vault_bottom_medium.png",
+      "source_sha256": "87503aa2c2285d632a8beb6d23f596e5fc65921d11322f20ad030eabdaf3eaa5",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 12
+    },
+    {
+      "path": "assets/create_bs/textures/block/wooden_vault/vault_bottom_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "8722a69ea56ecf8e2fe7cb25f79ffc73a6d976f4346408768904128dead4d5b9",
+      "kind": "vault",
+      "material": "wooden",
+      "source": "assets/create/textures/block/vault/vault_bottom_small.png",
+      "source_sha256": "6c01990608c201eeb35fe9b00e28b408d6ceb1469f541083fb5113fc9d330eb1",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 9
+    },
+    {
+      "path": "assets/create_bs/textures/block/copper_vault/vault_bottom_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "b1b2e47d35a592b79f8fd856522af6ff82ff1271e625146046ae20ecf25cfc4e",
+      "kind": "vault",
+      "material": "copper",
+      "source": "assets/create/textures/block/vault/vault_bottom_small.png",
+      "source_sha256": "6c01990608c201eeb35fe9b00e28b408d6ceb1469f541083fb5113fc9d330eb1",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 9
+    },
+    {
+      "path": "assets/create_bs/textures/block/iron_vault/vault_bottom_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "3e3c8ee92007b56871ee8fd4a73bb1a92e365d52eafe5688b9983b8650258c54",
+      "kind": "vault",
+      "material": "iron",
+      "source": "assets/create/textures/block/vault/vault_bottom_small.png",
+      "source_sha256": "6c01990608c201eeb35fe9b00e28b408d6ceb1469f541083fb5113fc9d330eb1",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 10
+    },
+    {
+      "path": "assets/create_bs/textures/block/emerald_vault/vault_bottom_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "77278f6d626e24b1f3bd824e4bfbdebf89722dc6dec363df80f4cf0100f348b0",
+      "kind": "vault",
+      "material": "emerald",
+      "source": "assets/create/textures/block/vault/vault_bottom_small.png",
+      "source_sha256": "6c01990608c201eeb35fe9b00e28b408d6ceb1469f541083fb5113fc9d330eb1",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 8
+    },
+    {
+      "path": "assets/create_bs/textures/block/gold_vault/vault_bottom_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "9c9a4a4317764e91b4c32ea98294f74a74c1f3239114c541aae9aed7df23c493",
+      "kind": "vault",
+      "material": "gold",
+      "source": "assets/create/textures/block/vault/vault_bottom_small.png",
+      "source_sha256": "6c01990608c201eeb35fe9b00e28b408d6ceb1469f541083fb5113fc9d330eb1",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 9
+    },
+    {
+      "path": "assets/create_bs/textures/block/crystal_vault/vault_bottom_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "13907e53035e3c30eefc96fbf60b9ad6d79a0ac385a916131bf71c42b02650f8",
+      "kind": "vault",
+      "material": "crystal",
+      "source": "assets/create/textures/block/vault/vault_bottom_small.png",
+      "source_sha256": "6c01990608c201eeb35fe9b00e28b408d6ceb1469f541083fb5113fc9d330eb1",
+      "alpha_unchanged": false,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": true,
+      "alpha_values": [
+        128,
+        148,
+        168,
+        255
+      ],
+      "colors": 10
+    },
+    {
+      "path": "assets/create_bs/textures/block/diamond_vault/vault_bottom_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "11dfae1fa7941406877191529c63ce67c17be9c399ea9a978e9a9941407295b7",
+      "kind": "vault",
+      "material": "diamond",
+      "source": "assets/create/textures/block/vault/vault_bottom_small.png",
+      "source_sha256": "6c01990608c201eeb35fe9b00e28b408d6ceb1469f541083fb5113fc9d330eb1",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 9
+    },
+    {
+      "path": "assets/create_bs/textures/block/obsidian_vault/vault_bottom_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "1631973aa9c7b37461314753cad07ad87fc01d205bfb5a49472f3ced7be9287d",
+      "kind": "vault",
+      "material": "obsidian",
+      "source": "assets/create/textures/block/vault/vault_bottom_small.png",
+      "source_sha256": "6c01990608c201eeb35fe9b00e28b408d6ceb1469f541083fb5113fc9d330eb1",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 7
+    },
+    {
+      "path": "assets/create_bs/textures/block/netherite_vault/vault_bottom_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "2b919b04e6b603febc9d40bb9323d7f9b9dfb1cb756020acb39349a1460ccf01",
+      "kind": "vault",
+      "material": "netherite",
+      "source": "assets/create/textures/block/vault/vault_bottom_small.png",
+      "source_sha256": "6c01990608c201eeb35fe9b00e28b408d6ceb1469f541083fb5113fc9d330eb1",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 9
+    },
+    {
+      "path": "assets/create_bs/textures/block/wooden_vault/vault_front_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "44bafd20fba9d4156af398c6729681d1ed8b2a943fbc2f0a41f4652f382332ac",
+      "kind": "vault",
+      "material": "wooden",
+      "source": "assets/create/textures/block/vault/vault_front_large.png",
+      "source_sha256": "efd3759da31cbcff006d5b9d11349f0466cd9ab3216e143a40039859b87d8a1e",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 29
+    },
+    {
+      "path": "assets/create_bs/textures/block/copper_vault/vault_front_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "8f666b20763f353cba44523ee2e21f4066b379bd13f56bf68810a4749861ae77",
+      "kind": "vault",
+      "material": "copper",
+      "source": "assets/create/textures/block/vault/vault_front_large.png",
+      "source_sha256": "efd3759da31cbcff006d5b9d11349f0466cd9ab3216e143a40039859b87d8a1e",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 29
+    },
+    {
+      "path": "assets/create_bs/textures/block/iron_vault/vault_front_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "52aac26a75974b0cadef5ad949e553bed12336b5fab7825081d05abc93281a82",
+      "kind": "vault",
+      "material": "iron",
+      "source": "assets/create/textures/block/vault/vault_front_large.png",
+      "source_sha256": "efd3759da31cbcff006d5b9d11349f0466cd9ab3216e143a40039859b87d8a1e",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 27
+    },
+    {
+      "path": "assets/create_bs/textures/block/emerald_vault/vault_front_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "9ba1bce921e5f1088ecc6d83193e9202283abba758be2655aa48785b2225e8de",
+      "kind": "vault",
+      "material": "emerald",
+      "source": "assets/create/textures/block/vault/vault_front_large.png",
+      "source_sha256": "efd3759da31cbcff006d5b9d11349f0466cd9ab3216e143a40039859b87d8a1e",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 29
+    },
+    {
+      "path": "assets/create_bs/textures/block/gold_vault/vault_front_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "3036664a79779731a18b21f456d8b275d2f4ba2ee80e67cde3e7553b9e3e7db1",
+      "kind": "vault",
+      "material": "gold",
+      "source": "assets/create/textures/block/vault/vault_front_large.png",
+      "source_sha256": "efd3759da31cbcff006d5b9d11349f0466cd9ab3216e143a40039859b87d8a1e",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 29
+    },
+    {
+      "path": "assets/create_bs/textures/block/crystal_vault/vault_front_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "f7dc378877956728aeb7ca4c6481c5ebdfc28170e8f5ca536bebd6944c7ada81",
+      "kind": "vault",
+      "material": "crystal",
+      "source": "assets/create/textures/block/vault/vault_front_large.png",
+      "source_sha256": "efd3759da31cbcff006d5b9d11349f0466cd9ab3216e143a40039859b87d8a1e",
+      "alpha_unchanged": false,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": true,
+      "alpha_values": [
+        0,
+        128,
+        148,
+        168,
+        255
+      ],
+      "colors": 35
+    },
+    {
+      "path": "assets/create_bs/textures/block/diamond_vault/vault_front_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "7717f4ef4f94958d4c6f116818e45b41644f6459be213475889e2da0091ab7eb",
+      "kind": "vault",
+      "material": "diamond",
+      "source": "assets/create/textures/block/vault/vault_front_large.png",
+      "source_sha256": "efd3759da31cbcff006d5b9d11349f0466cd9ab3216e143a40039859b87d8a1e",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 28
+    },
+    {
+      "path": "assets/create_bs/textures/block/obsidian_vault/vault_front_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "14c789bc8efb29f63005e36eea127be56c4355c0dfafc1b5535521ff0de93c88",
+      "kind": "vault",
+      "material": "obsidian",
+      "source": "assets/create/textures/block/vault/vault_front_large.png",
+      "source_sha256": "efd3759da31cbcff006d5b9d11349f0466cd9ab3216e143a40039859b87d8a1e",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 28
+    },
+    {
+      "path": "assets/create_bs/textures/block/netherite_vault/vault_front_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "b2353e4d97812bd5fb3c3509ba11a750fc073deae7bb3f7117f837b345d0f544",
+      "kind": "vault",
+      "material": "netherite",
+      "source": "assets/create/textures/block/vault/vault_front_large.png",
+      "source_sha256": "efd3759da31cbcff006d5b9d11349f0466cd9ab3216e143a40039859b87d8a1e",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 28
+    },
+    {
+      "path": "assets/create_bs/textures/block/wooden_vault/vault_front_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "0b55914e62f68d543f775d41cddd6ed74b8914cb13b93454147c8000c100af4e",
+      "kind": "vault",
+      "material": "wooden",
+      "source": "assets/create/textures/block/vault/vault_front_medium.png",
+      "source_sha256": "d03dd64784ef5e829d6f166cefadf0fa58755675444f068a3be9f3ffdf7c5277",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 29
+    },
+    {
+      "path": "assets/create_bs/textures/block/copper_vault/vault_front_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "75e453c727cc57831cd55d5ac48e65936d2392ffa6d350d3556adb20285c0a69",
+      "kind": "vault",
+      "material": "copper",
+      "source": "assets/create/textures/block/vault/vault_front_medium.png",
+      "source_sha256": "d03dd64784ef5e829d6f166cefadf0fa58755675444f068a3be9f3ffdf7c5277",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 30
+    },
+    {
+      "path": "assets/create_bs/textures/block/iron_vault/vault_front_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "c300f9f22df4a4e1ab0214b1411750e8ca7cc8a334c1d866725ad38ad8783365",
+      "kind": "vault",
+      "material": "iron",
+      "source": "assets/create/textures/block/vault/vault_front_medium.png",
+      "source_sha256": "d03dd64784ef5e829d6f166cefadf0fa58755675444f068a3be9f3ffdf7c5277",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 29
+    },
+    {
+      "path": "assets/create_bs/textures/block/emerald_vault/vault_front_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "bcfa3d70eb568197d6a032805dff150d221f9c19746f8e17b642bcb9cbcceadc",
+      "kind": "vault",
+      "material": "emerald",
+      "source": "assets/create/textures/block/vault/vault_front_medium.png",
+      "source_sha256": "d03dd64784ef5e829d6f166cefadf0fa58755675444f068a3be9f3ffdf7c5277",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 28
+    },
+    {
+      "path": "assets/create_bs/textures/block/gold_vault/vault_front_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "c98ce4a4d5b566f6d93c72ee5ef004e01e8fdacc64329d2e1c0995629216b3b0",
+      "kind": "vault",
+      "material": "gold",
+      "source": "assets/create/textures/block/vault/vault_front_medium.png",
+      "source_sha256": "d03dd64784ef5e829d6f166cefadf0fa58755675444f068a3be9f3ffdf7c5277",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 30
+    },
+    {
+      "path": "assets/create_bs/textures/block/crystal_vault/vault_front_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "3a22f836933cb694094096d3e99aad56728ac8d38a88d78c9333537173d7fc53",
+      "kind": "vault",
+      "material": "crystal",
+      "source": "assets/create/textures/block/vault/vault_front_medium.png",
+      "source_sha256": "d03dd64784ef5e829d6f166cefadf0fa58755675444f068a3be9f3ffdf7c5277",
+      "alpha_unchanged": false,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": true,
+      "alpha_values": [
+        0,
+        128,
+        148,
+        168,
+        255
+      ],
+      "colors": 34
+    },
+    {
+      "path": "assets/create_bs/textures/block/diamond_vault/vault_front_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "e28824c6dc44cf60e402c4e7a97f2b35d1d51e7645d243d8b0df73287a8004ef",
+      "kind": "vault",
+      "material": "diamond",
+      "source": "assets/create/textures/block/vault/vault_front_medium.png",
+      "source_sha256": "d03dd64784ef5e829d6f166cefadf0fa58755675444f068a3be9f3ffdf7c5277",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 30
+    },
+    {
+      "path": "assets/create_bs/textures/block/obsidian_vault/vault_front_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "46788a6d6627ef801686edfc8f482559d31f4167a3cf505a83592c9681f72f1b",
+      "kind": "vault",
+      "material": "obsidian",
+      "source": "assets/create/textures/block/vault/vault_front_medium.png",
+      "source_sha256": "d03dd64784ef5e829d6f166cefadf0fa58755675444f068a3be9f3ffdf7c5277",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 29
+    },
+    {
+      "path": "assets/create_bs/textures/block/netherite_vault/vault_front_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "d06ad0864df9e1584342b0d7d00b818a073e42653420dc661b0ee75605582a07",
+      "kind": "vault",
+      "material": "netherite",
+      "source": "assets/create/textures/block/vault/vault_front_medium.png",
+      "source_sha256": "d03dd64784ef5e829d6f166cefadf0fa58755675444f068a3be9f3ffdf7c5277",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 29
+    },
+    {
+      "path": "assets/create_bs/textures/block/wooden_vault/vault_front_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "26df6c8c831c219234b882846b5abde52dbda6bb3efb6308f6760e07a72fae89",
+      "kind": "vault",
+      "material": "wooden",
+      "source": "assets/create/textures/block/vault/vault_front_small.png",
+      "source_sha256": "0c3ad6410b9b447cd52d8ac394998cea0d18b670ccea7307b5a32e3640785c0f",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 22
+    },
+    {
+      "path": "assets/create_bs/textures/block/copper_vault/vault_front_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "cdc4f3579c323faf3cec26b12fc03791d2e323f98572b177d151ddd84c9530fd",
+      "kind": "vault",
+      "material": "copper",
+      "source": "assets/create/textures/block/vault/vault_front_small.png",
+      "source_sha256": "0c3ad6410b9b447cd52d8ac394998cea0d18b670ccea7307b5a32e3640785c0f",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 22
+    },
+    {
+      "path": "assets/create_bs/textures/block/iron_vault/vault_front_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "58f294ce82887cde7b47669d291afed4c0c68296438ab0b2a593c07c052ecafd",
+      "kind": "vault",
+      "material": "iron",
+      "source": "assets/create/textures/block/vault/vault_front_small.png",
+      "source_sha256": "0c3ad6410b9b447cd52d8ac394998cea0d18b670ccea7307b5a32e3640785c0f",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 20
+    },
+    {
+      "path": "assets/create_bs/textures/block/emerald_vault/vault_front_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "e14618a6d22f7b03de07e7013506adf733a407f9826b8849a683a25c4ea00d0a",
+      "kind": "vault",
+      "material": "emerald",
+      "source": "assets/create/textures/block/vault/vault_front_small.png",
+      "source_sha256": "0c3ad6410b9b447cd52d8ac394998cea0d18b670ccea7307b5a32e3640785c0f",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 21
+    },
+    {
+      "path": "assets/create_bs/textures/block/gold_vault/vault_front_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "5f0e9c13b3c6d1f002e8dec1ff7d941341cae3f1c97f27417b569517711bb701",
+      "kind": "vault",
+      "material": "gold",
+      "source": "assets/create/textures/block/vault/vault_front_small.png",
+      "source_sha256": "0c3ad6410b9b447cd52d8ac394998cea0d18b670ccea7307b5a32e3640785c0f",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 22
+    },
+    {
+      "path": "assets/create_bs/textures/block/crystal_vault/vault_front_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "7ad5dfb33211a4c0661b5146092b08025010f98132314ba3e4d03d219057f5ce",
+      "kind": "vault",
+      "material": "crystal",
+      "source": "assets/create/textures/block/vault/vault_front_small.png",
+      "source_sha256": "0c3ad6410b9b447cd52d8ac394998cea0d18b670ccea7307b5a32e3640785c0f",
+      "alpha_unchanged": false,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": true,
+      "alpha_values": [
+        128,
+        148,
+        168,
+        255
+      ],
+      "colors": 25
+    },
+    {
+      "path": "assets/create_bs/textures/block/diamond_vault/vault_front_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "1229282a11e3485ecb11d76d365f4c335f1bb8c1cd861d5b7e0c8beac29c2d39",
+      "kind": "vault",
+      "material": "diamond",
+      "source": "assets/create/textures/block/vault/vault_front_small.png",
+      "source_sha256": "0c3ad6410b9b447cd52d8ac394998cea0d18b670ccea7307b5a32e3640785c0f",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 21
+    },
+    {
+      "path": "assets/create_bs/textures/block/obsidian_vault/vault_front_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "6a70a0e9252364f9d6309f14a97bbf4a551e68b672a55554eb3c862ef74fcb19",
+      "kind": "vault",
+      "material": "obsidian",
+      "source": "assets/create/textures/block/vault/vault_front_small.png",
+      "source_sha256": "0c3ad6410b9b447cd52d8ac394998cea0d18b670ccea7307b5a32e3640785c0f",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 22
+    },
+    {
+      "path": "assets/create_bs/textures/block/netherite_vault/vault_front_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "a06f20bd9a564268662c5146ae42fc0980bc35dfc518d7c2febb0e1b86842989",
+      "kind": "vault",
+      "material": "netherite",
+      "source": "assets/create/textures/block/vault/vault_front_small.png",
+      "source_sha256": "0c3ad6410b9b447cd52d8ac394998cea0d18b670ccea7307b5a32e3640785c0f",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 21
+    },
+    {
+      "path": "assets/create_bs/textures/block/wooden_vault/vault_side_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "45872f646c188e38d25f3747b34f5fb95e296ba0fb5d25695934a748ca6fa751",
+      "kind": "vault",
+      "material": "wooden",
+      "source": "assets/create/textures/block/vault/vault_side_large.png",
+      "source_sha256": "30036432890179618eeddd49ef838e78b7372e6291a14d37446c0b110db5c759",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 26
+    },
+    {
+      "path": "assets/create_bs/textures/block/copper_vault/vault_side_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "f72bf4f5cc1f5a47bd1678c877c57c4b51759a50d10a45f9d468a0b5fea49353",
+      "kind": "vault",
+      "material": "copper",
+      "source": "assets/create/textures/block/vault/vault_side_large.png",
+      "source_sha256": "30036432890179618eeddd49ef838e78b7372e6291a14d37446c0b110db5c759",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 27
+    },
+    {
+      "path": "assets/create_bs/textures/block/iron_vault/vault_side_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "9d78aeb56af252c3fe521d6446ccfde77ae7847b980efb9e6774ed175a6852a5",
+      "kind": "vault",
+      "material": "iron",
+      "source": "assets/create/textures/block/vault/vault_side_large.png",
+      "source_sha256": "30036432890179618eeddd49ef838e78b7372e6291a14d37446c0b110db5c759",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 25
+    },
+    {
+      "path": "assets/create_bs/textures/block/emerald_vault/vault_side_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "ab4839741e24c32d815a2dd6b82a4d06c1e9e6cdcb9218bbdf816573eb2a0edd",
+      "kind": "vault",
+      "material": "emerald",
+      "source": "assets/create/textures/block/vault/vault_side_large.png",
+      "source_sha256": "30036432890179618eeddd49ef838e78b7372e6291a14d37446c0b110db5c759",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 28
+    },
+    {
+      "path": "assets/create_bs/textures/block/gold_vault/vault_side_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "1b00d90de0ddc39d14eaba6bbfc405a4742c515a084581417757cf9e1220c0f6",
+      "kind": "vault",
+      "material": "gold",
+      "source": "assets/create/textures/block/vault/vault_side_large.png",
+      "source_sha256": "30036432890179618eeddd49ef838e78b7372e6291a14d37446c0b110db5c759",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 30
+    },
+    {
+      "path": "assets/create_bs/textures/block/crystal_vault/vault_side_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "0024f90e0e2e355881e88b2372485bca50ea99774179b256cc348b2b028707a1",
+      "kind": "vault",
+      "material": "crystal",
+      "source": "assets/create/textures/block/vault/vault_side_large.png",
+      "source_sha256": "30036432890179618eeddd49ef838e78b7372e6291a14d37446c0b110db5c759",
+      "alpha_unchanged": false,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": true,
+      "alpha_values": [
+        0,
+        128,
+        148,
+        168,
+        255
+      ],
+      "colors": 27
+    },
+    {
+      "path": "assets/create_bs/textures/block/diamond_vault/vault_side_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "dc4e619a05e26196c4db51499dfcc6ce60d5db2fef4c07a40273f15dd662fbd4",
+      "kind": "vault",
+      "material": "diamond",
+      "source": "assets/create/textures/block/vault/vault_side_large.png",
+      "source_sha256": "30036432890179618eeddd49ef838e78b7372e6291a14d37446c0b110db5c759",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 27
+    },
+    {
+      "path": "assets/create_bs/textures/block/obsidian_vault/vault_side_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "500c170f9cabaf0c3b63fb72c99347901024330fe779a10421588db035a8156c",
+      "kind": "vault",
+      "material": "obsidian",
+      "source": "assets/create/textures/block/vault/vault_side_large.png",
+      "source_sha256": "30036432890179618eeddd49ef838e78b7372e6291a14d37446c0b110db5c759",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 27
+    },
+    {
+      "path": "assets/create_bs/textures/block/netherite_vault/vault_side_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "44bc1e6537ffd7708f666c81eb8916fd5fd1778afe46c442d615ccaa44a013fc",
+      "kind": "vault",
+      "material": "netherite",
+      "source": "assets/create/textures/block/vault/vault_side_large.png",
+      "source_sha256": "30036432890179618eeddd49ef838e78b7372e6291a14d37446c0b110db5c759",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 26
+    },
+    {
+      "path": "assets/create_bs/textures/block/wooden_vault/vault_side_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "5eefa82913ec83969150049604cdcf4680e9112b3a3e28fe0422eda29c3870b8",
+      "kind": "vault",
+      "material": "wooden",
+      "source": "assets/create/textures/block/vault/vault_side_medium.png",
+      "source_sha256": "07f8c981c5aa232e25b110be0e77cb593306c49b03d6bedc8a93207af03bf128",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 29
+    },
+    {
+      "path": "assets/create_bs/textures/block/copper_vault/vault_side_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "b8f3b9c4a0e807f3bec778535a4042ee2765fb4f8ed5858c9567ca2b7a4c7d84",
+      "kind": "vault",
+      "material": "copper",
+      "source": "assets/create/textures/block/vault/vault_side_medium.png",
+      "source_sha256": "07f8c981c5aa232e25b110be0e77cb593306c49b03d6bedc8a93207af03bf128",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 30
+    },
+    {
+      "path": "assets/create_bs/textures/block/iron_vault/vault_side_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "5accff0079727f012a05694916366bd0a82bd27791235be2e8d0d1aba791f6b1",
+      "kind": "vault",
+      "material": "iron",
+      "source": "assets/create/textures/block/vault/vault_side_medium.png",
+      "source_sha256": "07f8c981c5aa232e25b110be0e77cb593306c49b03d6bedc8a93207af03bf128",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 28
+    },
+    {
+      "path": "assets/create_bs/textures/block/emerald_vault/vault_side_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "f5212c3d199cd8c29281551b021f4c0e59e59c3490c1decb7a93b520d1d088b2",
+      "kind": "vault",
+      "material": "emerald",
+      "source": "assets/create/textures/block/vault/vault_side_medium.png",
+      "source_sha256": "07f8c981c5aa232e25b110be0e77cb593306c49b03d6bedc8a93207af03bf128",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 30
+    },
+    {
+      "path": "assets/create_bs/textures/block/gold_vault/vault_side_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "00b58b2ffc2b3ebb90458b24d81c980795f889b96582065196173d51fa4f3648",
+      "kind": "vault",
+      "material": "gold",
+      "source": "assets/create/textures/block/vault/vault_side_medium.png",
+      "source_sha256": "07f8c981c5aa232e25b110be0e77cb593306c49b03d6bedc8a93207af03bf128",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 31
+    },
+    {
+      "path": "assets/create_bs/textures/block/crystal_vault/vault_side_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "ba905d76f90c387c74ab182fb28c289870327067b09a90b26594c2933760056b",
+      "kind": "vault",
+      "material": "crystal",
+      "source": "assets/create/textures/block/vault/vault_side_medium.png",
+      "source_sha256": "07f8c981c5aa232e25b110be0e77cb593306c49b03d6bedc8a93207af03bf128",
+      "alpha_unchanged": false,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": true,
+      "alpha_values": [
+        0,
+        128,
+        148,
+        168,
+        255
+      ],
+      "colors": 33
+    },
+    {
+      "path": "assets/create_bs/textures/block/diamond_vault/vault_side_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "a7198c04e1fe5e8e8af584f2de8785011fb8dbbd2ee5236cdf7b0e8c0e1f6da3",
+      "kind": "vault",
+      "material": "diamond",
+      "source": "assets/create/textures/block/vault/vault_side_medium.png",
+      "source_sha256": "07f8c981c5aa232e25b110be0e77cb593306c49b03d6bedc8a93207af03bf128",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 30
+    },
+    {
+      "path": "assets/create_bs/textures/block/obsidian_vault/vault_side_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "9904974b7c9b723600fce94af3a84bd09fba07b20e5e14799dc0c750bc57d281",
+      "kind": "vault",
+      "material": "obsidian",
+      "source": "assets/create/textures/block/vault/vault_side_medium.png",
+      "source_sha256": "07f8c981c5aa232e25b110be0e77cb593306c49b03d6bedc8a93207af03bf128",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 28
+    },
+    {
+      "path": "assets/create_bs/textures/block/netherite_vault/vault_side_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "a03317cba6a860442cc437bac9e1feec7bb636cbcaafc318565b528de64d92b5",
+      "kind": "vault",
+      "material": "netherite",
+      "source": "assets/create/textures/block/vault/vault_side_medium.png",
+      "source_sha256": "07f8c981c5aa232e25b110be0e77cb593306c49b03d6bedc8a93207af03bf128",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 28
+    },
+    {
+      "path": "assets/create_bs/textures/block/wooden_vault/vault_side_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "9d2667e07cb4f4870a6e3286d676ae09458eca2d3ef0686c26c642ece5279cc2",
+      "kind": "vault",
+      "material": "wooden",
+      "source": "assets/create/textures/block/vault/vault_side_small.png",
+      "source_sha256": "f13521e651b11fd46c881528409e4bccec1ec0c6107e66c56b6dc34f268f3ee7",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 15
+    },
+    {
+      "path": "assets/create_bs/textures/block/copper_vault/vault_side_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "0b8b2341edbf0203e204642cf648047b4505e5710035083d4c7067bb13927d68",
+      "kind": "vault",
+      "material": "copper",
+      "source": "assets/create/textures/block/vault/vault_side_small.png",
+      "source_sha256": "f13521e651b11fd46c881528409e4bccec1ec0c6107e66c56b6dc34f268f3ee7",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 16
+    },
+    {
+      "path": "assets/create_bs/textures/block/iron_vault/vault_side_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "b6356195b84a95041cac812467a21a251955c0f522324ce2e1455bc3e7d6ee4b",
+      "kind": "vault",
+      "material": "iron",
+      "source": "assets/create/textures/block/vault/vault_side_small.png",
+      "source_sha256": "f13521e651b11fd46c881528409e4bccec1ec0c6107e66c56b6dc34f268f3ee7",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 15
+    },
+    {
+      "path": "assets/create_bs/textures/block/emerald_vault/vault_side_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "1081e89d3ea4fa78d8202ed73ef12b758ef6cce150db4d4b133dea7e56a5bbc7",
+      "kind": "vault",
+      "material": "emerald",
+      "source": "assets/create/textures/block/vault/vault_side_small.png",
+      "source_sha256": "f13521e651b11fd46c881528409e4bccec1ec0c6107e66c56b6dc34f268f3ee7",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 17
+    },
+    {
+      "path": "assets/create_bs/textures/block/gold_vault/vault_side_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "8f0cd2a74deeb6aca89e0616f2815222b197d58fa02f7bb7cd7eb7b474837449",
+      "kind": "vault",
+      "material": "gold",
+      "source": "assets/create/textures/block/vault/vault_side_small.png",
+      "source_sha256": "f13521e651b11fd46c881528409e4bccec1ec0c6107e66c56b6dc34f268f3ee7",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 16
+    },
+    {
+      "path": "assets/create_bs/textures/block/crystal_vault/vault_side_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "49be618d4267652e853435fbe6aca4a839826a327f5dd8ddcada53424cd0f7bd",
+      "kind": "vault",
+      "material": "crystal",
+      "source": "assets/create/textures/block/vault/vault_side_small.png",
+      "source_sha256": "f13521e651b11fd46c881528409e4bccec1ec0c6107e66c56b6dc34f268f3ee7",
+      "alpha_unchanged": false,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": true,
+      "alpha_values": [
+        128,
+        148,
+        168,
+        255
+      ],
+      "colors": 22
+    },
+    {
+      "path": "assets/create_bs/textures/block/diamond_vault/vault_side_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "0d0a4cd59c64c725111ccd88aae6b53baf1eb423f09eefa1d7b416d08e733bee",
+      "kind": "vault",
+      "material": "diamond",
+      "source": "assets/create/textures/block/vault/vault_side_small.png",
+      "source_sha256": "f13521e651b11fd46c881528409e4bccec1ec0c6107e66c56b6dc34f268f3ee7",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 16
+    },
+    {
+      "path": "assets/create_bs/textures/block/obsidian_vault/vault_side_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "2e14974578242305cac03cd05056bfc002bd1a1fc624418241d16574b07df6b9",
+      "kind": "vault",
+      "material": "obsidian",
+      "source": "assets/create/textures/block/vault/vault_side_small.png",
+      "source_sha256": "f13521e651b11fd46c881528409e4bccec1ec0c6107e66c56b6dc34f268f3ee7",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 16
+    },
+    {
+      "path": "assets/create_bs/textures/block/netherite_vault/vault_side_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "61560244094ba16eee4ac85e376a844f14081e53a2673ad637ae6980d084a8b8",
+      "kind": "vault",
+      "material": "netherite",
+      "source": "assets/create/textures/block/vault/vault_side_small.png",
+      "source_sha256": "f13521e651b11fd46c881528409e4bccec1ec0c6107e66c56b6dc34f268f3ee7",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 16
+    },
+    {
+      "path": "assets/create_bs/textures/block/wooden_vault/vault_top_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "04b9d9228822696261f4fb3fe0aed6907e198f26b36e6e0acacb6c3b1f6f20c8",
+      "kind": "vault",
+      "material": "wooden",
+      "source": "assets/create/textures/block/vault/vault_top_large.png",
+      "source_sha256": "ebc42c2d90f54b00bad54e1ec64152a83a13be4d1abd018aebb7c5157c5ee07a",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 24
+    },
+    {
+      "path": "assets/create_bs/textures/block/copper_vault/vault_top_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "73655ea1a994474287442ce7651c32318d7018277fcc50b1b2f23f303bc9fcaf",
+      "kind": "vault",
+      "material": "copper",
+      "source": "assets/create/textures/block/vault/vault_top_large.png",
+      "source_sha256": "ebc42c2d90f54b00bad54e1ec64152a83a13be4d1abd018aebb7c5157c5ee07a",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 24
+    },
+    {
+      "path": "assets/create_bs/textures/block/iron_vault/vault_top_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "cfaed4562e309c9e3dc679844fc2574ff76f34ff78c761303064dc469356958e",
+      "kind": "vault",
+      "material": "iron",
+      "source": "assets/create/textures/block/vault/vault_top_large.png",
+      "source_sha256": "ebc42c2d90f54b00bad54e1ec64152a83a13be4d1abd018aebb7c5157c5ee07a",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 22
+    },
+    {
+      "path": "assets/create_bs/textures/block/emerald_vault/vault_top_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "35503112373ce22b206849185c747f33495e62fac33da0b50ce011684529bda1",
+      "kind": "vault",
+      "material": "emerald",
+      "source": "assets/create/textures/block/vault/vault_top_large.png",
+      "source_sha256": "ebc42c2d90f54b00bad54e1ec64152a83a13be4d1abd018aebb7c5157c5ee07a",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 26
+    },
+    {
+      "path": "assets/create_bs/textures/block/gold_vault/vault_top_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "5113cc6a76d7feb5f16b87a9322b2d5ae9049a3980ea1a637cbd259de9f9f112",
+      "kind": "vault",
+      "material": "gold",
+      "source": "assets/create/textures/block/vault/vault_top_large.png",
+      "source_sha256": "ebc42c2d90f54b00bad54e1ec64152a83a13be4d1abd018aebb7c5157c5ee07a",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 27
+    },
+    {
+      "path": "assets/create_bs/textures/block/crystal_vault/vault_top_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "6dc55aead4a9243feca6d7e369e278cecf5a6f70d4b3375b20e686fb9f979073",
+      "kind": "vault",
+      "material": "crystal",
+      "source": "assets/create/textures/block/vault/vault_top_large.png",
+      "source_sha256": "ebc42c2d90f54b00bad54e1ec64152a83a13be4d1abd018aebb7c5157c5ee07a",
+      "alpha_unchanged": false,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": true,
+      "alpha_values": [
+        0,
+        128,
+        148,
+        168,
+        255
+      ],
+      "colors": 28
+    },
+    {
+      "path": "assets/create_bs/textures/block/diamond_vault/vault_top_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "d5e6527a86d02906b11631a8326dec183d15687d798efd9db0ea77db500a47aa",
+      "kind": "vault",
+      "material": "diamond",
+      "source": "assets/create/textures/block/vault/vault_top_large.png",
+      "source_sha256": "ebc42c2d90f54b00bad54e1ec64152a83a13be4d1abd018aebb7c5157c5ee07a",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 24
+    },
+    {
+      "path": "assets/create_bs/textures/block/obsidian_vault/vault_top_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "1bc2ef19c0fb984285bb7845e8a934f158996525315feaec57eaa870cd93523d",
+      "kind": "vault",
+      "material": "obsidian",
+      "source": "assets/create/textures/block/vault/vault_top_large.png",
+      "source_sha256": "ebc42c2d90f54b00bad54e1ec64152a83a13be4d1abd018aebb7c5157c5ee07a",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 24
+    },
+    {
+      "path": "assets/create_bs/textures/block/netherite_vault/vault_top_large.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "e11fa6c4054a39f80dc13a9519491f92a290f73004cafeec71462773c803bddb",
+      "kind": "vault",
+      "material": "netherite",
+      "source": "assets/create/textures/block/vault/vault_top_large.png",
+      "source_sha256": "ebc42c2d90f54b00bad54e1ec64152a83a13be4d1abd018aebb7c5157c5ee07a",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 23
+    },
+    {
+      "path": "assets/create_bs/textures/block/wooden_vault/vault_top_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "f8143c9ed7889837f82a8f0fbf5232c88ca28d66da9cd1662518063aa0442755",
+      "kind": "vault",
+      "material": "wooden",
+      "source": "assets/create/textures/block/vault/vault_top_medium.png",
+      "source_sha256": "98355427ecae2efac6c74d04fcf2b98e95876768e690bd1d991edf34763f3b46",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 23
+    },
+    {
+      "path": "assets/create_bs/textures/block/copper_vault/vault_top_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "640d58569f7f6d5738b598f1f1d0cc21a372a932a9e4c3ddeaeaa1bb6a45c16f",
+      "kind": "vault",
+      "material": "copper",
+      "source": "assets/create/textures/block/vault/vault_top_medium.png",
+      "source_sha256": "98355427ecae2efac6c74d04fcf2b98e95876768e690bd1d991edf34763f3b46",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 23
+    },
+    {
+      "path": "assets/create_bs/textures/block/iron_vault/vault_top_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "eceb29c75964117b66c8cc0881c13f70970e11c219220cd98597efcf60ab6530",
+      "kind": "vault",
+      "material": "iron",
+      "source": "assets/create/textures/block/vault/vault_top_medium.png",
+      "source_sha256": "98355427ecae2efac6c74d04fcf2b98e95876768e690bd1d991edf34763f3b46",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 21
+    },
+    {
+      "path": "assets/create_bs/textures/block/emerald_vault/vault_top_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "fd198207f91a52d66fc9533ef4291e271f88fbf93c79b97324763e34b1157809",
+      "kind": "vault",
+      "material": "emerald",
+      "source": "assets/create/textures/block/vault/vault_top_medium.png",
+      "source_sha256": "98355427ecae2efac6c74d04fcf2b98e95876768e690bd1d991edf34763f3b46",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 25
+    },
+    {
+      "path": "assets/create_bs/textures/block/gold_vault/vault_top_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "9e25468a8734f17c640df80f8311c78f4445bc765b003f57375fb72be4784c63",
+      "kind": "vault",
+      "material": "gold",
+      "source": "assets/create/textures/block/vault/vault_top_medium.png",
+      "source_sha256": "98355427ecae2efac6c74d04fcf2b98e95876768e690bd1d991edf34763f3b46",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 25
+    },
+    {
+      "path": "assets/create_bs/textures/block/crystal_vault/vault_top_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "4ceaa557e7cb4f96bb9049b5d6eb33ff3afdc0da5834f4f96419bfa4d6ec54d3",
+      "kind": "vault",
+      "material": "crystal",
+      "source": "assets/create/textures/block/vault/vault_top_medium.png",
+      "source_sha256": "98355427ecae2efac6c74d04fcf2b98e95876768e690bd1d991edf34763f3b46",
+      "alpha_unchanged": false,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": true,
+      "alpha_values": [
+        0,
+        128,
+        148,
+        168,
+        255
+      ],
+      "colors": 28
+    },
+    {
+      "path": "assets/create_bs/textures/block/diamond_vault/vault_top_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "aaa4021bef9ab1e398e88f41d952e8d0aa727bd8b9ace54674d95b93fe2d8f66",
+      "kind": "vault",
+      "material": "diamond",
+      "source": "assets/create/textures/block/vault/vault_top_medium.png",
+      "source_sha256": "98355427ecae2efac6c74d04fcf2b98e95876768e690bd1d991edf34763f3b46",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 23
+    },
+    {
+      "path": "assets/create_bs/textures/block/obsidian_vault/vault_top_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "231bc1988a7ffdc1bf7ed3fb3283c476b860f4bcbe35dba1b666709b21990d6a",
+      "kind": "vault",
+      "material": "obsidian",
+      "source": "assets/create/textures/block/vault/vault_top_medium.png",
+      "source_sha256": "98355427ecae2efac6c74d04fcf2b98e95876768e690bd1d991edf34763f3b46",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 23
+    },
+    {
+      "path": "assets/create_bs/textures/block/netherite_vault/vault_top_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "sha256": "e113bdce0d4db9d29eca7eb7a6c8a27409f76c5959659d6be60a081c7c46a02f",
+      "kind": "vault",
+      "material": "netherite",
+      "source": "assets/create/textures/block/vault/vault_top_medium.png",
+      "source_sha256": "98355427ecae2efac6c74d04fcf2b98e95876768e690bd1d991edf34763f3b46",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 22
+    },
+    {
+      "path": "assets/create_bs/textures/block/wooden_vault/vault_top_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "34a0cac0d571b57c04b707668dfc49e460bbb67cfe923daa5289948f694a2247",
+      "kind": "vault",
+      "material": "wooden",
+      "source": "assets/create/textures/block/vault/vault_top_small.png",
+      "source_sha256": "7647f6488a11eb073b31c6a3af5e28102adc942033e6942a0d315cdd168de936",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 17
+    },
+    {
+      "path": "assets/create_bs/textures/block/copper_vault/vault_top_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "46672bf9ca31f063ce720f47ca061a0409203262319006b1a2956ef741e26ff6",
+      "kind": "vault",
+      "material": "copper",
+      "source": "assets/create/textures/block/vault/vault_top_small.png",
+      "source_sha256": "7647f6488a11eb073b31c6a3af5e28102adc942033e6942a0d315cdd168de936",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 17
+    },
+    {
+      "path": "assets/create_bs/textures/block/iron_vault/vault_top_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "db1bf82d7f33306fa47a33e96b620cd1fd4f3257b3a465f8f3115ed192df2db4",
+      "kind": "vault",
+      "material": "iron",
+      "source": "assets/create/textures/block/vault/vault_top_small.png",
+      "source_sha256": "7647f6488a11eb073b31c6a3af5e28102adc942033e6942a0d315cdd168de936",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 16
+    },
+    {
+      "path": "assets/create_bs/textures/block/emerald_vault/vault_top_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "0a0349631bf797c163d23e6c9eadcfdf0e1e40568da5a9b2166006601b5fa512",
+      "kind": "vault",
+      "material": "emerald",
+      "source": "assets/create/textures/block/vault/vault_top_small.png",
+      "source_sha256": "7647f6488a11eb073b31c6a3af5e28102adc942033e6942a0d315cdd168de936",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 17
+    },
+    {
+      "path": "assets/create_bs/textures/block/gold_vault/vault_top_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "3674e29f6ac424ab9eaf2741872136b03f14121d9e6d988d368eed3316dec291",
+      "kind": "vault",
+      "material": "gold",
+      "source": "assets/create/textures/block/vault/vault_top_small.png",
+      "source_sha256": "7647f6488a11eb073b31c6a3af5e28102adc942033e6942a0d315cdd168de936",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 17
+    },
+    {
+      "path": "assets/create_bs/textures/block/crystal_vault/vault_top_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "41c657f20cfa620c3f4a202ec81dbf92a74bc78bfbee90e130efa7b1e3576942",
+      "kind": "vault",
+      "material": "crystal",
+      "source": "assets/create/textures/block/vault/vault_top_small.png",
+      "source_sha256": "7647f6488a11eb073b31c6a3af5e28102adc942033e6942a0d315cdd168de936",
+      "alpha_unchanged": false,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": true,
+      "alpha_values": [
+        128,
+        148,
+        168,
+        255
+      ],
+      "colors": 25
+    },
+    {
+      "path": "assets/create_bs/textures/block/diamond_vault/vault_top_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "199098091cf692ba9cf0c3de47d7e032be43395f820816ffe7a94208a5029650",
+      "kind": "vault",
+      "material": "diamond",
+      "source": "assets/create/textures/block/vault/vault_top_small.png",
+      "source_sha256": "7647f6488a11eb073b31c6a3af5e28102adc942033e6942a0d315cdd168de936",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 17
+    },
+    {
+      "path": "assets/create_bs/textures/block/obsidian_vault/vault_top_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "cb50814b1230508d099bf959e1472b8d13877bac6ec69d2a9052b74adeec6fc6",
+      "kind": "vault",
+      "material": "obsidian",
+      "source": "assets/create/textures/block/vault/vault_top_small.png",
+      "source_sha256": "7647f6488a11eb073b31c6a3af5e28102adc942033e6942a0d315cdd168de936",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 17
+    },
+    {
+      "path": "assets/create_bs/textures/block/netherite_vault/vault_top_small.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "b7c5af0f77faabfdbe10a963ca8fb0e4db7853f10878407d4c51d74f9d0ee814",
+      "kind": "vault",
+      "material": "netherite",
+      "source": "assets/create/textures/block/vault/vault_top_small.png",
+      "source_sha256": "7647f6488a11eb073b31c6a3af5e28102adc942033e6942a0d315cdd168de936",
+      "alpha_unchanged": true,
+      "palette_mapping_injective": false,
+      "detail_method": "original Create shading with sparse shared color variation; no block motifs",
+      "material_frame_recolored": true,
+      "translucent_panels": false,
+      "alpha_values": [
+        255
+      ],
+      "colors": 17
+    },
+    {
+      "path": "assets/create_bs/textures/item/base_component.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "1f2faa0c20b94a20234a6e7dda88896a40cf8c25154f591b9536f26b3e705f92",
+      "kind": "component",
+      "opaque_colors": 9,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/wooden_component.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "5976981350eb085f310aeae41c1808a55dfdef31eaa97938ebb5e66babffad7c",
+      "kind": "component",
+      "opaque_colors": 9,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/standard_component.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "9bb5d99eb4f15bcfe4ff7561708c02264110605ef9c9a1085e7eda22d784125c",
+      "kind": "component",
+      "opaque_colors": 9,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/copper_component.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "95f0799123488a2e0c7c6d1ed18911262e7ca7e099cf0d1f3b5d51ff291e4af7",
+      "kind": "component",
+      "opaque_colors": 9,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/iron_component.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "319dfab89638718e0bfbaa2463ecb92b3556af3851b51b2481428ad4c84b6571",
+      "kind": "component",
+      "opaque_colors": 9,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/emerald_component.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "b63e034162f5e67e40b6907d03ede6b6c0c8e9f12058c65b960627488d674f7f",
+      "kind": "component",
+      "opaque_colors": 9,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/gold_component.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "f757fb394e6a9f4f37cfc06176d136aaef174187007c8af36e5706dccbba2b80",
+      "kind": "component",
+      "opaque_colors": 9,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/crystal_component.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "8e0484dabb2e3c7390b05ad2d759f12e3ddaa2572482ea8c5d92325102b9de5a",
+      "kind": "component",
+      "opaque_colors": 9,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/diamond_component.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "696a35b1adb2fe82185c3faee44858ea39b607c6211bea671687fc0efb6edd74",
+      "kind": "component",
+      "opaque_colors": 9,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/obsidian_component.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "0addcdcd431dd6c2d8daa60e27d29a6990170148d495f838da827e11f87e50fe",
+      "kind": "component",
+      "opaque_colors": 9,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/netherite_component.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "88360efa2626269c42399ad9c3f2921d4c6f7865e640d1f90c5ba59787acabac",
+      "kind": "component",
+      "opaque_colors": 9,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/wooden_to_standard_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "6e1b4f46814d33c32946d119ea5a8666ca64350189888cbbbb98c66124db6f21",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/wooden_to_copper_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "8bedfabd430708659e494795d6095d952caa53730efaee6eceea05c6a2972826",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/wooden_to_iron_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "27e18345a12cff068271e799a0067bcce37e3f16578bece4cc670925e26ecc53",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/wooden_to_emerald_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "00acfc3d717f9827be64e33904db0d4259dca42ec4cfe0ace5c7e5a049084cd5",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/wooden_to_gold_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "75f13c17190ef04643372bfcf6dc859904750a62906e122ca7b8e6d86febb206",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/wooden_to_crystal_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "d6b27573ce1e3c36e319b83f2898c0338a3c4024d78cd0c7c51552e2228d5b1c",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/wooden_to_diamond_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "21ab5b8aee2ec03545aaa5644b0acad240d38f9c6384dafe654a6c7d8de48b0f",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/wooden_to_obsidian_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "f2c9ff0eddd87e3648359c492d1feb3599dca15b01e49a1b222fbf4cbc4f133b",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/wooden_to_netherite_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "f4006f8369d2eabb4b6f5a741df2f4b454990b706daf3c8ab406296fa3b0e7b1",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/standard_to_copper_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "6376448f2492d8a7e8ff33887ecae738ab3540adc764a0ef42df549756cadf2d",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/standard_to_iron_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "596f7a54ef909b958a03bfd86ac06d7e29cb719c81661ec83cbcbfdfe39ee8fb",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/standard_to_emerald_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "4da90ef93c13b2c09f104d5f2a60bfb9bbef77818a38bc12c26b64d67688caf5",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/standard_to_gold_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "9bfed488e3a0ff4c03f5bec3897160e1b8876ab0fb67780e08d107d6eb92ced0",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/standard_to_crystal_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "12ad3e8ac0072c94333b725c612ce38813b1a10519a55ae11edb5cfd12e0ce20",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/standard_to_diamond_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "3eec55df0127987785b2d41858f7ade595523a8c1284de6842c75887b52cbe62",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/standard_to_obsidian_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "c1f062331a0a71918fe9ec69fb66016b272348aa8ead5e0395fdf4e5f8f365bc",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/standard_to_netherite_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "6b98669367a719e3ba791d6c7e78cd6f895f5cc52ba0ce3d1dc8091f5468f93c",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/copper_to_iron_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "f50ced3e86a65c37353e6d836e74ea3ded75aa612d3a817d1ae764f23be6104e",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/copper_to_emerald_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "c34e34b7a73f93f52a1f94d82b652f4de61fde8c0e91a82395395ec33dee8a0e",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/copper_to_gold_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "5d65a1c39466199e09f19fbe4c39b0f1a7a46fc958e07145bc6aee0f26032e32",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/copper_to_crystal_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "3f3ca5ea01c3eb0b4e55ca8a0b0f0287ba12920bca3a5b85e2c79b41d9f370e4",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/copper_to_diamond_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "cf0cee6e89a67d8e91e3898c7c4fad2e430a080cf1b70cfcb4d5f9657d7bc342",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/copper_to_obsidian_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "cfa80bac4882fa90e3157beecf3464a082030f27087910c7bb132167c0d678bb",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/copper_to_netherite_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "21c8b99f3d21c5dba6f344dd36b9c419de57f061ed8e676517cd3cf658adf0f4",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/iron_to_emerald_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "c3e04996a48e8c12e32db2e40704a58d496d0f75d2d377aac41ceb4d28feb335",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/iron_to_gold_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "38a3b82750494e3be2aa410b45922a87a8a65311c594dade442e9634e62aa1ce",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/iron_to_crystal_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "c85b35eaee52da6a99ff3aeeb796ed4171d8758475853d340d528801ba477100",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/iron_to_diamond_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "3ae92d76ade876174b3269e5db0d3dbe7094c13244cd15bc9599e4968d51ee2c",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/iron_to_obsidian_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "b29b61586bc8d8d63c6f8578e841f27f7a3a4b646e88c0331eb12948d94fd209",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/iron_to_netherite_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "9cac94b530eafba465f4c83b25e0659ad0d5eb6fd234666004bbbeaa48f67b94",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/emerald_to_gold_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "779e1bd11402545b1ff2fe46d09051ab6c8e11a22f20f5a418e271f02213a8d3",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/emerald_to_crystal_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "9f0100a995db960108e03f84353765e96fc6f4d2d2127a152781afc9a1c557d2",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/emerald_to_diamond_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "a27434ec5c65b70af560a5c8b9d4f930d75a2e37737557b456598e715ebbf17d",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/emerald_to_obsidian_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "d8d08427c11f729d6d9c1ce41fa114d26508f693dc3c5faaddf1cc9de8669b55",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/emerald_to_netherite_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "dfa76160811a8a8b2f73056a6ee4da45426300fd5228360ccc97acde94dd90f4",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/gold_to_crystal_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "95eed5501a71906aa00edff04c778c6e6f3351f4947075161c673ddd83950d47",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/gold_to_diamond_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "611f88e98638dde1e33c33bfcee7822c1cf95e3f3afbab3d118b4e285eb6b7a8",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/gold_to_obsidian_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "6c6ad19e5ef575a023e34035cbc8d23e92ded4d7bb6207d3017e38a6daff2c73",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/gold_to_netherite_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "5ea143cda4697f53ae3d7920edc1eb59242f7dfa6532ca5231fa4fe6d9254878",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/crystal_to_diamond_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "ce23783d544aa28dc24b5a878e0149586cf816871ac5a5f0ddca5f62bb78ebbe",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/crystal_to_obsidian_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "07ad6dd53a91bf136a539373cf87116701689d178a4665b3eb308f9f3b9c5a72",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/crystal_to_netherite_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "bfd57408f518d7b493bb8c1cd73f672cc820e42e6a05ae60c4a2b580d4b420e1",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/diamond_to_obsidian_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "e1e143197cdab4e498c08612ba2de96f8e572bef23856c24a94cc0bf679193cf",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/diamond_to_netherite_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "5276da7cf817582dbcb6c1fd67330cfd56a0900e34ba3f40ba3e2a1c7650e537",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/create_bs/textures/item/obsidian_to_netherite_upgrade.png",
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "cf97e12d83ef71c44a91c4a41aa8aaf78b6f8b0205dc1ba729a83b65df698aca",
+      "kind": "upgrade",
+      "opaque_colors": 14,
+      "alpha": [
+        0,
+        255
+      ]
+    }
+  ]
+}

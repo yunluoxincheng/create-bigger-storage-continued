@@ -1,0 +1,12 @@
+{
+  "ingredients": [
+    {
+      "item": "create_bs:wooden_component"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "result": {
+    "item": "create_bs:wooden_to_standard_upgrade"
+  },
+  "category": "misc"
+}

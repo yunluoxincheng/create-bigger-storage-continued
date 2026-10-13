@@ -1,0 +1,5 @@
+{
+  "output": "create_bs:vertical_crystal_item_vault",
+  "input": "create_bs:crystal_item_vault",
+  "type": "create_bs:vault_orientation"
+}

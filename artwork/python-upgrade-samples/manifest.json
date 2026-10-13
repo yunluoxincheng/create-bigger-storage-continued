@@ -1,0 +1,101 @@
+{
+  "method": "Python integer geometry; controlled flat pixel shading clusters; destination-palette arrow shading",
+  "image_gen_calls": 0,
+  "bitmap_drawing_inputs": 0,
+  "scope": "samples only; no mod/game replacement",
+  "arrow_stem_pixels": 4,
+  "palettes": {
+    "wooden": [
+      "#654730",
+      "#896644",
+      "#b18b58"
+    ],
+    "standard": [
+      "#344354",
+      "#586a7c",
+      "#8b9da6"
+    ],
+    "iron": [
+      "#59616a",
+      "#959fa5",
+      "#d0d5d1"
+    ],
+    "gold": [
+      "#88643a",
+      "#c5a055",
+      "#e8ce81"
+    ],
+    "diamond": [
+      "#397879",
+      "#76bec1",
+      "#b6e0d9"
+    ],
+    "netherite": [
+      "#3d3634",
+      "#655b58",
+      "#998b7f"
+    ]
+  },
+  "files": [
+    {
+      "file": "wooden_to_standard_upgrade.png",
+      "source": "wooden",
+      "target": "standard",
+      "size": [
+        16,
+        16
+      ],
+      "colors": 14,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "2fa67c11c9f70a0d4d23bebe8057906ade0571c5e843a15757b7119b21546bbd"
+    },
+    {
+      "file": "standard_to_iron_upgrade.png",
+      "source": "standard",
+      "target": "iron",
+      "size": [
+        16,
+        16
+      ],
+      "colors": 14,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "e0f10c0b3f3d8ae539f86eb8c5dd60ffe1dfe52d6d11d69943c6d8d91388ea3e"
+    },
+    {
+      "file": "iron_to_gold_upgrade.png",
+      "source": "iron",
+      "target": "gold",
+      "size": [
+        16,
+        16
+      ],
+      "colors": 14,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "dc7091997be3e7ac0a18b447cc8b86bcc0703d07a05f72c1f804286a0198d98a"
+    },
+    {
+      "file": "diamond_to_netherite_upgrade.png",
+      "source": "diamond",
+      "target": "netherite",
+      "size": [
+        16,
+        16
+      ],
+      "colors": 14,
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "971af692e9e6960387f0acb62b65e6b53fcc86a9aee1ce9beb2bdb9b007e17f8"
+    }
+  ]
+}

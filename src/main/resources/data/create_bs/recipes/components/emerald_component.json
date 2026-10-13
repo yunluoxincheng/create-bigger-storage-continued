@@ -1,0 +1,37 @@
+{
+  "ingredients": [
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "create_bs:base_component"
+    },
+    {
+      "item": "minecraft:emerald"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "result": {
+    "count": 8,
+    "item": "create_bs:emerald_component"
+  },
+  "category": "misc"
+}
