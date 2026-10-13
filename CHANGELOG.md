@@ -4,7 +4,7 @@ Each tagged version has a separate release note used by the GitHub release workf
 
 ## Minecraft 1.20.1
 
-- [1.1.2 — Inventory notification and synchronization optimization (beta)](changelog/1.20.1/1.1.2.md)
+- [1.1.2 — Inventory notification and synchronization optimization (stable)](changelog/1.20.1/1.1.2.md)
 - [1.1.1 — Final textures and vault cross-section merging](changelog/1.20.1/1.1.1.md)
 
 New tags use `mc<Minecraft>-v<mod>`, for example `mc1.20.1-v1.1.3`.

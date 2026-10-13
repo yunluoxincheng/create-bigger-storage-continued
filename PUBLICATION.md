@@ -2,11 +2,12 @@
 
 This is an unofficial continuation of LopyLuna/Create-Bigger-Storage.
 
-Version 1.1.2 is a local inventory-notification and client-sync optimization
-candidate. Compilation and packaging verification do not establish in-game
-performance or Tom's Storage / AE / RS compatibility acceptance. Version 1.1.1
-remains the previously accepted stable baseline. GitHub tag releases record
-their build status separately from in-game acceptance. Modrinth and CurseForge
+Version 1.1.2 was accepted by the user as stable on 2026-10-13. Its existing
+GitHub prerelease is promoted to a stable release without moving the v1.1.2 tag
+or replacing build artifacts. Compilation and packaging verification do not
+establish measured performance or separate Tom's Storage / AE / RS acceptance.
+GitHub releases record build status separately from user stable-version acceptance.
+Versions 1.1.1 and 1.1.0 remain historical stable baselines. Modrinth and CurseForge
 publication is not connected yet. See [INVENTORY_PERFORMANCE.md](INVENTORY_PERFORMANCE.md)
 and [RELEASING.md](RELEASING.md).
 
@@ -34,7 +35,7 @@ blue crystal panels. Block-specific motifs from the previous study are removed.
 - Upstream artwork remains in the original private local Git history and an ignored local backup. The public GitHub repository starts with a new root commit from the approved 1.1.1 source tree, followed by current development; it has no parent links to that private history. Private history and backups are not pushed or packaged. The original local history is preserved rather than rewritten.
 - Create: Connected interoperability uses its registry ID and public inventory accessor. Its AGPL implementation and artwork have not been copied.
 - All 56 component and upgrade item models reference single Python-drawn PNGs; none references the earlier layered artwork or redistributes a vanilla Minecraft PNG.
-- The public source repository is https://github.com/yunluoxincheng/create-bigger-storage-continued. Its current development/default branch is `1.20.1`; later Minecraft versions use independent branches and mod version sequences. New annotated tags use `mc<Minecraft>-v<mod>` and alone trigger automatic builds/releases, with changelogs in `changelog/<Minecraft>/<mod>.md`. Normal pushes and PRs do not build. Manual builds remain available; `LATEST_MINECRAFT_BRANCH` selects which Minecraft line may update the latest stable release. The published `v1.1.1` and `v1.1.2` tags are preserved. Version 1.1.2 remains beta; builds do not establish in-game acceptance. Modrinth/CurseForge uploads are deferred.
+- The public source repository is https://github.com/yunluoxincheng/create-bigger-storage-continued. Its current development/default branch is `1.20.1`; later Minecraft versions use independent branches and mod version sequences. New annotated tags use `mc<Minecraft>-v<mod>` and alone trigger automatic builds/releases, with changelogs in `changelog/<Minecraft>/<mod>.md`. Normal pushes and PRs do not build. Manual builds remain available; `LATEST_MINECRAFT_BRANCH` selects which Minecraft line may update the latest stable release. The published `v1.1.1` and `v1.1.2` tags are preserved. Version 1.1.2 is stable following explicit user acceptance; build success does not establish additional in-game testing. Modrinth/CurseForge uploads are deferred.
 
 Before a public release, record the supported Minecraft/loader/Create matrix from
 actual version verification, preserve origin and contributor attribution, and

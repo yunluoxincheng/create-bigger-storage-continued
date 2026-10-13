@@ -20,7 +20,7 @@
 
 1. 更新`gradle.properties`中的`mod_version`。
 2. 新建`changelog/<Minecraft>/<版本>.md`，第一行为`# Create: Bigger Storage Continued <版本>`，写明变化、支持范围和实际验证边界；更新`CHANGELOG.md`索引。旧的扁平日志文件保留为历史记录，新流程只读取分版本目录。
-3. 设置`release.json`的`release_type`为`release`、`beta`或`alpha`。当前1.1.2为`beta`，GitHub Release标记预发布。
+3. 设置`release.json`的`release_type`为`release`、`beta`或`alpha`。当前1.1.2经用户确认已设为`release`，GitHub Release为正式版。
 4. 编译并核验，再提交该版本源码和更新日志。
 5. 创建双版本附注标签，将对应Minecraft分支和该标签推送到公开仓库。普通分支推送不触发构建，标签推送才构建发布。
 
@@ -66,6 +66,8 @@ Release标题为`Create: Bigger Storage Continued <模组版本> — Minecraft <
 GitHub的Latest标记在整个仓库共用。仓库变量`LATEST_MINECRAFT_BRANCH`当前设置为`1.20.1`，仅该版本线的正式Release可更新Latest；其他版本线和预发布显式使用`--latest=false`。以后要将Latest交给其他Minecraft版本线时，明确修改该仓库变量；默认分支变化不会隐式更改Latest归属。
 
 已发布标签的重复运行不会覆盖已有附件；修正已发布版本时使用新版本和新标签，避免移动已公开标签。首批`v1.1.1`、`v1.1.2`曾使用旧工作流补发，当前工作流只接受新格式标签。
+
+用户明确接受已有预发布作为正式版时，可更新当前分支的发行类型和说明，并编辑既有GitHub Release取消预发布标记；符合Latest归属规则时将其设为Latest。此操作保留标签、原构建附件及初始构建记录，不重新打标签、不补发同版本标签，也不把接受意见当作新增测试。1.1.2已于2026-10-13按此规则由Beta提升为正式版；原扁平更新日志保留初次发布历史，当前分目录日志记录正式接受。
 
 ## Modrinth与CurseForge
 

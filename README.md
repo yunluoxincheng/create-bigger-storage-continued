@@ -1,7 +1,7 @@
 # Create: Bigger Storage Continued
 
 Create: Bigger Storage 的非官方维护续作，原作者为 LopyLuna。
-当前源码为 **1.1.2 库存通知与同步优化候选版**，面向 Minecraft 1.20.1 / Forge 47.2.32 / Create 6.0.4，整合包性能及游戏内兼容验收待进行。
+当前为 **1.1.2 正式版**，面向 Minecraft 1.20.1 / Forge 47.2.32 / Create 6.0.4。用户于2026-10-13确认采用1.1.2作为正式版，沿用已发布的安装包和`v1.1.2`标签；各项实测记录保留其原有范围。
 
 当前开发及默认分支为`1.20.1`，后续Minecraft版本使用独立分支并独立推进模组版本号。日常推送和PR不自动构建；新发布标签使用`mc<Minecraft>-v<模组版本>`，推送标签后构建并发布，另保留手动构建入口。项目规范见 [AGENTS.md](AGENTS.md)，详细操作见 [RELEASING.md](RELEASING.md)。
 此前 **1.1.1 本地正式版**已由用户在独立实例查看并接受，包含最终材质、水晶侧面去点及完整3×3端层合并修复；安装文件保留在 `build/releases/1.1.1/`，1.1.0保留在 `build/releases/1.1.0/`。说明见 [RELEASE_NOTES.md](RELEASE_NOTES.md)、[库存优化说明](INVENTORY_PERFORMANCE.md) 和 [材质记录](artwork/create-colors-v5/README.md)。公开源码仓库为 [GitHub](https://github.com/yunluoxincheng/create-bigger-storage-continued)，按版本标签自动构建并发布GitHub Release；Modrinth／CurseForge尚未接入，流程见 [RELEASING.md](RELEASING.md)。
@@ -50,10 +50,11 @@ Git 网络克隆失败，当前目录来自固定提交源码快照，尚无上�
 
 此续作保留 `create_bs` 模组 ID，作为原 Bigger Storage 的替代。
 不要与原 Bigger Storage 或 `createbiggerstoragetocreate6` 桥接补丁一起加载。
-用户已试用独立开发实例并接受当前版本作为1.1.1；保存重载、物流及其他兼容行为的验收状态见下方记录。
+此前用户已试用独立开发实例并接受1.1.1，现确认1.1.2作为正式版；保存重载、物流及其他兼容行为的验收状态见下方记录。
 
 ## 验证状态
 
+- 2026-10-13用户确认1.1.2可作为正式版。此项记录正式版本接受意见，不补记未单独执行的性能测量或兼容验收；已有标签和构建文件保持原样，GitHub Release由预发布转为正式版。
 - 1.1.2库存通知与同步优化：整组比较器通知按控制器tick合并，读数在库存／结构／能力变化后失效；库存变更立即标记所属区块保存，同tick重复标记合并。普通保险库的客户端更新不再包含库存，库存变化不再请求客户端更新；水晶库仅同步渲染用的前半槽位，同tick变化合并。完整存档NBT及服务端库存能力保留。Java编译、`jar`和`reobfJar`通过；最终包资源核验见 `build/releases/1.1.2/verification.json`。Tom存储、AE、RS终端、比较器、存档重载及水晶显示尚未新增游戏内验收，未记录FPS／TPS提升比例。
 - 开发前 205 个上游文件的字节级 Git blob 比对：通过。
 - Java 编译、资源处理、Forge 重映射和开发版 jar 构建：通过。
@@ -92,7 +93,7 @@ Git 网络克隆失败，当前目录来自固定提交源码快照，尚无上�
 
 `-TcpFallback` 只解决构建进程的 Windows Java 回环通信问题，工具不会进入模组 jar。
 同时指定 `runData` 和 `build` 时，脚本分两次调用 Gradle，确保生成后的新资源进入最终 jar。
-当前候选版产物位于 `build/libs/create-bigger-storage-continued-1.20.1-1.1.2.jar`；本地试用包位于 `build/releases/1.1.2/`，包含jar、版本说明、SHA-256及资源核对记录。已接受的1.1.1及1.1.0整理包保留为历史版本。
+当前正式版产物位于 `build/libs/create-bigger-storage-continued-1.20.1-1.1.2.jar`；本地正式整理包位于 `build/releases/1.1.2/`，包含jar、版本说明、SHA-256及资源核对记录。已接受的1.1.1及1.1.0整理包保留为历史版本。
 
 材质导出目录为 `artwork/create-colors-v5/`。`python -B tools/ExportConfirmedTextures.py --install`可重新生成并接入最终材质；对应原版Create和Minecraft jar路径在脚本中配置。源码提交保留运行PNG、配色记录、预览和生成脚本，重复导出PNG与交付ZIP保留在本地。早期未引用的分层辅助图像不进入正式jar。
 
