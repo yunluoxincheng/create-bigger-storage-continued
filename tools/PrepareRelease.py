@@ -14,9 +14,10 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = re.compile(r"[0-9]+\.[0-9]+\.[0-9]+(?:-[A-Za-z0-9]+(?:[.-][A-Za-z0-9]+)*)?\Z")
+MINECRAFT_VERSION = re.compile(r"[0-9]+\.[0-9]+(?:\.[0-9]+)?\Z")
 
 
-def metadata(tag: str) -> dict:
+def metadata(tag: str, branch: str = "") -> dict:
     properties = {}
     for line in (ROOT / "gradle.properties").read_text(encoding="utf-8").splitlines():
         line = line.strip()
@@ -25,17 +26,20 @@ def metadata(tag: str) -> dict:
             properties[key.strip()] = value.strip()
     version = properties["mod_version"]
     minecraft = properties["minecraft_version"]
-    if not VERSION.fullmatch(version) or not VERSION.fullmatch(minecraft):
+    if not VERSION.fullmatch(version) or not MINECRAFT_VERSION.fullmatch(minecraft):
         raise ValueError("Invalid mod or Minecraft version")
-    if tag and tag != f"v{version}":
-        raise ValueError(f"Tag {tag!r} must match gradle.properties: v{version}")
+    release_tag = f"mc{minecraft}-v{version}"
+    if tag and tag != release_tag:
+        raise ValueError(f"Tag {tag!r} must match gradle.properties: {release_tag}")
+    if branch and branch != minecraft:
+        raise ValueError(f"Branch {branch!r} must match minecraft_version: {minecraft}")
     config = json.loads((ROOT / "release.json").read_text(encoding="utf-8"))
     release_type = config["release_type"]
     if release_type not in {"release", "beta", "alpha"}:
         raise ValueError("release_type must be release, beta or alpha")
     if "-" in version and release_type == "release":
         raise ValueError("A prerelease version cannot be marked release")
-    changelog = ROOT / "changelog" / f"{version}.md"
+    changelog = ROOT / "changelog" / minecraft / f"{version}.md"
     notes = changelog.read_text(encoding="utf-8").strip()
     if not notes.startswith(f"# Create: Bigger Storage Continued {version}\n"):
         raise ValueError("The changelog heading must match the version")
@@ -44,10 +48,11 @@ def metadata(tag: str) -> dict:
     return {
         "version": version,
         "minecraft": minecraft,
+        "release_tag": release_tag,
         "forge": properties["forge_version"],
         "create": properties["create_version"],
         "release_type": release_type,
-        "release_name": f"Create: Bigger Storage Continued {version}",
+        "release_name": f"Create: Bigger Storage Continued {version} — Minecraft {minecraft}",
         "changelog": changelog.relative_to(ROOT).as_posix(),
     }
 
@@ -79,7 +84,7 @@ def package(info: dict) -> dict:
     with zipfile.ZipFile(sources) as jar:
         if not jar.read("LICENSE_UPSTREAM").strip():
             raise ValueError("Missing source jar license")
-    output = ROOT / "build" / "github-release" / info["version"]
+    output = ROOT / "build" / "github-release" / info["minecraft"] / info["version"]
     output.mkdir(parents=True, exist_ok=True)
     hashes = {}
     for path in (runtime, sources):
@@ -107,11 +112,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("check", "package"))
     parser.add_argument("--tag", default="")
+    parser.add_argument("--branch", default="")
     args = parser.parse_args()
-    info = metadata(args.tag)
+    info = metadata(args.tag, args.branch)
     if args.command == "check" and os.environ.get("GITHUB_OUTPUT"):
         with Path(os.environ["GITHUB_OUTPUT"]).open("a", encoding="utf-8") as stream:
-            for key in ("version", "release_type", "release_name"):
+            for key in ("version", "minecraft", "release_tag", "release_type", "release_name"):
                 stream.write(f"{key}={info[key]}\n")
     print(json.dumps(package(info) if args.command == "package" else info,
                      ensure_ascii=False, indent=2))

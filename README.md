@@ -2,6 +2,8 @@
 
 Create: Bigger Storage 的非官方维护续作，原作者为 LopyLuna。
 当前源码为 **1.1.2 库存通知与同步优化候选版**，面向 Minecraft 1.20.1 / Forge 47.2.32 / Create 6.0.4，整合包性能及游戏内兼容验收待进行。
+
+当前开发及默认分支为`1.20.1`，后续Minecraft版本使用独立分支并独立推进模组版本号。日常推送和PR不自动构建；新发布标签使用`mc<Minecraft>-v<模组版本>`，推送标签后构建并发布，另保留手动构建入口。项目规范见 [AGENTS.md](AGENTS.md)，详细操作见 [RELEASING.md](RELEASING.md)。
 此前 **1.1.1 本地正式版**已由用户在独立实例查看并接受，包含最终材质、水晶侧面去点及完整3×3端层合并修复；安装文件保留在 `build/releases/1.1.1/`，1.1.0保留在 `build/releases/1.1.0/`。说明见 [RELEASE_NOTES.md](RELEASE_NOTES.md)、[库存优化说明](INVENTORY_PERFORMANCE.md) 和 [材质记录](artwork/create-colors-v5/README.md)。公开源码仓库为 [GitHub](https://github.com/yunluoxincheng/create-bigger-storage-continued)，按版本标签自动构建并发布GitHub Release；Modrinth／CurseForge尚未接入，流程见 [RELEASING.md](RELEASING.md)。
 
 ## 开发前源码核对
