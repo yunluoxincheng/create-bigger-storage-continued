@@ -37,7 +37,13 @@ git push origin v1.1.3
 
 ## 工作流行为
 
-`.github/workflows/release.yml`在`main`推送、面向`main`的PR和手动触发时只构建与上传Actions产物。推送`v*`标签时，构建成功后自动创建GitHub Release。
+`.github/workflows/release.yml`在`main`推送、面向`main`的PR和未指定标签的手动触发时只构建与上传Actions产物。推送`v*`标签时，构建成功后自动创建GitHub Release。
+
+已有标签需要补发或重试尚未创建的Release时，可从`main`手动触发并指定`tag`；工作流检出该标签、验证版本，构建标签中的源码并发布。首次创建仓库时，分支和标签一起推送只产生了分支构建事件，首批两个Release使用此入口补发，不移动已公开标签：
+
+```powershell
+gh workflow run release.yml --repo yunluoxincheng/create-bigger-storage-continued --ref main -f tag=v1.1.2
+```
 
 工作流使用Java17和带官方发行包校验值的Gradle8.12 Wrapper；所有第三方Action固定提交SHA。只有发布作业获得`contents: write`，构建作业只有读取权限；不需要个人访问令牌，使用GitHub自带的`GITHUB_TOKEN`。
 
