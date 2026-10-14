@@ -34,6 +34,8 @@ Initialization used Forge `runData` and Registrate; it did not exercise game fra
 
 Separate checks are still needed for repaired chunk-refresh behavior, crystal vault display, individual terminal/crafting combinations, comparators, loaded-inventory regrouping/upgrades, save/reload, contraption inventory restoration and matching Connected silo upgrades. Create 6.0.6 and 6.0.7 have no equivalent gameplay acceptance record.
 
+A reviewed, user-provided Create 6.0.8 JFR comparison supports removal of the repeated threshold-switch compatibility-selection hotspot in `1.2.0-dev-threshold-perf1`. This is performance evidence for a development candidate, not full behavior acceptance or a guaranteed TPS gain. Details and sampling limits are recorded in [technical notes](TECHNICAL_NOTES.md#threshold-switch-compatibility-selection); published 1.2.0 artifacts and release status remain unchanged.
+
 1.1.2 was accepted as stable and received user feedback that the existing gameplay environment worked normally. That feedback does not establish every optional-mod combination, measured FPS/TPS gains or gameplay acceptance for the three 1.2.0 combinations.
 
 See [technical notes](TECHNICAL_NOTES.md) for timing and inventory semantics, and [release notes](../CHANGELOG.md) for changes by version.

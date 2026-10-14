@@ -20,6 +20,7 @@ minecraft {
     runs {
         configureEach {
             workingDirectory project.file('run')
+            args '--mixin', 'create_bs.mixins.json'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', file('build/createSrgToMcp/output.srg').absolutePath
             mods { create_bs { source sourceSets.main } }
@@ -51,6 +52,8 @@ dependencies {
     }
     implementation fg.deobf("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}")
     implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+    // Create supplies MixinExtras at runtime; common exposes its injection API.
+    compileOnly 'io.github.llamalad7:mixinextras-common:0.4.1'
     runtimeOnly 'io.github.llamalad7:mixinextras-forge:0.4.1'
 }
 
@@ -82,6 +85,7 @@ jar {
     manifest.attributes(
         'Specification-Title': 'Create: Bigger Storage Continued',
         'Specification-Vendor': 'LopyLuna; Continued contributors',
+        'MixinConfigs': 'create_bs.mixins.json',
         'Implementation-Version': project.version
     )
     finalizedBy 'reobfJar'
@@ -102,6 +106,7 @@ tasks.named('jarJar') {
     manifest.attributes(
         'Specification-Title': 'Create: Bigger Storage Continued',
         'Specification-Vendor': 'LopyLuna; Continued contributors',
+        'MixinConfigs': 'create_bs.mixins.json',
         'Implementation-Version': project.version
     )
     finalizedBy 'reobfJarJar'

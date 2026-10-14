@@ -30,6 +30,20 @@ The development fix invalidates client capabilities locally. On a real server, i
 
 1.2.0 uses Create's `SameSizeCombinedInvWrapper.create` inside the existing versioned inventory wrapper. Equal-capacity members allow direct slot-to-member lookup; mixed capacities use the standard fallback. This does not change per-block inventory ownership, capacities or the upgrade transaction.
 
+## Threshold-switch compatibility selection
+
+The development optimization wraps only the compatibility-filter operation in Create's `ThresholdSwitchBlockEntity.updateCurrentLevel`. It selects the first matching storage adapter on the first scanned slot and reuses that selection for the rest of the same invocation. The no-match result is cached too. MixinExtras shared locals keep the selection separate for each invocation, including recursive calls; it does not persist across target changes or later scans.
+
+Create still calculates each slot's capacity through the selected adapter, or its original fallback when none matches. Item filtering, empty slots, zero-capacity slots, inventory-version tracking, fluid scanning and redstone/display updates retain their upstream logic. This hook applies to item inventories observed by Create threshold switches, not only this mod's vaults. Full inventory scanning and per-slot Stream processing remain; packager summaries and vault notifications are separate optimization work. No measured FPS/TPS improvement is claimed.
+
+The hook uses the existing MixinExtras 0.4.1 runtime supplied by the supported Create distributions and requires exactly one matching injection point. Both runtime JAR manifests register the Mixin configuration; development launches register it explicitly. The hook targets Create and Java Stream names only and does not require Minecraft name remapping.
+
+Development compilation and Forge data-generation initialization passed with Create 6.0.6-150, 6.0.7-281 and 6.0.8-289. Exported transformed classes confirm the hook and invocation-local cache in each version; generated resources were unchanged. These checks do not establish packaged-client gameplay, optional-mod compatibility or measured performance gains.
+
+A user-provided 60-second JFR comparison was reviewed on 2026-10-14 for Create 6.0.8 with `1.2.0-dev-threshold-perf1`. The recordings cover 17:04:06–17:05:06 with `dev-renderfix1` and 18:36:30–18:37:30 with `dev-threshold-perf1` (UTC+08:00), using the same sampling configuration. Threshold-switch samples fell from 442/1738 server-thread samples (25.43%) to 193/1288 (14.98%); compatibility-selection samples fell from 113 to zero. The hook appeared in six samples, and 128 threshold-switch samples still included Stream processing. Zero sampled hits does not mean zero calls. These observations support removal of the repeated-selection hotspot, not an exact timing or guaranteed speedup claim.
+
+The comparison also reports lower rolling tick-time readings: means of 63.37 ms to 56.69 ms over the full recordings, and 62.21 ms to 46.65 ms after excluding the first approximately ten seconds from both. The latter window still had 14/49 readings above 50 ms. Order stages and inventory-operation rates were not automatically held constant; these are rolling averages, not individual tick durations or proof of stable 20 TPS. The report records no ERROR/FATAL messages during the new sample interval or Mixin application failures. Raw recordings were not independently reprocessed for this documentation update. Filter, capacity, fluid, redstone, recursive-call isolation and inventory-conservation acceptance remain separate from this performance observation.
+
 ## Complete 3×3 end-layer regrouping
 
 A complete end layer can fail ordinary connection search when its starting corner still belongs to an older 2×2 controller behind it. The additional connectivity step detects a full, same-type, same-axis 3×3 layer before ordinary formation and permits it to regroup independently.
