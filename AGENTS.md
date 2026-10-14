@@ -1,6 +1,6 @@
 # 项目规范
 
-本文件适用于Create: Bigger Storage Continued整个仓库。开发前阅读README、相关实现及本文件；发布操作同时遵守 [RELEASING.md](RELEASING.md)。
+本文件适用于Create: Bigger Storage Continued整个仓库。开发前阅读README、相关实现及本文件；发布操作同时遵守 [发布指南](docs/RELEASING.md)。
 
 ## 工作环境与修改边界
 
@@ -38,7 +38,9 @@
 - README按项目简介、下载与发行状态、主要功能及容量表、兼容要求、安装、基本使用、问题反馈、简短构建说明、署名与许可组织。开头说明非官方维护续作身份及原作者，不使用未经证实的兼容或性能宣传。
 - 兼容表使用各版本实际依赖声明，区分最低要求与开发基线；明确稳定版与测试版、本模组与可选依赖各自的兼容边界。当前1.1.2为Stable，1.2.0为Beta。
 - 下载链接和徽章只指向真实存在的页面；当前只有GitHub Releases，Modrinth／CurseForge页面建立后再添加。截图仅使用真实项目素材，不伪造游戏画面。
-- README保留玩家和贡献者所需的信息，开发过程、材质迭代、本机路径和详细核验记录放入专项文档或历史归档，并提供入口。原README记录归档在`docs/DEVELOPMENT_HISTORY.md`，不作为当前安装要求。
+- README保留玩家和贡献者所需的信息。长期说明集中在`docs/RELEASING.md`、`docs/UPGRADES.md`、`docs/COMPATIBILITY.md`、`docs/TECHNICAL_NOTES.md`和`docs/ATTRIBUTION.md`；开发过程、旧草案、材质迭代和历史核验记录仅本地保留并忽略，不从公开文档链接到这些本地文件。
+- 文档移动、合并或退出跟踪后，必须检查所有待提交Markdown的链接和锚点、HTML图片／链接、JSON路径及脚本／工作流中的引用，并同步更新README、CHANGELOG、项目规范和来源清单。引用目标须属于Git跟踪文件，不能因为本地仍有被忽略的旧文件而误判链接有效。
+- 旧文档及审阅预览取消跟踪时使用保留工作区文件的方式，不删除本地资料、不改写历史标签。新增过程记录或生成预览不得重新纳入公开提交；保留素材清单、许可及生成脚本实际读取的四张升级样张。
 - 英文更新日志作为GitHub及后续Modrinth／CurseForge发布说明的共同来源；若以后增加中文翻译，使用独立文件并保持内容一致，不重复排列双语正文。
 - 经用户授权可统一历史Release的文案及当前分支中的对应日志；只作说明调整，保留发行状态、Latest归属、原标签、发布日期和全部附件。历史版本不补记后续版本的功能或未完成的验收。
 - 当前只维护`changelog/<Minecraft>/`中的版本日志。旧扁平入口`changelog/1.1.1.md`、`changelog/1.1.2.md`已按用户要求移除，不再重建；原始文本仍由历史Git标签保存。首次发布读取标签内日志，后续文案修订可同步当前分支日志与既有Release正文，不移动标签或重新构建附件。
@@ -47,8 +49,8 @@
 
 - 原项目的MIT代码与ARR美术分别处理。代码修改和分发保留完整原版权及许可声明，不把美术、品牌背书或作者个人同意扩展为MIT已授予的权利；不得声称已获得未实际取得的授权。
 - 公开说明明确非官方维护续作身份，保留原作者与依赖贡献者署名，不暗示原作者参与、批准或背书。原ARR素材和包含它们的私有历史不进入公开检出或发布包。
-- 素材新增或替换时更新`docs/assets/source-inventory.json`及对应来源记录，记录贴图、模型、图标的输入、转换方法、许可和哈希；哈希不同本身不能证明独立创作。核查记录见`docs/COPYRIGHT.md`。
-- 当前图标使用现有保险库贴图组成，网页图标为`docs/assets/project-icon.png`，运行图标为`src/main/resources/pack.png`；两者字节一致，400×400、透明背景。配方和来源见`docs/ICON.md`及`docs/assets/icon-provenance.json`。变更时同步记录输出哈希，不改原164张贴图来源清单来冒充图标来源。
+- 素材新增或替换时更新`docs/assets/source-inventory.json`及对应来源记录，记录贴图、模型、图标的输入、转换方法、许可和哈希；哈希不同本身不能证明独立创作。版权与来源说明见`docs/ATTRIBUTION.md`。
+- 当前图标使用现有保险库贴图组成，网页图标为`docs/assets/project-icon.png`，运行图标为`src/main/resources/pack.png`；两者字节一致，400×400、透明背景。配方和来源见`docs/ATTRIBUTION.md#project-icon`及`docs/assets/icon-provenance.json`。变更时同步记录输出哈希，不改原164张贴图来源清单来冒充图标来源。
 - 必须如实记录AI辅助代码、文档或图像使用。Python绘制、像素化或描摹不能自动证明“非AI”或绕过平台规则；没有生成式图像输入与完全由人创作是不同事实。后续平台发布前复核当前AI披露和图片政策，不宣称已获平台批准。
 - 2026-10-14用户查看原CurseForge页面并确认其License为MIT；本次代理独立访问仍返回403。记录用户核对与代理核验的来源差异；平台规则或原许可变化时重新核查。
 - 已发布版本的JAR和标签保持原样；图标等资源变化记录在`changelog/<Minecraft>/UNRELEASED.md`，在下一次有新版本和新标签的二进制发布时纳入。不得修改既有版本日志来暗示已发布安装包包含新资源。

@@ -35,7 +35,7 @@
   },
   "project_icon": {
     "record": "docs/assets/icon-provenance.json",
-    "recipe": "docs/ICON.md",
+    "recipe": "docs/ATTRIBUTION.md#project-icon",
     "license": "Create MIT source artwork; retained notice",
     "ai_assistance": "transform instructions and arrangement; no generated-image bitmap input"
   },

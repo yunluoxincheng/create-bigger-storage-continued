@@ -51,7 +51,7 @@
 | 1.1.2 | 正式版 | 1.20.1 | 47.2.32 及以上（47.x） | 6.0.4 | 17 |
 | 1.1.1 | 历史正式版 | 1.20.1 | 47.2.32 及以上（47.x） | 6.0.4 | 17 |
 
-1.2.0 为上述三种 Create 版本提供同一个安装包，内置 **Flywheel 1.0.5**，无需单独下载。当前仍为测试版，已完成的核验和待进行的游戏内验证见[兼容说明](COMPATIBILITY_1_2_0.md)。
+1.2.0 为上述三种 Create 版本提供同一个安装包，内置 **Flywheel 1.0.5**，无需单独下载。当前仍为测试版，已完成的核验和待进行的游戏内验证见[兼容说明](docs/COMPATIBILITY.md)。
 
 **Create: Connected 为可选依赖。**仅原版档位的纵向保险库及涉及该档位的升级需要它。请选择与 Minecraft、Create 匹配的 Connected 版本；其当前上游兼容表将 Create 6.0.6 标为不支持，详见 [Connected 兼容说明](https://github.com/hlysine/create_connected#download)。
 
@@ -68,7 +68,7 @@
 
 制作对应当前档位和目标档位的升级组件，右键已形成结构的任意成员方块即可。生存模式下**每个方块消耗一个组件**，从玩家物品栏合计扣除；创造模式不消耗组件。
 
-升级由玩家在静态世界结构上进行，不支持部署器或运行中的动态结构。组件也可以在使用前继续合成为更高目标档位的升级件，完整路线见[配方及成本参考](UPGRADE_RECIPE_PROPOSAL.md)。
+升级由玩家在静态世界结构上进行，不支持部署器或运行中的动态结构。组件也可以在使用前继续合成为更高目标档位的升级件，完整路线见[配方及成本参考](docs/UPGRADES.md)。
 
 ## 问题反馈
 
@@ -88,7 +88,7 @@ Linux 或 macOS：
 bash ./gradlew --no-daemon jarJar sourcesJar
 ```
 
-输出位于 `build/libs/`。1.2.0 的普通版本文件名 JAR 包含 Flywheel，`-unbundled.jar` 为内部构建产物。常规构建使用已提交资源；发布和本机构建选项见 [RELEASING.md](RELEASING.md)。
+输出位于 `build/libs/`。1.2.0 的普通版本文件名 JAR 包含 Flywheel，`-unbundled.jar` 为内部构建产物。常规构建使用已提交资源；发布和本机构建选项见[发布指南](docs/RELEASING.md)。
 
 ## 署名与许可
 
@@ -97,6 +97,6 @@ bash ./gradlew --no-daemon jarJar sourcesJar
 - **Jozufozu 与 Flywheel 贡献者：**内置 Flywheel 库及其上游修复。
 - **Continued 贡献者：**维护、纵向保险库、升级及性能优化。
 
-代码采用 [MIT 许可](LICENSE)。Create 美术改作及内置 Flywheel 保留原许可声明，来源及素材署名详见 [PUBLICATION.md](PUBLICATION.md)，素材证据及平台发布状态见[版权核查](docs/COPYRIGHT.md)。
+代码采用 [MIT 许可](LICENSE)。Create 美术改作及内置 Flywheel 保留原许可声明，许可、素材来源及平台发布要求见[署名与来源说明](docs/ATTRIBUTION.md)。
 
-实现与历史记录：[库存优化](INVENTORY_PERFORMANCE.md)、[连接修复](CONNECTIVITY_FIX.md)、[材质记录](artwork/create-colors-v5/README.md)、[开发历史](docs/DEVELOPMENT_HISTORY.md)。
+项目文档：[升级与配方](docs/UPGRADES.md)、[兼容性](docs/COMPATIBILITY.md)、[技术说明](docs/TECHNICAL_NOTES.md)、[发布指南](docs/RELEASING.md)、[署名与来源](docs/ATTRIBUTION.md)。

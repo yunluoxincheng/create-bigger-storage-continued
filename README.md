@@ -51,7 +51,7 @@ Capacity below is measured in inventory slots **per block**. Horizontal and vert
 | 1.1.2 | Stable | 1.20.1 | 47.2.32+ (47.x) | 6.0.4 | 17 |
 | 1.1.1 | Stable, older release | 1.20.1 | 47.2.32+ (47.x) | 6.0.4 | 17 |
 
-Version 1.2.0 uses one installer for all three listed Create versions and includes **Flywheel 1.0.5**. No separate Flywheel download is required. It remains a beta release; the completed checks and outstanding gameplay verification are documented in the [compatibility notes](COMPATIBILITY_1_2_0.md).
+Version 1.2.0 uses one installer for all three listed Create versions and includes **Flywheel 1.0.5**. No separate Flywheel download is required. It remains a beta release; the completed checks and outstanding gameplay verification are documented in the [compatibility notes](docs/COMPATIBILITY.md).
 
 **Create: Connected is optional.** It is needed only for the standard-tier vertical silo and upgrades involving that tier. Choose a Connected release compatible with your Minecraft and Create versions; its current upstream compatibility table lists Create 6.0.6 as unsupported. See [Connected's compatibility information](https://github.com/hlysine/create_connected#download).
 
@@ -68,7 +68,7 @@ This version line targets **Minecraft 1.20.1 / Forge**. Other Minecraft versions
 
 Craft an upgrade component for the vault's current and target tiers, then right-click any block in the formed structure. In survival, one component is required **per block**; components are collected from the player's inventory. Creative mode does not consume them.
 
-Upgrades must be performed by a player on a stationary world structure. Deployer upgrades and upgrades on moving contraptions are not supported. Components can also be crafted into higher-target upgrades before use. See the [recipe and cost reference](UPGRADE_RECIPE_PROPOSAL.md) for the complete crafting routes.
+Upgrades must be performed by a player on a stationary world structure. Deployer upgrades and upgrades on moving contraptions are not supported. Components can also be crafted into higher-target upgrades before use. See the [recipe and cost reference](docs/UPGRADES.md) for the complete crafting routes.
 
 ## Reporting issues
 
@@ -88,7 +88,7 @@ On Linux or macOS:
 bash ./gradlew --no-daemon jarJar sourcesJar
 ```
 
-Artifacts are written to `build/libs/`. For 1.2.0, the ordinary versioned JAR includes Flywheel; the `-unbundled.jar` is an internal build artifact. Normal builds use committed resources. See [RELEASING.md](RELEASING.md) for publishing and local build options.
+Artifacts are written to `build/libs/`. For 1.2.0, the ordinary versioned JAR includes Flywheel; the `-unbundled.jar` is an internal build artifact. Normal builds use committed resources. See the [release guide](docs/RELEASING.md) for publishing and local build options.
 
 ## Credits and license
 
@@ -97,6 +97,6 @@ Artifacts are written to `build/libs/`. For 1.2.0, the ordinary versioned JAR in
 - **Jozufozu and the Flywheel contributors:** the included Flywheel library and its upstream fixes.
 - **Continued contributors:** maintenance, vertical vaults, upgrades and performance improvements.
 
-Code is distributed under the [MIT license](LICENSE). Create artwork adaptations and the embedded Flywheel library retain their original notices. See [PUBLICATION.md](PUBLICATION.md) for source and asset attribution, and the [copyright review](docs/COPYRIGHT.md) for provenance and platform publication status.
+Code is distributed under the [MIT license](LICENSE). Create artwork adaptations and the embedded Flywheel library retain their original notices. See [attribution and asset sources](docs/ATTRIBUTION.md) for notices, provenance and platform publication requirements.
 
-Implementation and historical records: [inventory optimization](INVENTORY_PERFORMANCE.md), [connectivity repair](CONNECTIVITY_FIX.md), [artwork](artwork/create-colors-v5/README.md), and [development history](docs/DEVELOPMENT_HISTORY.md).
+Documentation: [upgrades](docs/UPGRADES.md), [compatibility](docs/COMPATIBILITY.md), [technical notes](docs/TECHNICAL_NOTES.md), [releasing](docs/RELEASING.md), and [attribution](docs/ATTRIBUTION.md).

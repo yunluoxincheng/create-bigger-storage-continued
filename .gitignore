@@ -33,16 +33,17 @@ Todo
 
 # Local art experiments and generated delivery bundles; retain approved records.
 /artwork/*
-!/artwork/README.md
 !/artwork/create-colors-v5/
 !/artwork/python-upgrade-samples/
 /artwork/create-colors-v5/assets/
 /artwork/create-colors-v5/*.zip
 /artwork/create-colors-v5/verification-*.json
+/artwork/create-colors-v5/*.png
 /artwork/python-upgrade-samples/*.zip
 /artwork/python-upgrade-samples/samples.png
 /artwork/python-upgrade-samples/samples-target-arrow.png
 /artwork/python-upgrade-samples/samples-textured.png
+/artwork/python-upgrade-samples/samples-long-arrow.png
 /tools/DrawPythonTextureSamples.py
 /tools/ExportArtwork.py
 /tools/ExportArtworkA.py
@@ -53,3 +54,19 @@ Todo
 /src/main/resources/assets/create_bs/textures/item/target/
 /src/main/resources/assets/create_bs/textures/item/component_frame.png
 /src/main/resources/assets/create_bs/textures/item/upgrade_frame.png
+
+# Superseded documents and development records remain local; maintained docs are in docs/.
+/COMPATIBILITY_1_2_0.md
+/CONNECTIVITY_FIX.md
+/INVENTORY_PERFORMANCE.md
+/PUBLICATION.md
+/RELEASE_NOTES.md
+/RELEASING.md
+/SOURCE_BASELINE.md
+/UPGRADE_RECIPE_PROPOSAL.md
+/artwork/README.md
+/artwork/create-colors-v5/README.md
+/artwork/python-upgrade-samples/README.md
+/docs/COPYRIGHT.md
+/docs/DEVELOPMENT_HISTORY.md
+/docs/ICON.md
