@@ -24,7 +24,7 @@ Multiple vaults still tick, and external storage mods may build indexes or scan 
 
 Client chunk replacement removes existing block entities while iterating their collection. Calling `Level.getBlockEntity` from an invalidation callback can delete a removed controller and recreate it, changing the collection during iteration. The resulting exception interrupts chunk/NBT replacement and can leave inconsistent client controller data used by connected textures. This path existed in 1.1.1 and the published 1.2.0.
 
-The development fix invalidates client capabilities locally. On a real server, it reads the controller only from `getChunkNow` and the existing block-entity map, without creating entities or loading chunks; removed or mismatched controllers are skipped. Active server controller inventory, identifier and comparator caches still invalidate. Stored inventory, item NBT, notification batching and texture resources are unaffected. Gameplay confirmation of the repair is pending; published 1.2.0 artifacts remain unchanged.
+The development fix invalidates client capabilities locally. On a real server, it reads the controller only from `getChunkNow` and the existing block-entity map, without creating entities or loading chunks; removed or mismatched controllers are skipped. Active server controller inventory, identifier and comparator caches still invalidate. Stored inventory, item NBT, notification batching and texture resources are unaffected. Initial user retesting reports no issue so far; updated logs and broader gameplay checks have not yet been reviewed. Published 1.2.0 artifacts remain unchanged.
 
 ## Combined inventory lookup
 
