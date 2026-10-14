@@ -18,3 +18,4 @@ Changes on the development branch that are not included in published JARs.
 
 - Resolve Create threshold-switch storage compatibility once per inventory scan, reducing repeated type checks for large inventories while preserving item filters and slot capacity calculations.
 - Reuse stock summaries across packagers connected to the same unchanged vault inventory, reducing repeated slot scans while preserving independent arrival tracking.
+- Rebuild changed vault stock summaries from dirty slots and affected item groups, avoiding repeated inventory reads and grouping for unchanged items. Idle summary caches release their temporary data without changing stored items or world saves.

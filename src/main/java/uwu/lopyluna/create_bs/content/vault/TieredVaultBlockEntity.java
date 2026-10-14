@@ -48,6 +48,10 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
     private boolean visibleInventoryDirty;
     private int comparatorOutput = -1;
     private long lastInventorySaveTick = Long.MIN_VALUE;
+    private VaultInventoryWrapper inventoryTracker;
+    private int trackedSlotOffset;
+    private int trackedSlotCount;
+    private boolean initializingCapability;
 
     public TieredVaultBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, TierMaterials tierMaterials) {
         super(type, pos, state);
@@ -58,7 +62,13 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
             protected void onContentsChanged(int slot) {
                 super.onContentsChanged(slot);
                 if (VaultUpgradeService.isUpdating()) return;
-                updateComparators();
+                if (inventoryTracker != null) {
+                    if (inventory.getSlots() != trackedSlotCount)
+                        invalidateItemCapability();
+                    else
+                        inventoryTracker.memberChanged(trackedSlotOffset + slot);
+                }
+                updateComparators(false);
                 if (level == null || level.isClientSide) return;
                 // Mark the owning chunk immediately, without setChanged()'s
                 // synchronous comparator notification on every slot mutation.
@@ -69,6 +79,20 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
                 }
                 if (tierMaterials.seeThrough && slot < inventory.getSlots() / 2)
                     visibleInventoryDirty = true;
+            }
+
+            @Override
+            public void setSize(int size) {
+                // setSize also replaces contents when the size is unchanged.
+                super.setSize(size);
+                invalidateItemCapability();
+            }
+
+            @Override
+            protected void onLoad() {
+                super.onLoad();
+                // NBT loading does not emit slot callbacks after setSize.
+                invalidateItemCapability();
             }
         };
 
@@ -90,11 +114,15 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
     }
 
     protected void updateComparators() {
+        updateComparators(true);
+    }
+
+    private void updateComparators(boolean invalidateSummary) {
         if (level == null || level.isClientSide || VaultUpgradeService.isUpdating()) return;
         TieredVaultBlockEntity controllerBE = getControllerBE();
         if (controllerBE == null) return;
         controllerBE.itemCapability.ifPresent(handler -> {
-            if (handler instanceof VaultInventoryWrapper vault)
+            if (invalidateSummary && handler instanceof VaultInventoryWrapper vault)
                 vault.invalidatePackagerSummaries();
         });
         controllerBE.comparatorOutput = -1;
@@ -149,6 +177,8 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
 
         if (updateConnectivity) updateConnectivity();
         if (level == null || level.isClientSide || VaultUpgradeService.isUpdating()) return;
+        if (isController() && inventoryTracker != null)
+            inventoryTracker.expireIdleSummaries();
         flushComparatorUpdates();
         if (visibleInventoryDirty) {
             visibleInventoryDirty = false;
@@ -196,7 +226,7 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
             level.setBlock(worldPosition, state, 22);
         }
 
-        itemCapability.invalidate();
+        invalidateItemCapability();
         invId = null;
         comparatorOutput = -1;
         updateComparators();
@@ -209,7 +239,7 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
         if (level == null || (level.isClientSide && !isVirtual())) return;
         if (controller.equals(this.controller)) return;
         this.controller = controller;
-        itemCapability.invalidate();
+        invalidateItemCapability();
         invId = null;
         comparatorOutput = -1;
         updateComparators();
@@ -247,7 +277,7 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
             saved.putInt("Size", Math.max(tierMaterials.capacity, saved.getInt("Size")));
             inventory.deserializeNBT(saved);
         }
-        itemCapability.invalidate();
+        invalidateItemCapability();
         invId = null;
         comparatorOutput = -1;
         // Do not resolve another block entity while this one's NBT is loading.
@@ -318,7 +348,7 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
-        itemCapability.invalidate();
+        invalidateItemCapability();
         invId = null;
         comparatorOutput = -1;
         // Chunk teardown iterates its block-entity map. Level.getBlockEntity can
@@ -329,7 +359,7 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
                 .getChunkNow(controller.getX() >> 4, controller.getZ() >> 4);
             if (chunk != null && chunk.getBlockEntities().get(controller) instanceof TieredVaultBlockEntity root
                 && root.getType() == getType() && !root.isRemoved()) {
-                root.itemCapability.invalidate();
+                root.invalidateItemCapability();
                 root.invId = null;
                 root.comparatorOutput = -1;
                 root.comparatorsDirty = true;
@@ -340,6 +370,34 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
     public void applyInventoryToBlock(ItemStackHandler handler) {
         if (handler.getSlots() > inventory.getSlots()) inventory.setSize(handler.getSlots());
         for (int i = 0; i < inventory.getSlots(); i++) inventory.setStackInSlot(i, i < handler.getSlots() ? handler.getStackInSlot(i).copy() : ItemStack.EMPTY);
+    }
+
+    void trackInventory(VaultInventoryWrapper tracker, int offset) {
+        if (inventoryTracker != null && inventoryTracker != tracker)
+            inventoryTracker.retire();
+        inventoryTracker = tracker;
+        trackedSlotOffset = offset;
+        trackedSlotCount = inventory.getSlots();
+    }
+
+    void untrackInventory(VaultInventoryWrapper tracker) {
+        if (inventoryTracker != tracker) return;
+        inventoryTracker = null;
+        trackedSlotOffset = 0;
+        trackedSlotCount = 0;
+    }
+
+    void invalidateItemCapability() {
+        LazyOptional<IItemHandler> previous = itemCapability;
+        if (inventoryTracker != null) inventoryTracker.retire();
+        if (previous != null) previous.invalidate();
+        markInventoryCapabilityDirty();
+    }
+
+    void markInventoryCapabilityDirty() {
+        invId = null;
+        comparatorOutput = -1;
+        comparatorsDirty = level != null && !level.isClientSide;
     }
 
     @Override
@@ -353,7 +411,7 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
     }
 
     private void initCapability() {
-        if (itemCapability.isPresent())
+        if (initializingCapability || itemCapability.isPresent())
             return;
         if (!isController()) {
             TieredVaultBlockEntity controllerBE = getControllerBE();
@@ -364,20 +422,29 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
             return;
         }
 
-        Direction.Axis mainAxis = getMainConnectionAxis();
-        IItemHandlerModifiable[] invs = new IItemHandlerModifiable[length * radius * radius];
-        for (int yOffset = 0; yOffset < length; yOffset++) for (int xOffset = 0; xOffset < radius; xOffset++) for (int zOffset = 0; zOffset < radius; zOffset++) {
-            BlockPos vaultPos = VaultGeometry.position(worldPosition, mainAxis, yOffset, xOffset, zOffset);
-            TieredVaultBlockEntity vaultAt = null;
-            if (level != null && level.hasChunkAt(vaultPos)
-                && level.getBlockEntity(vaultPos) instanceof TieredVaultBlockEntity candidate
-                && candidate.getType() == getType() && candidate.getController().equals(getController()))
-                vaultAt = candidate;
-            if (vaultAt == null) return; // Never expose a writable, unsaved placeholder slot.
-            invs[yOffset * radius * radius + xOffset * radius + zOffset] = vaultAt.inventory;
+        initializingCapability = true;
+        try {
+            Direction.Axis mainAxis = getMainConnectionAxis();
+            IItemHandlerModifiable[] invs = new IItemHandlerModifiable[length * radius * radius];
+            TieredVaultBlockEntity[] members = new TieredVaultBlockEntity[invs.length];
+            for (int yOffset = 0; yOffset < length; yOffset++) for (int xOffset = 0; xOffset < radius; xOffset++) for (int zOffset = 0; zOffset < radius; zOffset++) {
+                BlockPos vaultPos = VaultGeometry.position(worldPosition, mainAxis, yOffset, xOffset, zOffset);
+                TieredVaultBlockEntity vaultAt = null;
+                if (level != null && level.hasChunkAt(vaultPos)
+                    && level.getBlockEntity(vaultPos) instanceof TieredVaultBlockEntity candidate
+                    && candidate.getType() == getType() && candidate.getController().equals(getController()))
+                    vaultAt = candidate;
+                if (vaultAt == null) return; // Never expose a writable, unsaved placeholder slot.
+                int index = yOffset * radius * radius + xOffset * radius + zOffset;
+                invs[index] = vaultAt.inventory;
+                members[index] = vaultAt;
+            }
+            VaultInventoryWrapper itemHandler = new VaultInventoryWrapper(SameSizeCombinedInvWrapper.create(invs), this, members);
+            itemCapability = LazyOptional.of(() -> itemHandler);
+            itemHandler.trackCapability(itemCapability);
+        } finally {
+            initializingCapability = false;
         }
-        IItemHandler itemHandler = new VaultInventoryWrapper(SameSizeCombinedInvWrapper.create(invs), this);
-        itemCapability = LazyOptional.of(() -> itemHandler);
     }
 
     public static int getMaxLength(int radius, TierMaterials tier) {
@@ -391,7 +458,7 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
     public void notifyMultiUpdated() {
         BlockState state = this.getBlockState();
         if (level != null && TieredVaultBlock.isVault(state, tierMaterials)) level.setBlock(getBlockPos(), state.setValue(TieredVaultBlock.LARGE, radius > 2), 6);
-        itemCapability.invalidate();
+        invalidateItemCapability();
         invId = null;
         comparatorOutput = -1;
         updateComparators();

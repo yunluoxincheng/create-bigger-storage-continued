@@ -125,6 +125,16 @@ public final class VaultDiagnostics {
         if (stats != null) stats.memberClearSignals++;
     }
 
+    public static void memberSlotChange(VaultInventoryWrapper inventory) {
+        InventoryStats stats = inventory(inventory);
+        if (stats != null) stats.memberSlotChanges++;
+    }
+
+    public static void idleRelease(VaultInventoryWrapper inventory) {
+        InventoryStats stats = inventory(inventory);
+        if (stats != null) stats.idleReleases++;
+    }
+
     public static void packagePrepared(VaultInventoryWrapper inventory) {
         InventoryStats stats = inventory(inventory);
         if (stats != null) stats.preparedPackages++;
@@ -263,7 +273,8 @@ public final class VaultDiagnostics {
 
         private Path save() throws IOException {
             JsonObject report = new JsonObject();
-            report.addProperty("schema_version", 1);
+            report.addProperty("schema_version", 2);
+            report.addProperty("summary_strategy", "R2 dirty-slot contributions and affected-Item replay");
             report.addProperty("mod_version", modVersion("create_bs"));
             report.addProperty("minecraft_version", SharedConstants.getCurrentVersion().getName());
             report.addProperty("forge_version", modVersion("forge"));
@@ -287,6 +298,10 @@ public final class VaultDiagnostics {
             notes.add("query_calls include Create-local hits; shared_requests exclude those early returns");
             notes.add("version_increment_calls count wrapper increments, not packages or unique slot changes");
             notes.add("member_or_structure_clear_signals can accompany the same mutation's version increment");
+            notes.add("member_slot_change_signals count callbacks, not distinct dirty slots; same-content assignments can conservatively advance versions");
+            notes.add("build_attempts include full and incremental rebuilds and may exceed shared misses when reentrant changes require retries");
+            notes.add("completed_scanned_slots count actual inventory slot reads, not in-memory contribution visits");
+            notes.add("incremental_avoided_slot_visits estimate retained incremental builds times unread handler slots");
             notes.add("completed_scanned_slots exclude aborted scans; build/copy failures are separate counters");
             notes.add("avoided_slot_visits estimate shared hits times handler slot count, not measured time saved");
             notes.add("elapsed build/copy times include scheduling and GC and may overlap in reentrant calls");
@@ -308,13 +323,16 @@ public final class VaultDiagnostics {
         private JsonObject info;
         private final ModeStats extractable = new ModeStats();
         private final ModeStats input = new ModeStats();
-        private long versionIncrements, memberClearSignals, preparedPackages, takenPackages, receivedPackages;
+        private long versionIncrements, memberClearSignals, memberSlotChanges, idleReleases;
+        private long preparedPackages, takenPackages, receivedPackages;
 
         private ModeStats mode(boolean inputSlots) { return inputSlots ? input : extractable; }
 
         private void add(InventoryStats other) {
             versionIncrements += other.versionIncrements;
             memberClearSignals += other.memberClearSignals;
+            memberSlotChanges += other.memberSlotChanges;
+            idleReleases += other.idleReleases;
             preparedPackages += other.preparedPackages;
             takenPackages += other.takenPackages;
             receivedPackages += other.receivedPackages;
@@ -326,6 +344,8 @@ public final class VaultDiagnostics {
             JsonObject result = info == null ? new JsonObject() : info.deepCopy();
             result.addProperty("version_increment_calls", versionIncrements);
             result.addProperty("member_or_structure_clear_signals", memberClearSignals);
+            result.addProperty("member_slot_change_signals", memberSlotChanges);
+            result.addProperty("idle_cache_releases", idleReleases);
             result.addProperty("packages_prepared", preparedPackages);
             result.addProperty("packages_taken_via_capability", takenPackages);
             result.addProperty("successful_unwrap_calls", receivedPackages);
@@ -338,15 +358,27 @@ public final class VaultDiagnostics {
     public static final class ModeStats {
         private long queries, localHits, sharedRequests, sharedHits, builds, retainedBuilds, discardedBuilds, buildFailures;
         private long scannedSlots, avoidedSlots, buildNanos, maxBuildNanos, copies, copyFailures, copyNanos, maxCopyNanos;
+        private long fullBuilds, incrementalBuilds, dirtySlots, contributionVisits, recomputedBuckets, recomputedGroups;
+        private long incrementalAvoidedSlots;
 
-        public void rebuilt(long nanos, int slots, boolean completed, boolean retained) {
+        public void rebuilt(long nanos, int slots, boolean completed, boolean retained, boolean incremental,
+                            int dirty, int contributions, int buckets, int groups, int totalSlots) {
             builds++;
+            if (incremental) incrementalBuilds++;
+            else fullBuilds++;
             scannedSlots += slots;
             buildNanos += nanos;
             maxBuildNanos = Math.max(maxBuildNanos, nanos);
             if (!completed) buildFailures++;
             else if (retained) retainedBuilds++;
             else discardedBuilds++;
+            if (completed) {
+                dirtySlots += dirty;
+                contributionVisits += contributions;
+                recomputedBuckets += buckets;
+                recomputedGroups += groups;
+                if (retained && incremental) incrementalAvoidedSlots += totalSlots - slots;
+            }
         }
 
         public void copied(long nanos, boolean completed) {
@@ -361,6 +393,10 @@ public final class VaultDiagnostics {
             sharedRequests += other.sharedRequests; sharedHits += other.sharedHits;
             builds += other.builds; retainedBuilds += other.retainedBuilds;
             discardedBuilds += other.discardedBuilds; buildFailures += other.buildFailures;
+            fullBuilds += other.fullBuilds; incrementalBuilds += other.incrementalBuilds;
+            dirtySlots += other.dirtySlots; contributionVisits += other.contributionVisits;
+            recomputedBuckets += other.recomputedBuckets; recomputedGroups += other.recomputedGroups;
+            incrementalAvoidedSlots += other.incrementalAvoidedSlots;
             scannedSlots += other.scannedSlots; avoidedSlots += other.avoidedSlots;
             buildNanos += other.buildNanos; maxBuildNanos = Math.max(maxBuildNanos, other.maxBuildNanos);
             copies += other.copies; copyFailures += other.copyFailures;
@@ -375,6 +411,13 @@ public final class VaultDiagnostics {
             result.addProperty("shared_cache_hits", sharedHits);
             result.addProperty("shared_hit_rate", sharedRequests == 0 ? 0 : (double) sharedHits / sharedRequests);
             result.addProperty("build_attempts", builds);
+            result.addProperty("full_build_attempts", fullBuilds);
+            result.addProperty("incremental_build_attempts", incrementalBuilds);
+            result.addProperty("completed_dirty_slots", dirtySlots);
+            result.addProperty("non_empty_contribution_visits", contributionVisits);
+            result.addProperty("recomputed_item_buckets", recomputedBuckets);
+            result.addProperty("recomputed_groups", recomputedGroups);
+            result.addProperty("incremental_avoided_slot_visits", incrementalAvoidedSlots);
             result.addProperty("retained_builds", retainedBuilds);
             result.addProperty("discarded_builds", discardedBuilds);
             result.addProperty("build_failures", buildFailures);
