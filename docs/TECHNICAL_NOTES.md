@@ -20,6 +20,12 @@ Notifications may wait until the next controller tick, and intermediate changes 
 
 Multiple vaults still tick, and external storage mods may build indexes or scan slots. These changes do not remove all possible sources of terminal or modpack latency; no measured FPS/TPS improvement is claimed here.
 
+## Capability invalidation during chunk teardown
+
+Client chunk replacement removes existing block entities while iterating their collection. Calling `Level.getBlockEntity` from an invalidation callback can delete a removed controller and recreate it, changing the collection during iteration. The resulting exception interrupts chunk/NBT replacement and can leave inconsistent client controller data used by connected textures. This path existed in 1.1.1 and the published 1.2.0.
+
+The development fix invalidates client capabilities locally. On a real server, it reads the controller only from `getChunkNow` and the existing block-entity map, without creating entities or loading chunks; removed or mismatched controllers are skipped. Active server controller inventory, identifier and comparator caches still invalidate. Stored inventory, item NBT, notification batching and texture resources are unaffected. Gameplay confirmation of the repair is pending; published 1.2.0 artifacts remain unchanged.
+
 ## Combined inventory lookup
 
 1.2.0 uses Create's `SameSizeCombinedInvWrapper.create` inside the existing versioned inventory wrapper. Equal-capacity members allow direct slot-to-member lookup; mixed capacities use the standard fallback. This does not change per-block inventory ownership, capacities or the upgrade transaction.

@@ -30,7 +30,9 @@ Initialization used Forge `runData` and Registrate; it did not exercise game fra
 
 ## Gameplay verification boundary
 
-1.2.0 remains Beta. Separate checks are still needed for production-client rendering, normal/crystal vault display, terminal transfers and crafting, comparators, loaded-inventory regrouping/upgrades, save/reload, contraption inventory restoration and matching Connected silo upgrades.
+1.2.0 remains Beta. A Create 6.0.8 / Forge 47.4.10 / Flywheel 1.0.5 modpack session loaded the mod, entered a world and completed shutdown saving; the user reported normal gameplay. The same environment exposed intermittent vault texture seams and client chunk-refresh exceptions. Investigation identified controller lookup during capability invalidation as a lifecycle defect; a development fix is awaiting a new gameplay check. See [technical notes](TECHNICAL_NOTES.md#capability-invalidation-during-chunk-teardown).
+
+Separate checks are still needed for repaired chunk-refresh behavior, crystal vault display, individual terminal/crafting combinations, comparators, loaded-inventory regrouping/upgrades, save/reload, contraption inventory restoration and matching Connected silo upgrades. Create 6.0.6 and 6.0.7 have no equivalent gameplay acceptance record.
 
 1.1.2 was accepted as stable and received user feedback that the existing gameplay environment worked normally. That feedback does not establish every optional-mod combination, measured FPS/TPS gains or gameplay acceptance for the three 1.2.0 combinations.
 

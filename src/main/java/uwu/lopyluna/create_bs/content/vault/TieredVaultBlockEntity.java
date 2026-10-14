@@ -13,11 +13,13 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtUtils;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -316,12 +318,19 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
         itemCapability.invalidate();
         invId = null;
         comparatorOutput = -1;
-        if (!isController() && level != null && controller != null && level.hasChunkAt(controller)
-            && level.getBlockEntity(controller) instanceof TieredVaultBlockEntity root) {
-            root.itemCapability.invalidate();
-            root.invId = null;
-            root.comparatorOutput = -1;
-            root.comparatorsDirty = true;
+        // Chunk teardown iterates its block-entity map. Level.getBlockEntity can
+        // remove/recreate an already removed controller and invalidate that iteration.
+        // Clients only invalidate locally; servers inspect an existing loaded entry.
+        if (level instanceof ServerLevel serverLevel && !isController() && controller != null) {
+            LevelChunk chunk = serverLevel.getChunkSource()
+                .getChunkNow(controller.getX() >> 4, controller.getZ() >> 4);
+            if (chunk != null && chunk.getBlockEntities().get(controller) instanceof TieredVaultBlockEntity root
+                && root.getType() == getType() && !root.isRemoved()) {
+                root.itemCapability.invalidate();
+                root.invId = null;
+                root.comparatorOutput = -1;
+                root.comparatorsDirty = true;
+            }
         }
     }
 
