@@ -74,6 +74,8 @@ Upgrades must be performed by a player on a stationary world structure. Deployer
 
 Use the [issue tracker](https://github.com/yunluoxincheng/create-bigger-storage-continued/issues) for bugs and feature requests. Include your mod, Minecraft, Forge and Create versions, steps to reproduce, and relevant logs or screenshots. For storage performance issues, include the vault dimensions and the terminal or automation mods involved.
 
+Development candidates support manual inventory diagnostics with `/create_bs diagnostics start` and `/create_bs diagnostics stop`. See the [commands and counter reference](docs/TECHNICAL_NOTES.md#manual-vault-diagnostics). These commands are not included in published 1.2.0 JARs.
+
 ## Building from source
 
 Use **Java 17** and the included **Gradle 8.12 Wrapper**. On Windows:

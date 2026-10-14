@@ -5,7 +5,6 @@ import com.simibubi.create.api.packager.InventoryIdentifier;
 import com.simibubi.create.foundation.blockEntity.IMultiBlockEntityContainer;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
-import com.simibubi.create.foundation.blockEntity.behaviour.inventory.VersionedInventoryWrapper;
 import com.simibubi.create.foundation.item.ItemHelper;
 import com.simibubi.create.foundation.utility.SameSizeCombinedInvWrapper;
 import net.minecraft.core.BlockPos;
@@ -94,6 +93,10 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
         if (level == null || level.isClientSide || VaultUpgradeService.isUpdating()) return;
         TieredVaultBlockEntity controllerBE = getControllerBE();
         if (controllerBE == null) return;
+        controllerBE.itemCapability.ifPresent(handler -> {
+            if (handler instanceof VaultInventoryWrapper vault)
+                vault.invalidatePackagerSummaries();
+        });
         controllerBE.comparatorOutput = -1;
         controllerBE.comparatorsDirty = true;
     }
@@ -373,7 +376,7 @@ public class TieredVaultBlockEntity extends SmartBlockEntity implements IMultiBl
             if (vaultAt == null) return; // Never expose a writable, unsaved placeholder slot.
             invs[yOffset * radius * radius + xOffset * radius + zOffset] = vaultAt.inventory;
         }
-        IItemHandler itemHandler = new VersionedInventoryWrapper(SameSizeCombinedInvWrapper.create(invs));
+        IItemHandler itemHandler = new VaultInventoryWrapper(SameSizeCombinedInvWrapper.create(invs), this);
         itemCapability = LazyOptional.of(() -> itemHandler);
     }
 

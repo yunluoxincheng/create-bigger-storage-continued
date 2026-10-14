@@ -36,6 +36,10 @@ Separate checks are still needed for repaired chunk-refresh behavior, crystal va
 
 A reviewed, user-provided Create 6.0.8 JFR comparison supports removal of the repeated threshold-switch compatibility-selection hotspot in `1.2.0-dev-threshold-perf1`. This is performance evidence for a development candidate, not full behavior acceptance or a guaranteed TPS gain. Details and sampling limits are recorded in [technical notes](TECHNICAL_NOTES.md#threshold-switch-compatibility-selection); published 1.2.0 artifacts and release status remain unchanged.
 
+The subsequent `1.2.0-dev-packager-perf2` candidate shares unchanged vault summaries between packagers. Development compilation, initialization and packager-hook application passed on the three target Create versions. A Create 6.0.8 JFR retest confirms live participation of summary rebuilding and copying; independent performance benefit and complete arrival/cache correctness remain unverified. See [shared-summary notes](TECHNICAL_NOTES.md#shared-vault-summaries-for-packagers).
+
+The `1.2.0-dev-diagnostics1` candidate adds manually started/stopped counters without changing the shared-cache strategy. Development compilation, initialization and packager counter-hook application passed on the three target Create versions. User-provided Create 6.0.8 output confirms manual recording/export and internally consistent cache/scan counts, demonstrating reduced repeated scans. Net performance gain remains unverified. Diagnostics1 omits repackager preparation/unwrap flow while covering its inherited summary queries and shared-handler package extraction; see [diagnostics](TECHNICAL_NOTES.md#manual-vault-diagnostics).
+
 1.1.2 was accepted as stable and received user feedback that the existing gameplay environment worked normally. That feedback does not establish every optional-mod combination, measured FPS/TPS gains or gameplay acceptance for the three 1.2.0 combinations.
 
 See [technical notes](TECHNICAL_NOTES.md) for timing and inventory semantics, and [release notes](../CHANGELOG.md) for changes by version.

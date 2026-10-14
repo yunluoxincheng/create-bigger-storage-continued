@@ -74,6 +74,8 @@
 
 请通过 [Issues](https://github.com/yunluoxincheng/create-bigger-storage-continued/issues) 反馈问题或建议，提供模组、Minecraft、Forge、Create 版本，复现步骤及相关日志或截图。库存性能问题还应提供保险库尺寸，以及使用的终端或自动化模组。
 
+开发候选包支持使用 `/create_bs diagnostics start` 开始库存诊断，使用 `/create_bs diagnostics stop` 停止并导出报告。命令及计数含义见[诊断说明](docs/TECHNICAL_NOTES.md#manual-vault-diagnostics)。已发布的 1.2.0 安装包尚未包含这些命令。
+
 ## 源码构建
 
 需要 **Java 17**，使用项目自带的 **Gradle 8.12 Wrapper**。Windows：

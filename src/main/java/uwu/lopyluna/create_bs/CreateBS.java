@@ -16,6 +16,7 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import uwu.lopyluna.create_bs.content.TierMaterials;
+import uwu.lopyluna.create_bs.diagnostics.VaultDiagnostics;
 import uwu.lopyluna.create_bs.infrastructure.data.BSDatagen;
 import uwu.lopyluna.create_bs.registry.BSBlockEntities;
 import uwu.lopyluna.create_bs.registry.BSBlocks;
@@ -53,6 +54,8 @@ public class CreateBS {
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(EventPriority.LOWEST, (GatherDataEvent event) -> BSDatagen.gatherData());
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.addListener(VaultDiagnostics::registerCommands);
+        MinecraftForge.EVENT_BUS.addListener(VaultDiagnostics::serverStopping);
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

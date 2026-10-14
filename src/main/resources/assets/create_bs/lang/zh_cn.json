@@ -97,5 +97,14 @@
   "create_bs.upgrade.error.prepare": "无法准备升级，库存未更改，请检查日志。",
   "create_bs.upgrade.error.rollback": "升级失败，原保险库已恢复。",
   "create_bs.upgrade.error.recovery": "回退未完成，原数据已保存至升级恢复记录，请停止操作并检查日志。",
-  "create_bs.upgrade.error.recovery_unsaved": "回退及恢复记录保存失败，请停止操作并检查服务端日志。"
+  "create_bs.upgrade.error.recovery_unsaved": "回退及恢复记录保存失败，请停止操作并检查服务端日志。",
+  "create_bs.diagnostics.started": "保险库诊断已开始。使用 /create_bs diagnostics stop 结束统计并导出报告。",
+  "create_bs.diagnostics.already_running": "诊断正在运行，已保留当前统计，不会重新开始。",
+  "create_bs.diagnostics.export_pending": "有一份已停止的报告尚未导出。使用 /create_bs diagnostics stop 重试。",
+  "create_bs.diagnostics.not_running": "当前没有正在运行的保险库诊断。",
+  "create_bs.diagnostics.status": "保险库诊断已运行 %s 秒。",
+  "create_bs.diagnostics.saved": "保险库诊断已停止，持续 %s 秒。报告：%s",
+  "create_bs.diagnostics.save_failed": "报告导出失败。统计已停止并保留，请检查服务端日志并使用 stop 重试。",
+  "create_bs.diagnostics.summary": "摘要查询：%s；打包机自身缓存命中：%s；共享缓存命中：%s；重建：%s；已完成的槽位遍历：%s。",
+  "create_bs.diagnostics.packages": "准备输出包裹：%s；通过库存接口取走包裹：%s；成功拆包：%s。"
 }

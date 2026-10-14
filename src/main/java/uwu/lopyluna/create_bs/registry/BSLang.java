@@ -23,5 +23,14 @@ public final class BSLang {
         REGISTRATE.addRawLang("create_bs.upgrade.error.rollback", "The upgrade failed and the original vault was restored.");
         REGISTRATE.addRawLang("create_bs.upgrade.error.recovery", "Rollback was incomplete. Original data was saved in the upgrade recovery record.");
         REGISTRATE.addRawLang("create_bs.upgrade.error.recovery_unsaved", "Rollback and recovery storage failed. Stop using this structure and check the server log.");
+        REGISTRATE.addRawLang("create_bs.diagnostics.started", "Vault diagnostics started. Use /create_bs diagnostics stop to finish and export.");
+        REGISTRATE.addRawLang("create_bs.diagnostics.already_running", "Diagnostics are already running; the current counters were kept.");
+        REGISTRATE.addRawLang("create_bs.diagnostics.export_pending", "A frozen report is awaiting export. Use /create_bs diagnostics stop to retry.");
+        REGISTRATE.addRawLang("create_bs.diagnostics.not_running", "No vault diagnostics session is running.");
+        REGISTRATE.addRawLang("create_bs.diagnostics.status", "Vault diagnostics have been running for %s seconds.");
+        REGISTRATE.addRawLang("create_bs.diagnostics.saved", "Vault diagnostics stopped after %s seconds. Report: %s");
+        REGISTRATE.addRawLang("create_bs.diagnostics.save_failed", "Report export failed. Counters were frozen and retained; check the server log and use stop to retry.");
+        REGISTRATE.addRawLang("create_bs.diagnostics.summary", "Queries: %s; Create-local hits: %s; shared hits: %s; rebuilds: %s; completed slot visits: %s.");
+        REGISTRATE.addRawLang("create_bs.diagnostics.packages", "Packages prepared: %s; taken via inventory interface: %s; successful unwraps: %s.");
     }
 }
