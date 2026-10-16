@@ -16,7 +16,7 @@ On Linux or macOS:
 bash ./gradlew --no-daemon jarJar sourcesJar
 ```
 
-For 1.2.0, `jarJar` produces the ordinary versioned runtime JAR with Flywheel 1.0.5 and executes `reobfJarJar`. The `-unbundled.jar` is an internal artifact. `sourcesJar` produces the source archive. Normal builds use committed resources; resource generation is a separate operation.
+For 1.2.x, `jarJar` produces the ordinary versioned runtime JAR with Flywheel 1.0.5 and executes `reobfJarJar`. The `-unbundled.jar` is an internal artifact. `sourcesJar` produces the source archive. Normal builds use committed resources; resource generation is a separate operation.
 
 On Windows, `build.ps1 -TcpFallback` can work around Java loopback communication issues. Specify `-JdkPath` and `-GradleCache` when local defaults do not apply; `-Offline` requires cached dependencies. The helper is not part of the mod JAR.
 
@@ -36,10 +36,10 @@ On Windows, `build.ps1 -TcpFallback` can work around Java loopback communication
 4. Build and run the release validation/package commands below. Review the diff and stage only the intended files.
 5. Commit, create an annotated tag, then push the Minecraft branch and that tag.
 
-Example for a future 1.2.1 release, after its version files have been updated:
+Example for a future 1.2.2 release, after its version files have been updated:
 
 ```powershell
-python -B tools/PrepareRelease.py check --branch 1.20.1 --tag mc1.20.1-v1.2.1
+python -B tools/PrepareRelease.py check --branch 1.20.1 --tag mc1.20.1-v1.2.2
 .\gradlew.bat --no-daemon jarJar sourcesJar
 python -B tools/PrepareRelease.py package
 ```

@@ -13,7 +13,6 @@ import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_bs.diagnostics.VaultDiagnostics;
 import uwu.lopyluna.create_bs.mixins.InventorySummaryAccessor;
 
-import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Collections;
 import java.util.IdentityHashMap;
@@ -37,6 +36,7 @@ public final class VaultInventoryWrapper extends VersionedInventoryWrapper {
     private long memberChanges;
     private int idleCheckTicks = IDLE_CHECK_TICKS;
     private boolean retired;
+    private VaultDiagnostics.Origin diagnosticsOrigin;
 
     public VaultInventoryWrapper(IItemHandlerModifiable inventory, TieredVaultBlockEntity owner,
                                  TieredVaultBlockEntity[] members) {
@@ -158,63 +158,98 @@ public final class VaultInventoryWrapper extends VersionedInventoryWrapper {
     }
 
     public InventorySummary getPackagerSummary(boolean scanInputSlots) {
+        for (int attempt = 0; attempt < MAX_QUERY_ATTEMPTS; attempt++) {
+            try (SummaryRead read = beginSummaryRead(scanInputSlots)) {
+                try {
+                    InventorySummary result = read.snapshot(false).copy(VaultDiagnostics.CopyReason.DIRECT_API, read);
+                    read.validate();
+                    return result;
+                } catch (VaultSummarySnapshot.Changed changed) {
+                    VaultDiagnostics.CopyEvent.discardSince(read.copies, null);
+                }
+            }
+        }
+        throw new IllegalStateException("Vault inventory changed during repeated summary requests");
+    }
+
+    public SummaryRead beginSummaryRead(boolean scanInputSlots) {
         ModeState mode = scanInputSlots ? input : extractable;
         if (mode.querying) throw new IllegalStateException("Reentrant vault summary request");
-        mode.lastRequestNanos = System.nanoTime();
-        ContributionCache initial = mode.cache;
-        VaultDiagnostics.ModeStats metrics = VaultDiagnostics.sharedRequest(this, scanInputSlots,
-            initial != null && initial.dirty.isEmpty());
         mode.querying = true;
-        try {
-            for (int attempt = 0; attempt < MAX_QUERY_ATTEMPTS; attempt++) {
-                int version = getVersion();
-                long revision = summaryRevision;
-                boolean wasRetired = retired;
-                ContributionCache base = mode.cache;
-                InventorySummary snapshot;
-                if (base == null || !base.dirty.isEmpty()) {
-                    int dirtyCount = base == null ? 0 : base.dirty.cardinality();
-                    boolean incremental = base != null && dirtyCount < getSlots();
-                    long started = metrics == null ? 0 : System.nanoTime();
-                    BuildResult result = null;
-                    boolean retained = false;
-                    try {
-                        result = incremental ? rebuildDirty(base, scanInputSlots, metrics != null)
-                            : rebuildAll(scanInputSlots, !retired, metrics != null, dirtyCount);
-                        if (version == getVersion() && revision == summaryRevision && !retired) {
-                            result.commit();
-                            mode.cache = result.cache;
-                            retained = true;
-                        }
-                    } finally {
-                        if (metrics != null)
-                            metrics.rebuilt(System.nanoTime() - started, result == null ? 0 : result.scanned,
-                                result != null, retained, incremental, result == null ? 0 : result.dirty,
-                                result == null ? 0 : result.nonEmpty, result == null ? 0 : result.buckets,
-                                result == null ? 0 : result.groups, getSlots());
-                    }
-                    if (version != getVersion() || revision != summaryRevision || retired != wasRetired)
-                        continue;
-                    snapshot = result.cache.summary;
-                } else {
-                    snapshot = base.summary;
-                }
+        return new SummaryRead(mode, scanInputSlots);
+    }
 
+    public VaultDiagnostics.Origin diagnosticsOrigin() {
+        if (diagnosticsOrigin == null) diagnosticsOrigin = VaultDiagnostics.origin(this);
+        return diagnosticsOrigin;
+    }
+
+    /** Invocation-only guard; obtaining a local-hit guard does not refresh the idle timer. */
+    public final class SummaryRead implements AutoCloseable, java.util.function.Consumer<VaultDiagnostics.CopyEvent> {
+        private final ModeState mode;
+        private final boolean inputSlots;
+        private final int version = getVersion();
+        private final long revision = summaryRevision;
+        private final boolean wasRetired = retired;
+        private boolean closed;
+        private VaultDiagnostics.CopyEvent copies;
+
+        private SummaryRead(ModeState mode, boolean inputSlots) {
+            this.mode = mode;
+            this.inputSlots = inputSlots;
+        }
+
+        public boolean canDefer() { return !wasRetired; }
+
+        @Override
+        public void accept(VaultDiagnostics.CopyEvent event) { copies = event.retainAfter(copies); }
+
+        VaultSummarySnapshot snapshot(boolean getter) {
+            if (closed) throw new IllegalStateException("Closed vault summary read");
+            mode.lastRequestNanos = System.nanoTime();
+            ContributionCache base = mode.cache;
+            VaultDiagnostics.ModeStats metrics = VaultDiagnostics.sharedRequest(VaultInventoryWrapper.this,
+                inputSlots, base != null && base.dirty.isEmpty(), getter);
+            InventorySummary snapshot;
+            if (base == null || !base.dirty.isEmpty()) {
+                int dirtyCount = base == null ? 0 : base.dirty.cardinality();
+                boolean incremental = base != null && dirtyCount < getSlots();
                 long started = metrics == null ? 0 : System.nanoTime();
-                boolean copied = false;
-                InventorySummary result;
+                BuildResult result = null;
+                boolean retained = false;
                 try {
-                    result = copySummary(snapshot);
-                    copied = true;
+                    result = incremental ? rebuildDirty(base, inputSlots, metrics != null)
+                        : rebuildAll(inputSlots, !retired, metrics != null, dirtyCount);
+                    if (version == getVersion() && revision == summaryRevision && !retired) {
+                        result.commit();
+                        mode.cache = result.cache;
+                        retained = true;
+                    }
                 } finally {
-                    if (metrics != null) metrics.copied(System.nanoTime() - started, copied);
+                    if (metrics != null)
+                        metrics.rebuilt(System.nanoTime() - started, result == null ? 0 : result.scanned,
+                            result != null, retained, incremental, result == null ? 0 : result.dirty,
+                            result == null ? 0 : result.nonEmpty, result == null ? 0 : result.buckets,
+                            result == null ? 0 : result.groups, getSlots());
                 }
-                // Capability initialization during copying can mutate inventory too.
-                if (version == getVersion() && revision == summaryRevision && retired == wasRetired)
-                    return result;
+                validate();
+                snapshot = result.cache.summary;
+            } else {
+                snapshot = base.summary;
             }
-            throw new IllegalStateException("Vault inventory changed during repeated summary requests");
-        } finally {
+            validate();
+            return new VaultSummarySnapshot(snapshot, diagnosticsOrigin(), inputSlots);
+        }
+
+        public void validate() {
+            if (version != getVersion() || revision != summaryRevision || retired != wasRetired)
+                throw new VaultSummarySnapshot.Changed();
+        }
+
+        @Override
+        public void close() {
+            if (closed) return;
+            closed = true;
             mode.querying = false;
         }
     }
@@ -321,18 +356,4 @@ public final class VaultInventoryWrapper extends VersionedInventoryWrapper {
         }
     }
 
-    private static InventorySummary copySummary(InventorySummary snapshot) {
-        InventorySummary copy = new InventorySummary();
-        snapshot.getItemMap().forEach((item, entries) -> {
-            List<BigItemStack> copiedEntries = new ArrayList<>(entries.size());
-            for (BigItemStack entry : entries)
-                copiedEntries.add(new BigItemStack(entry.stack.copy(), entry.count));
-            copy.getItemMap().put(item, copiedEntries);
-        });
-        // Groups were already built with Create's NBT/capability-sensitive add().
-        // Copy their exact totals without merging/comparing the same entries again.
-        ((InventorySummaryAccessor) copy).create_bs$setTotalCount(snapshot.getTotalCount());
-        copy.contributingLinks = snapshot.contributingLinks;
-        return copy;
-    }
 }

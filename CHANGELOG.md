@@ -8,6 +8,7 @@ Release notes are maintained in English and grouped by Minecraft version. Each e
 
 | Version | Status | Published (UTC) | Highlights |
 |---|---|---|---|
+| [1.2.1](changelog/1.20.1/1.2.1.md) | Beta | Unreleased | Incremental vault summaries, deferred copying, package-scan optimization and diagnostics |
 | [1.2.0](changelog/1.20.1/1.2.0.md) | Beta | 2026-10-13 | Create 6.0.6–6.0.8 support, Flywheel 1.0.5, faster vault slot lookup |
 | [1.1.2](changelog/1.20.1/1.1.2.md) | Stable | 2026-10-13 | Inventory notification, comparator and client synchronization optimization |
 | [1.1.1](changelog/1.20.1/1.1.1.md) | Stable | 2026-10-13 | Refined vault textures and 3×3 end-layer regrouping fix |

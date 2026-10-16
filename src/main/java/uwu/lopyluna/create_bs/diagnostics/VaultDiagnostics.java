@@ -25,6 +25,7 @@ import uwu.lopyluna.create_bs.content.vault.TieredVaultBlockEntity;
 import uwu.lopyluna.create_bs.content.vault.VaultInventoryWrapper;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -43,6 +44,7 @@ public final class VaultDiagnostics {
     private static final DateTimeFormatter FILE_TIME =
         DateTimeFormatter.ofPattern("uuuuMMdd-HHmmss-SSS").withZone(ZoneOffset.UTC);
     private static volatile Session session;
+    private static long nextSessionId;
 
     private VaultDiagnostics() {}
 
@@ -61,58 +63,136 @@ public final class VaultDiagnostics {
     }
 
     private static InventoryStats inventory(VaultInventoryWrapper inventory) {
+        if (!isRecording()) return null;
+        return inventory(inventory.diagnosticsOrigin());
+    }
+
+    /** Value metadata plus a weak server identity; safe to retain across recording windows. */
+    public static final class Origin {
+        private final int handlerId;
+        private final WeakReference<MinecraftServer> server;
+        private final JsonObject info;
+
+        private Origin(int handlerId, MinecraftServer server, JsonObject info) {
+            this.handlerId = handlerId;
+            this.server = new WeakReference<>(server);
+            this.info = info;
+        }
+    }
+
+    public static Origin origin(VaultInventoryWrapper inventory) {
+        TieredVaultBlockEntity owner = inventory.getOwner();
+        Level level = owner.getLevel();
+        if (level == null || level.getServer() == null) return null;
+        BlockPos pos = owner.getBlockPos();
+        JsonObject info = new JsonObject();
+        info.addProperty("handler_id", inventory.getId());
+        info.addProperty("dimension", level.dimension().location().toString());
+        info.addProperty("block", String.valueOf(ForgeRegistries.BLOCKS.getKey(owner.getBlockState().getBlock())));
+        info.addProperty("x", pos.getX());
+        info.addProperty("y", pos.getY());
+        info.addProperty("z", pos.getZ());
+        info.addProperty("width", owner.getWidth());
+        info.addProperty("length", owner.getHeight());
+        info.addProperty("slots", inventory.getSlots());
+        return new Origin(inventory.getId(), level.getServer(), info);
+    }
+
+    private static InventoryStats inventory(Origin origin) {
         Session current = session;
-        if (current == null || !current.running) return null;
-        Level level = inventory.getOwner().getLevel();
+        if (current == null || !current.running || origin == null) return null;
         MinecraftServer server = current.server;
-        if (level == null || server == null || level.getServer() != server || !server.isSameThread()) return null;
-        InventoryStats stats = current.inventories.get(inventory.getId());
+        if (server == null || origin.server.get() != server || !server.isSameThread()) return null;
+        InventoryStats stats = current.inventories.get(origin.handlerId);
         if (stats != null) return stats;
         if (current.inventories.size() >= DETAIL_LIMIT) {
             current.overflowUsed = true;
             return current.overflow;
         }
-        stats = new InventoryStats();
-        TieredVaultBlockEntity owner = inventory.getOwner();
-        BlockPos pos = owner.getBlockPos();
-        stats.info = new JsonObject();
-        stats.info.addProperty("handler_id", inventory.getId());
-        stats.info.addProperty("dimension", level.dimension().location().toString());
-        stats.info.addProperty("block", String.valueOf(ForgeRegistries.BLOCKS.getKey(owner.getBlockState().getBlock())));
-        stats.info.addProperty("x", pos.getX());
-        stats.info.addProperty("y", pos.getY());
-        stats.info.addProperty("z", pos.getZ());
-        stats.info.addProperty("width", owner.getWidth());
-        stats.info.addProperty("length", owner.getHeight());
-        stats.info.addProperty("slots", inventory.getSlots());
-        current.inventories.put(inventory.getId(), stats);
+        stats = new InventoryStats(current.id);
+        stats.info = origin.info.deepCopy();
+        current.inventories.put(origin.handlerId, stats);
         return stats;
     }
 
-    public static ModeStats localCacheQuery(VaultInventoryWrapper inventory, boolean input, boolean hit) {
+    public static ModeStats query(VaultInventoryWrapper inventory, boolean input, boolean internal, boolean logical,
+                                  boolean hit) {
         InventoryStats stats = inventory(inventory);
         if (stats == null) return null;
         ModeStats mode = stats.mode(input);
-        mode.queries++;
+        if (logical) {
+            mode.queries++;
+            if (internal) mode.stockQueries++;
+            else mode.publicQueries++;
+        }
+        mode.queryAttempts++;
         if (hit) mode.localHits++;
         return mode;
     }
 
-    public static void queryAfterCacheMiss(VaultInventoryWrapper inventory, boolean input, ModeStats alreadyCounted) {
-        InventoryStats stats = inventory(inventory);
-        if (stats != null && stats.mode(input) != alreadyCounted) stats.mode(input).queries++;
-    }
-
-    public static ModeStats sharedRequest(VaultInventoryWrapper inventory, boolean input, boolean hit) {
+    public static ModeStats sharedRequest(VaultInventoryWrapper inventory, boolean input, boolean hit, boolean getter) {
         InventoryStats stats = inventory(inventory);
         if (stats == null) return null;
         ModeStats mode = stats.mode(input);
         mode.sharedRequests++;
+        if (getter) mode.getterRequests++;
+        else mode.directRequests++;
         if (hit) {
             mode.sharedHits++;
             mode.avoidedSlots += inventory.getSlots();
         }
         return mode;
+    }
+
+    public enum CopyReason { PUBLIC_FRESH, PUBLIC_LOCAL, ARRIVAL_BEFORE, ARRIVAL_AFTER, SAVE, DIRECT_API, EAGER_FALLBACK }
+    public enum DeferredEvent { INSTALL, MATERIALIZE, DROP }
+
+    public static void deferred(Origin origin, boolean input, DeferredEvent event) {
+        InventoryStats stats = inventory(origin);
+        if (stats == null) return;
+        ModeStats mode = stats.mode(input);
+        switch (event) {
+            case INSTALL -> mode.deferredInstalls++;
+            case MATERIALIZE -> mode.deferredMaterializations++;
+            case DROP -> mode.deferredDrops++;
+        }
+    }
+
+    public static CopyEvent copyStarted(Origin origin, boolean input, CopyReason reason) {
+        InventoryStats stats = inventory(origin);
+        return stats == null ? null : new CopyEvent(stats.mode(input), reason);
+    }
+
+    public static final class CopyEvent {
+        private final ModeStats stats;
+        private final CopyReason reason;
+        private final long started = System.nanoTime();
+        private boolean recorded, discarded;
+        private CopyEvent previous;
+
+        private CopyEvent(ModeStats stats, CopyReason reason) { this.stats = stats; this.reason = reason; }
+
+        public CopyEvent retainAfter(CopyEvent previous) {
+            this.previous = previous;
+            return this;
+        }
+
+        public static void discardSince(CopyEvent current, CopyEvent checkpoint) {
+            for (; current != null && current != checkpoint; current = current.previous) current.discarded();
+        }
+
+        public void finished(boolean completed, int groups) {
+            if (!stats.active()) return;
+            stats.copied(System.nanoTime() - started, completed, reason, groups);
+            recorded = completed;
+        }
+
+        public void discarded() {
+            if (recorded && !discarded && stats.active()) {
+                stats.copyDiscards++;
+                discarded = true;
+            }
+        }
     }
 
     public static void versionIncrement(VaultInventoryWrapper inventory) {
@@ -223,7 +303,7 @@ public final class VaultDiagnostics {
     }
 
     private static void sendTotals(CommandSourceStack source, InventoryStats totals) {
-        ModeStats combined = new ModeStats();
+        ModeStats combined = new ModeStats(0);
         combined.add(totals.extractable);
         combined.add(totals.input);
         source.sendSuccess(() -> message("summary", combined.queries, combined.localHits, combined.sharedHits,
@@ -237,13 +317,14 @@ public final class VaultDiagnostics {
     }
 
     private static final class Session {
+        private final long id = ++nextSessionId;
         private MinecraftServer server;
         private volatile boolean running = true;
         private final Instant startedAt = Instant.now();
         private final long startedNanos = System.nanoTime();
         private final int startedTick;
         private final Int2ObjectOpenHashMap<InventoryStats> inventories = new Int2ObjectOpenHashMap<>();
-        private final InventoryStats overflow = new InventoryStats();
+        private final InventoryStats overflow = new InventoryStats(id);
         private boolean overflowUsed;
         private Instant stoppedAt;
         private long elapsedNanos;
@@ -265,7 +346,7 @@ public final class VaultDiagnostics {
         }
 
         private InventoryStats totals() {
-            InventoryStats total = new InventoryStats();
+            InventoryStats total = new InventoryStats(0);
             inventories.values().forEach(total::add);
             total.add(overflow);
             return total;
@@ -273,8 +354,9 @@ public final class VaultDiagnostics {
 
         private Path save() throws IOException {
             JsonObject report = new JsonObject();
-            report.addProperty("schema_version", 2);
+            report.addProperty("schema_version", 3);
             report.addProperty("summary_strategy", "R2 dirty-slot contributions and affected-Item replay");
+            report.addProperty("copy_strategy", "C3 internal deferred snapshots; independent public, arrival and save summaries");
             report.addProperty("mod_version", modVersion("create_bs"));
             report.addProperty("minecraft_version", SharedConstants.getCurrentVersion().getName());
             report.addProperty("forge_version", modVersion("forge"));
@@ -295,7 +377,13 @@ public final class VaultDiagnostics {
             report.add("inventories", details);
             report.add("overflow_totals", overflow.json());
             JsonArray notes = new JsonArray();
-            notes.add("query_calls include Create-local hits; shared_requests exclude those early returns");
+            notes.add("query_calls are logical boolean-getter queries; query_attempts include bounded retries; forwarding getters do not count twice");
+            notes.add("query_calls split into stock_check_queries and public_queries; local hits and getter_shared_requests classify attempts, not logical queries");
+            notes.add("shared_requests split into getter_shared_requests and direct_api_shared_requests; copy_calls are independent materialization attempts, not shared requests");
+            notes.add("copy_calls equal the sum of copy_reason_calls; copy_discarded counts completed copies rejected before arrival side effects");
+            notes.add("copies and deferred events belong to the snapshot origin handler/mode, which may differ from the current getter mode");
+            notes.add("pending snapshots may cross recording windows; installs need not equal materializations plus drops within one window");
+            notes.add("operations crossing stop/start do not update frozen counters; deferred copies started in a later window belong to that window");
             notes.add("version_increment_calls count wrapper increments, not packages or unique slot changes");
             notes.add("member_or_structure_clear_signals can accompany the same mutation's version increment");
             notes.add("member_slot_change_signals count callbacks, not distinct dirty slots; same-content assignments can conservatively advance versions");
@@ -321,10 +409,15 @@ public final class VaultDiagnostics {
 
     private static final class InventoryStats {
         private JsonObject info;
-        private final ModeStats extractable = new ModeStats();
-        private final ModeStats input = new ModeStats();
+        private final ModeStats extractable;
+        private final ModeStats input;
         private long versionIncrements, memberClearSignals, memberSlotChanges, idleReleases;
         private long preparedPackages, takenPackages, receivedPackages;
+
+        private InventoryStats(long recordingId) {
+            extractable = new ModeStats(recordingId);
+            input = new ModeStats(recordingId);
+        }
 
         private ModeStats mode(boolean inputSlots) { return inputSlots ? input : extractable; }
 
@@ -356,13 +449,27 @@ public final class VaultDiagnostics {
     }
 
     public static final class ModeStats {
+        private final long recordingId;
+        private long stockQueries, publicQueries, queryAttempts, getterRequests, directRequests, incompleteAttempts;
+        private long deferredInstalls, deferredMaterializations, deferredDrops, copyDiscards, copiedGroups;
+        private final long[] copyReasons = new long[CopyReason.values().length];
         private long queries, localHits, sharedRequests, sharedHits, builds, retainedBuilds, discardedBuilds, buildFailures;
         private long scannedSlots, avoidedSlots, buildNanos, maxBuildNanos, copies, copyFailures, copyNanos, maxCopyNanos;
         private long fullBuilds, incrementalBuilds, dirtySlots, contributionVisits, recomputedBuckets, recomputedGroups;
         private long incrementalAvoidedSlots;
 
+        private ModeStats(long recordingId) { this.recordingId = recordingId; }
+
+        private boolean active() {
+            Session current = session;
+            return current != null && current.running && current.id == recordingId;
+        }
+
+        public void incompleteAttempt() { if (active()) incompleteAttempts++; }
+
         public void rebuilt(long nanos, int slots, boolean completed, boolean retained, boolean incremental,
                             int dirty, int contributions, int buckets, int groups, int totalSlots) {
+            if (!active()) return;
             builds++;
             if (incremental) incrementalBuilds++;
             else fullBuilds++;
@@ -381,14 +488,22 @@ public final class VaultDiagnostics {
             }
         }
 
-        public void copied(long nanos, boolean completed) {
+        private void copied(long nanos, boolean completed, CopyReason reason, int groups) {
             copies++;
+            copyReasons[reason.ordinal()]++;
             if (!completed) copyFailures++;
+            if (completed) copiedGroups += groups;
             copyNanos += nanos;
             maxCopyNanos = Math.max(maxCopyNanos, nanos);
         }
 
         private void add(ModeStats other) {
+            stockQueries += other.stockQueries; publicQueries += other.publicQueries;
+            queryAttempts += other.queryAttempts; getterRequests += other.getterRequests;
+            directRequests += other.directRequests; incompleteAttempts += other.incompleteAttempts;
+            deferredInstalls += other.deferredInstalls; deferredMaterializations += other.deferredMaterializations;
+            deferredDrops += other.deferredDrops; copyDiscards += other.copyDiscards; copiedGroups += other.copiedGroups;
+            for (int i = 0; i < copyReasons.length; i++) copyReasons[i] += other.copyReasons[i];
             queries += other.queries; localHits += other.localHits;
             sharedRequests += other.sharedRequests; sharedHits += other.sharedHits;
             builds += other.builds; retainedBuilds += other.retainedBuilds;
@@ -406,6 +521,12 @@ public final class VaultDiagnostics {
         private JsonObject json() {
             JsonObject result = new JsonObject();
             result.addProperty("query_calls", queries);
+            result.addProperty("stock_check_queries", stockQueries);
+            result.addProperty("public_queries", publicQueries);
+            result.addProperty("query_attempts", queryAttempts);
+            result.addProperty("query_incomplete_attempts", incompleteAttempts);
+            result.addProperty("getter_shared_requests", getterRequests);
+            result.addProperty("direct_api_shared_requests", directRequests);
             result.addProperty("create_local_cache_hits", localHits);
             result.addProperty("shared_requests", sharedRequests);
             result.addProperty("shared_cache_hits", sharedHits);
@@ -428,6 +549,15 @@ public final class VaultDiagnostics {
             result.addProperty("build_mean_ms", builds == 0 ? 0 : buildNanos / 1_000_000.0 / builds);
             result.addProperty("copy_calls", copies);
             result.addProperty("copy_failures", copyFailures);
+            result.addProperty("copy_discarded", copyDiscards);
+            result.addProperty("copied_groups", copiedGroups);
+            result.addProperty("deferred_installs", deferredInstalls);
+            result.addProperty("deferred_materializations", deferredMaterializations);
+            result.addProperty("deferred_drops", deferredDrops);
+            JsonObject reasons = new JsonObject();
+            for (CopyReason reason : CopyReason.values())
+                reasons.addProperty(reason.name().toLowerCase(Locale.ROOT), copyReasons[reason.ordinal()]);
+            result.add("copy_reason_calls", reasons);
             result.addProperty("copy_total_ms", copyNanos / 1_000_000.0);
             result.addProperty("copy_max_ms", maxCopyNanos / 1_000_000.0);
             return result;

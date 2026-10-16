@@ -19,7 +19,7 @@
 ## 下载
 
 - **正式版 — 1.1.2：**[适用于 Create 6.0.4](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/v1.1.2)。
-- **测试版 — 1.2.0：**[适用于 Create 6.0.6～6.0.8](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/mc1.20.1-v1.2.0)，内置 Flywheel 1.0.5。
+- **测试版 — 1.2.1：**[适用于 Create 6.0.6～6.0.8](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases)，内置 Flywheel 1.0.5。
 
 目前通过 GitHub Releases 提供下载，后续计划发布至 Modrinth 和 CurseForge。
 
@@ -29,7 +29,7 @@
 - **整组升级：**45 种升级组件，覆盖 9 种材料档位与 Create 原版档位之间的全部向上组合。右键已形成结构的任意成员方块，即可升级整座保险库。
 - **保留库存：**升级保留物品及其 NBT、方块位置、轴向和结构尺寸；目标容量不足时拒绝升级。
 - **方向转换：**18 条横纵向保险库物品转换配方，保留输入物品的 NBT。
-- **库存优化：**合并重复库存通知、缓存比较器读数并减少客户端库存同步；1.2.0 进一步优化大型保险库的槽位查找。
+- **库存优化：**合并重复库存通知、缓存比较器读数并减少客户端库存同步；1.2.1 结合直接槽位查找、增量库存摘要和独立副本延期物化，改善大型保险库的重复工作。
 - **机械动力风格：**按材料配色的面板与边框、半透明蓝色水晶保险库，以及原生 16×16 组件图标。
 - **语言：**英语与简体中文。
 
@@ -47,11 +47,12 @@
 
 | 模组版本 | 状态 | Minecraft | Forge | Create | Java |
 |---|---|---|---|---|---|
+| 1.2.1 | 测试版 | 1.20.1 | 47.4.10 及以上（47.x） | 6.0.6、6.0.7、6.0.8 | 17 |
 | 1.2.0 | 测试版 | 1.20.1 | 47.4.10 及以上（47.x） | 6.0.6、6.0.7、6.0.8 | 17 |
 | 1.1.2 | 正式版 | 1.20.1 | 47.2.32 及以上（47.x） | 6.0.4 | 17 |
 | 1.1.1 | 历史正式版 | 1.20.1 | 47.2.32 及以上（47.x） | 6.0.4 | 17 |
 
-1.2.0 为上述三种 Create 版本提供同一个安装包，内置 **Flywheel 1.0.5**，无需单独下载。当前仍为测试版，已完成的核验和待进行的游戏内验证见[兼容说明](docs/COMPATIBILITY.md)。
+1.2.1 为上述三种 Create 版本提供同一个安装包，内置 **Flywheel 1.0.5**，无需单独下载。当前仍为测试版，已完成的核验和待进行的游戏内验证见[兼容说明](docs/COMPATIBILITY.md)。
 
 **Create: Connected 为可选依赖。**仅原版档位的纵向保险库及涉及该档位的升级需要它。请选择与 Minecraft、Create 匹配的 Connected 版本；其当前上游兼容表将 Create 6.0.6 标为不支持，详见 [Connected 兼容说明](https://github.com/hlysine/create_connected#download)。
 
