@@ -19,7 +19,7 @@ This project is not affiliated with or endorsed by LopyLuna or the Create team.
 ## Downloads
 
 - **Stable — 1.1.2:** [Download for Create 6.0.4](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/v1.1.2).
-- **Beta — 1.2.1:** [Downloads for Create 6.0.6–6.0.8](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases), with Flywheel 1.0.5 included.
+- **Beta — 1.2.1:** [Download for Create 6.0.6–6.0.8](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/mc1.20.1-v1.2.1), with Flywheel 1.0.5 included.
 
 GitHub Releases is the current distribution channel. Modrinth and CurseForge publication is planned.
 

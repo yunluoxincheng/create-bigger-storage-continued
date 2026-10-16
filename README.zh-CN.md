@@ -19,7 +19,7 @@
 ## 下载
 
 - **正式版 — 1.1.2：**[适用于 Create 6.0.4](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/v1.1.2)。
-- **测试版 — 1.2.1：**[适用于 Create 6.0.6～6.0.8](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases)，内置 Flywheel 1.0.5。
+- **测试版 — 1.2.1：**[适用于 Create 6.0.6～6.0.8](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/mc1.20.1-v1.2.1)，内置 Flywheel 1.0.5。
 
 目前通过 GitHub Releases 提供下载，后续计划发布至 Modrinth 和 CurseForge。
 
