@@ -34,7 +34,7 @@ The current 400×400 transparent icon composes iron and copper vault front, side
 
 To reproduce the icon: start with an 80×80 transparent RGBA canvas; process the recorded faces in order; map each destination pixel center into the parallelogram defined by the first, second and fourth vertices; sample the 16×16 source with integer nearest-neighbor coordinates. Draw each cube's one-pixel outline after its faces, with iron before copper. Resize to 400×400 by nearest neighbor and save lossless RGBA PNGs to the recorded paths.
 
-Published 1.1.1, 1.1.2 and 1.2.0 artifacts retain the previous AI-derived icon. The replacement is included in [1.2.1](../changelog/1.20.1/1.2.1.md). Historical artifacts and tags are not overwritten.
+Stable 1.1.1 and 1.1.2 artifacts and the original 1.2.0 prerelease used the previous AI-derived icon. The replacement is included in the user-authorized [1.2.0 prerelease reissue](../changelog/1.20.1/1.2.0.md). Stable historical artifacts remain unchanged.
 
 ## Completed source review
 

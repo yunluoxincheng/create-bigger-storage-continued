@@ -19,7 +19,7 @@ This project is not affiliated with or endorsed by LopyLuna or the Create team.
 ## Downloads
 
 - **Stable — 1.1.2:** [Download for Create 6.0.4](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/v1.1.2).
-- **Beta — 1.2.1:** [Download for Create 6.0.6–6.0.8](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/mc1.20.1-v1.2.1), with Flywheel 1.0.5 included.
+- **Beta — 1.2.0:** [Download for Create 6.0.6–6.0.8](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/mc1.20.1-v1.2.0), with Flywheel 1.0.5 included.
 
 GitHub Releases is the current distribution channel. Modrinth and CurseForge publication is planned.
 
@@ -29,7 +29,7 @@ GitHub Releases is the current distribution channel. Modrinth and CurseForge pub
 - **Structure upgrades:** 45 upgrade components covering every upward combination across the nine material tiers and Create's standard tier. Upgrade a formed vault by right-clicking any member block.
 - **Inventory preservation:** upgrades retain stored items and their NBT, block positions, orientation and structure dimensions. An upgrade is rejected if the target cannot hold the existing inventory.
 - **Orientation recipes:** 18 conversion recipes switch between horizontal and vertical vault items while preserving their item NBT.
-- **Inventory performance:** coalesced inventory notifications, cached comparator readings, and reduced client inventory synchronization. Version 1.2.1 combines direct slot lookup, incremental stock summaries and deferred independent copying for large vaults.
+- **Inventory performance:** coalesced inventory notifications, cached comparator readings, and reduced client inventory synchronization. Version 1.2.0 combines direct slot lookup, incremental stock summaries and deferred independent copying for large vaults.
 - **Create-style visuals:** material-colored panels and frames, translucent blue crystal vaults, and native 16×16 component icons.
 - **Localization:** English and Simplified Chinese.
 
@@ -47,12 +47,11 @@ Capacity below is measured in inventory slots **per block**. Horizontal and vert
 
 | Mod version | Status | Minecraft | Forge | Create | Java |
 |---|---|---|---|---|---|
-| 1.2.1 | Beta | 1.20.1 | 47.4.10+ (47.x) | 6.0.6, 6.0.7, 6.0.8 | 17 |
 | 1.2.0 | Beta | 1.20.1 | 47.4.10+ (47.x) | 6.0.6, 6.0.7, 6.0.8 | 17 |
 | 1.1.2 | Stable | 1.20.1 | 47.2.32+ (47.x) | 6.0.4 | 17 |
 | 1.1.1 | Stable, older release | 1.20.1 | 47.2.32+ (47.x) | 6.0.4 | 17 |
 
-Version 1.2.1 uses one installer for all three listed Create versions and includes **Flywheel 1.0.5**. No separate Flywheel download is required. It remains a beta release; the completed checks and outstanding gameplay verification are documented in the [compatibility notes](docs/COMPATIBILITY.md).
+Version 1.2.0 uses one installer for all three listed Create versions and includes **Flywheel 1.0.5**. No separate Flywheel download is required. It remains a beta release; the completed checks and outstanding gameplay verification are documented in the [compatibility notes](docs/COMPATIBILITY.md).
 
 **Create: Connected is optional.** It is needed only for the standard-tier vertical silo and upgrades involving that tier. Choose a Connected release compatible with your Minecraft and Create versions; its current upstream compatibility table lists Create 6.0.6 as unsupported. See [Connected's compatibility information](https://github.com/hlysine/create_connected#download).
 

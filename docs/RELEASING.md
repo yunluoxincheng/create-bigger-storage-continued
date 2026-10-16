@@ -25,7 +25,8 @@ On Windows, `build.ps1 -TcpFallback` can work around Java loopback communication
 - Use a branch such as `1.20.1`; create a new Minecraft branch only when adaptation starts.
 - Each Minecraft line advances its mod version independently.
 - New annotated tags use `mc<Minecraft>-v<mod>`, for example `mc1.20.1-v1.2.1`.
-- Both versions must match `gradle.properties`. Published tags and artifacts are immutable.
+- Both versions must match `gradle.properties`. Keep the version explicitly selected by the user; ask before resolving a version/tag conflict, rather than choosing a new version.
+- Published stable tags and artifacts remain immutable. A prerelease may be deleted and reissued when explicitly authorized; deleting or rebuilding its remote tag requires explicit confirmation of that scope.
 - Historical `v1.1.1` and `v1.1.2` tags remain valid. Public source history begins with 1.1.1; no exact public 1.1.0 source tag is claimed.
 
 ## Prepare a release
@@ -36,10 +37,10 @@ On Windows, `build.ps1 -TcpFallback` can work around Java loopback communication
 4. Build and run the release validation/package commands below. Review the diff and stage only the intended files.
 5. Commit, create an annotated tag, then push the Minecraft branch and that tag.
 
-Example for a future 1.2.2 release, after its version files have been updated:
+Example for a future 1.2.1 release, after its version files have been updated:
 
 ```powershell
-python -B tools/PrepareRelease.py check --branch 1.20.1 --tag mc1.20.1-v1.2.2
+python -B tools/PrepareRelease.py check --branch 1.20.1 --tag mc1.20.1-v1.2.1
 .\gradlew.bat --no-daemon jarJar sourcesJar
 python -B tools/PrepareRelease.py package
 ```

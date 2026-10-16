@@ -4,7 +4,6 @@
 
 | Mod | Status | Minecraft | Forge | Create | Java |
 |---|---|---|---|---|---|
-| 1.2.1 | Beta | 1.20.1 | 47.4.10+ (47.x) | 6.0.6, 6.0.7, 6.0.8 | 17 |
 | 1.2.0 | Beta | 1.20.1 | 47.4.10+ (47.x) | 6.0.6, 6.0.7, 6.0.8 | 17 |
 | 1.1.2 | Stable | 1.20.1 | 47.2.32+ (47.x) | 6.0.4 | 17 |
 | 1.1.1 | Stable, older release | 1.20.1 | 47.2.32+ (47.x) | 6.0.4 | 17 |
@@ -31,7 +30,7 @@ Initialization used Forge `runData` and Registrate; it did not exercise game fra
 
 ## Gameplay verification boundary
 
-1.2.1 packages the completed R2 rebuilding, C3 deferred-copy and N1 scoped-NBT implementations, eligible full-package scan optimization, diagnostics and chunk-invalidation repair described below. It retains the same dependency ranges as 1.2.0 and remains Beta. Its Java implementation is unchanged from the final local 1.2.0 build; the recorded source contracts, bytecode checks, measured limitations and gameplay boundaries apply. Publication does not establish new modpack or third-party Mixin acceptance.
+The reissued 1.2.0 prerelease packages the completed R2 rebuilding, C3 deferred-copy and N1 scoped-NBT implementations, eligible full-package scan optimization, diagnostics and chunk-invalidation repair described below. It remains Beta. Its Java implementation is unchanged from the final local 1.2.0 build; the recorded source contracts, bytecode checks, measured limitations and gameplay boundaries apply. References below to unchanged published 1.2.0 artifacts describe the earlier development stages before this reissue. Publication does not establish new modpack or third-party Mixin acceptance.
 
 1.2.0 remains Beta. A Create 6.0.8 / Forge 47.4.10 / Flywheel 1.0.5 modpack session loaded the mod, entered a world and completed shutdown saving; the user reported normal gameplay. The same environment exposed intermittent vault texture seams and client chunk-refresh exceptions. Investigation identified controller lookup during capability invalidation as a lifecycle defect. Initial user retesting of the development fix reports no issue so far; updated logs have not yet been reviewed. See [technical notes](TECHNICAL_NOTES.md#capability-invalidation-during-chunk-teardown).
 
