@@ -18,8 +18,8 @@ This project is not affiliated with or endorsed by LopyLuna or the Create team.
 
 ## Downloads
 
-- **Stable — 1.1.2:** [Download for Create 6.0.4](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/v1.1.2).
-- **Beta — 1.2.0:** [Download for Create 6.0.6–6.0.8](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/mc1.20.1-v1.2.0), with Flywheel 1.0.5 included.
+- **Stable — 1.2.0:** [Download for Create 6.0.6–6.0.8](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/mc1.20.1-v1.2.0), with Flywheel 1.0.5 included.
+- **Previous stable — 1.1.2:** [Download for Create 6.0.4](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/v1.1.2).
 
 GitHub Releases is the current distribution channel. Modrinth and CurseForge publication is planned.
 
@@ -47,11 +47,11 @@ Capacity below is measured in inventory slots **per block**. Horizontal and vert
 
 | Mod version | Status | Minecraft | Forge | Create | Java |
 |---|---|---|---|---|---|
-| 1.2.0 | Beta | 1.20.1 | 47.4.10+ (47.x) | 6.0.6, 6.0.7, 6.0.8 | 17 |
+| 1.2.0 | Stable | 1.20.1 | 47.4.10+ (47.x) | 6.0.6, 6.0.7, 6.0.8 | 17 |
 | 1.1.2 | Stable | 1.20.1 | 47.2.32+ (47.x) | 6.0.4 | 17 |
 | 1.1.1 | Stable, older release | 1.20.1 | 47.2.32+ (47.x) | 6.0.4 | 17 |
 
-Version 1.2.0 uses one installer for all three listed Create versions and includes **Flywheel 1.0.5**. No separate Flywheel download is required. It remains a beta release; the completed checks and outstanding gameplay verification are documented in the [compatibility notes](docs/COMPATIBILITY.md).
+Version 1.2.0 uses one installer for all three listed Create versions and includes **Flywheel 1.0.5**. No separate Flywheel download is required. Completed checks and the scope of gameplay verification are documented in the [compatibility notes](docs/COMPATIBILITY.md).
 
 **Create: Connected is optional.** It is needed only for the standard-tier vertical silo and upgrades involving that tier. Choose a Connected release compatible with your Minecraft and Create versions; its current upstream compatibility table lists Create 6.0.6 as unsupported. See [Connected's compatibility information](https://github.com/hlysine/create_connected#download).
 
@@ -74,7 +74,7 @@ Upgrades must be performed by a player on a stationary world structure. Deployer
 
 Use the [issue tracker](https://github.com/yunluoxincheng/create-bigger-storage-continued/issues) for bugs and feature requests. Include your mod, Minecraft, Forge and Create versions, steps to reproduce, and relevant logs or screenshots. For storage performance issues, include the vault dimensions and the terminal or automation mods involved.
 
-Development candidates support manual inventory diagnostics with `/create_bs diagnostics start` and `/create_bs diagnostics stop`. See the [commands and counter reference](docs/TECHNICAL_NOTES.md#manual-vault-diagnostics). These commands are not included in published 1.2.0 JARs.
+Version 1.2.0 supports manual inventory diagnostics with `/create_bs diagnostics start` and `/create_bs diagnostics stop`. See the [commands and counter reference](docs/TECHNICAL_NOTES.md#manual-vault-diagnostics).
 
 ## Building from source
 
@@ -95,6 +95,7 @@ Artifacts are written to `build/libs/`. For 1.2.0, the ordinary versioned JAR in
 ## Credits and license
 
 - **LopyLuna:** original Bigger Storage project and code.
+- **yunluoxincheng:** current maintainer of Create: Bigger Storage Continued; [project homepage and source](https://github.com/yunluoxincheng/create-bigger-storage-continued), [issue tracker](https://github.com/yunluoxincheng/create-bigger-storage-continued/issues).
 - **simibubi and the Create contributors:** Create and the source vault artwork.
 - **Jozufozu and the Flywheel contributors:** the included Flywheel library and its upstream fixes.
 - **Continued contributors:** maintenance, vertical vaults, upgrades and performance improvements.

@@ -2,6 +2,15 @@
 
 This is an unofficial continuation of [LopyLuna's Bigger Storage](https://github.com/LopyLuna/Create-Bigger-Storage), without claimed affiliation or endorsement from LopyLuna or the Create team. Copyright permission and platform approval are separate.
 
+## Project identity and maintainership
+
+- **Original project and author:** [Create: Bigger Storage](https://github.com/LopyLuna/Create-Bigger-Storage) by [LopyLuna](https://github.com/LopyLuna). Original authorship and the upstream MIT copyright notice are retained.
+- **Current continuation maintainer:** [yunluoxincheng](https://github.com/yunluoxincheng), with Continued contributors. This credit identifies maintenance of this continuation and does not attribute the original project to its current maintainer.
+- **Continuation homepage and source:** [Create: Bigger Storage Continued](https://github.com/yunluoxincheng/create-bigger-storage-continued).
+- **Continuation issue tracker:** [GitHub Issues](https://github.com/yunluoxincheng/create-bigger-storage-continued/issues).
+
+Project pages should credit LopyLuna as the original author and yunluoxincheng as the current continuation maintainer. The original author and Create team are not represented as participants in or endorsers of this continuation. Maintenance code and documentation include AI-assisted contributions; the asset-specific AI assistance and source records are described below.
+
 ## Code and license scope
 
 The imported source is commit `3429e16d51ca91f2b8f7d46d58e5add18e56537d`. Its [MIT license](https://github.com/LopyLuna/Create-Bigger-Storage/blob/3429e16d51ca91f2b8f7d46d58e5add18e56537d/LICENSE) permits compliant code modification and redistribution without a separate case-by-case author approval. Its [metadata](https://github.com/LopyLuna/Create-Bigger-Storage/blob/3429e16d51ca91f2b8f7d46d58e5add18e56537d/src/main/resources/META-INF/mods.toml) explicitly separates `MIT-CODE, ARR-ART`; the code grant does not authorize original ARR artwork or brand endorsement.

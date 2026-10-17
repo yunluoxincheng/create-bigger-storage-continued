@@ -1,15 +1,18 @@
 modLoader="javafml"
 loaderVersion="[47,)"
 license="MIT"
+issueTrackerURL="https://github.com/yunluoxincheng/create-bigger-storage-continued/issues"
 
 [[mods]]
 modId="create_bs"
 version="${file.jarVersion}"
 displayName="Create: Bigger Storage Continued"
+displayURL="https://github.com/yunluoxincheng/create-bigger-storage-continued"
 logoFile="pack.png"
-authors="LopyLuna, Continued contributors"
+authors="LopyLuna (original author), yunluoxincheng (Continued maintainer), Continued contributors"
 description='''
-An unofficial continuation with native Create 6 support, vertical vaults and in-place upgrades.
+An unofficial continuation of LopyLuna's Bigger Storage, maintained by yunluoxincheng and Continued contributors, with native Create 6 support, vertical vaults and in-place upgrades.
+Not affiliated with or endorsed by LopyLuna or the Create team.
 '''
 
 [[dependencies.create_bs]]

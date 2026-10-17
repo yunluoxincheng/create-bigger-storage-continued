@@ -84,7 +84,7 @@ jar {
     from('LICENSE') { rename { 'LICENSE_UPSTREAM' } }
     manifest.attributes(
         'Specification-Title': 'Create: Bigger Storage Continued',
-        'Specification-Vendor': 'LopyLuna; Continued contributors',
+        'Specification-Vendor': 'yunluoxincheng (Continued maintainer); LopyLuna (original author); Continued contributors',
         'MixinConfigs': 'create_bs.mixins.json',
         'Implementation-Version': project.version
     )
@@ -105,7 +105,7 @@ tasks.named('jarJar') {
     from('LICENSE') { rename { 'LICENSE_UPSTREAM' } }
     manifest.attributes(
         'Specification-Title': 'Create: Bigger Storage Continued',
-        'Specification-Vendor': 'LopyLuna; Continued contributors',
+        'Specification-Vendor': 'yunluoxincheng (Continued maintainer); LopyLuna (original author); Continued contributors',
         'MixinConfigs': 'create_bs.mixins.json',
         'Implementation-Version': project.version
     )

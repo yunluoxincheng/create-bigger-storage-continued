@@ -18,8 +18,8 @@
 
 ## 下载
 
-- **正式版 — 1.1.2：**[适用于 Create 6.0.4](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/v1.1.2)。
-- **测试版 — 1.2.0：**[适用于 Create 6.0.6～6.0.8](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/mc1.20.1-v1.2.0)，内置 Flywheel 1.0.5。
+- **正式版 — 1.2.0：**[适用于 Create 6.0.6～6.0.8](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/mc1.20.1-v1.2.0)，内置 Flywheel 1.0.5。
+- **历史正式版 — 1.1.2：**[适用于 Create 6.0.4](https://github.com/yunluoxincheng/create-bigger-storage-continued/releases/tag/v1.1.2)。
 
 目前通过 GitHub Releases 提供下载，后续计划发布至 Modrinth 和 CurseForge。
 
@@ -47,11 +47,11 @@
 
 | 模组版本 | 状态 | Minecraft | Forge | Create | Java |
 |---|---|---|---|---|---|
-| 1.2.0 | 测试版 | 1.20.1 | 47.4.10 及以上（47.x） | 6.0.6、6.0.7、6.0.8 | 17 |
+| 1.2.0 | 正式版 | 1.20.1 | 47.4.10 及以上（47.x） | 6.0.6、6.0.7、6.0.8 | 17 |
 | 1.1.2 | 正式版 | 1.20.1 | 47.2.32 及以上（47.x） | 6.0.4 | 17 |
 | 1.1.1 | 历史正式版 | 1.20.1 | 47.2.32 及以上（47.x） | 6.0.4 | 17 |
 
-1.2.0 为上述三种 Create 版本提供同一个安装包，内置 **Flywheel 1.0.5**，无需单独下载。当前仍为测试版，已完成的核验和待进行的游戏内验证见[兼容说明](docs/COMPATIBILITY.md)。
+1.2.0 为上述三种 Create 版本提供同一个安装包，内置 **Flywheel 1.0.5**，无需单独下载。已完成的核验及游戏内验证范围见[兼容说明](docs/COMPATIBILITY.md)。
 
 **Create: Connected 为可选依赖。**仅原版档位的纵向保险库及涉及该档位的升级需要它。请选择与 Minecraft、Create 匹配的 Connected 版本；其当前上游兼容表将 Create 6.0.6 标为不支持，详见 [Connected 兼容说明](https://github.com/hlysine/create_connected#download)。
 
@@ -74,7 +74,7 @@
 
 请通过 [Issues](https://github.com/yunluoxincheng/create-bigger-storage-continued/issues) 反馈问题或建议，提供模组、Minecraft、Forge、Create 版本，复现步骤及相关日志或截图。库存性能问题还应提供保险库尺寸，以及使用的终端或自动化模组。
 
-开发候选包支持使用 `/create_bs diagnostics start` 开始库存诊断，使用 `/create_bs diagnostics stop` 停止并导出报告。命令及计数含义见[诊断说明](docs/TECHNICAL_NOTES.md#manual-vault-diagnostics)。已发布的 1.2.0 安装包尚未包含这些命令。
+1.2.0 支持使用 `/create_bs diagnostics start` 开始库存诊断，使用 `/create_bs diagnostics stop` 停止并导出报告。命令及计数含义见[诊断说明](docs/TECHNICAL_NOTES.md#manual-vault-diagnostics)。
 
 ## 源码构建
 
@@ -95,6 +95,7 @@ bash ./gradlew --no-daemon jarJar sourcesJar
 ## 署名与许可
 
 - **LopyLuna：**原 Bigger Storage 项目及代码。
+- **yunluoxincheng：**Create: Bigger Storage Continued 当前维护者；[项目主页与源码](https://github.com/yunluoxincheng/create-bigger-storage-continued)、[问题反馈](https://github.com/yunluoxincheng/create-bigger-storage-continued/issues)。
 - **simibubi 与 Create 贡献者：**机械动力及保险库原始美术。
 - **Jozufozu 与 Flywheel 贡献者：**内置 Flywheel 库及其上游修复。
 - **Continued 贡献者：**维护、纵向保险库、升级及性能优化。
